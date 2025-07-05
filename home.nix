@@ -29,86 +29,102 @@
   programs.zoxide.enable = true;
   programs.zoxide.enableZshIntegration = true;
 
-  programs.tmux.enable = true;
+  programs.tmux = {
+    enable = true;
+    plugins = with pkgs; [
+      tmuxPlugins.cpu
+      {
+	plugin = tmuxPlugins.resurrect;
+	extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+      }
+      {
+	plugin = tmuxPlugins.continuum;
+	extraConfig = ''
+	  set -g @continuum-restore 'on'
+	  set -g @continuum-save-interval '1' # minutes
+	'';
+      }
+    ];
+  };
 
   programs.git = {
     enable = true;
-    userName = "xam";
-    userEmail = "m.porseryd@gmail.com";
-    extraConfig = {
-      credential.helper = "manager";
-      credential."https://gitlab.lnu.se".username = "Max Porseryd";
-      credential."https://gitlab.lnu.se".email = "mp224hv@student.lnu.se";
-      credential."https://github.com".username = "mxapd";
-      credential.credentialStore = "cache";
+      userName = "xam";
+      userEmail = "m.porseryd@gmail.com";
+      extraConfig = {
+	credential.helper = "manager";
+	credential."https://gitlab.lnu.se".username = "Max Porseryd";
+	credential."https://gitlab.lnu.se".email = "mp224hv@student.lnu.se";
+	credential."https://github.com".username = "mxapd";
+	credential.credentialStore = "cache";
+      };
     };
-  };
-  stylix.targets.hyprland.enable = true; 
-  stylix.targets.kde.enable = false;
-  imports = [
-    #./modules/neovim/neovim.nix
-    ./modules/nixvim/nixvim.nix
-    ./modules/hyprland/hyprland.nix
-  ];
+    stylix.targets.hyprland.enable = true; 
+    stylix.targets.kde.enable = false;
+    imports = [
+      #./modules/neovim/neovim.nix
+      ./modules/nixvim/nixvim.nix
+      ./modules/hyprland/hyprland.nix
+    ];
 
 
-  home.sessionVariables = {
-    OBSIDIAN_VAULT = "/home/xam/Documents/digitalbrain";
-  };
+    home.sessionVariables = {
+      OBSIDIAN_VAULT = "/home/xam/Documents/digitalbrain";
+    };
 
-  programs.kitty = {
-    enable = true;
-    extraConfig = ''
+    programs.kitty = {
+      enable = true;
+      extraConfig = ''
        confirm_os_window_close 0
-    '';
-  };
-
-  services.mako = {
-    enable = true;
-    package = pkgs.mako;
-    defaultTimeout = 7000;
-    borderRadius = 5;
-  };
-  
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    BROWSER = "firefox";
-    PATH = "$HOME/.local/bin:$PATH";
-  };
-
-  programs.zsh = {
-    enable = true;
-    syntaxHighlighting.enable = true;
-    shellAliases =  {
-      rebuild = "sudo nixos-rebuild switch --flake ~/nixos/ --impure";
-      oo = "source /home/xam/nixos/modules/shellscripts/open_vault.sh";
-      alpaca = "bash /home/xam/nixos/modules/shellscripts/alpaca.sh";
+      '';
     };
 
-    initExtra = ''
+    services.mako = {
+      enable = true;
+      package = pkgs.mako;
+      defaultTimeout = 7000;
+      borderRadius = 5;
+    };
+
+    home.sessionVariables = {
+      EDITOR = "nvim";
+      BROWSER = "firefox";
+      PATH = "$HOME/.local/bin:$PATH";
+    };
+
+    programs.zsh = {
+      enable = true;
+      syntaxHighlighting.enable = true;
+      shellAliases =  {
+	rebuild = "sudo nixos-rebuild switch --flake ~/nixos/ --impure";
+	oo = "source /home/xam/nixos/modules/shellscripts/open_vault.sh";
+	alpaca = "bash /home/xam/nixos/modules/shellscripts/alpaca.sh";
+      };
+
+      initExtra = ''
       tmux_sessionizer_widget() {
 	zle -I                     # Clears the current input line
 	tmux-sessionizer           # Runs your command
       }
       zle -N tmux_sessionizer_widget
       bindkey '^f' tmux_sessionizer_widget
-      
+
       if [ -z "$SSH_AUTH_SOCK" ]; then
-        eval "$(ssh-agent -s)" > /dev/null
-        ssh-add ~/.ssh/lnu_ed25519 2>/dev/null
+	eval "$(ssh-agent -s)" > /dev/null
+	ssh-add ~/.ssh/lnu_ed25519 2>/dev/null
 	#ssh-add /home/xam/.ssh/github_mxapd_ed25519 2>/dev/null
       fi
 
       if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
       exec tmux
       fi
-    '';
+      '';
 
-    oh-my-zsh = {
-      enable = true;
-      plugins = ["git"];
-      theme = "wedisagree";
+      oh-my-zsh = {
+	enable = true;
+	plugins = ["git"];
+	theme = "wedisagree";
+      };
     };
-  };
-}
+  }
 
