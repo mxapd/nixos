@@ -81,7 +81,7 @@ with lib;
 
 	"custom/room_temp" = {
 	    exec = "~/nixos/scripts/room_temp.sh";
-	    interval = 60;
+	    interval = 55;
 	    format = "{}";
 	    return-type = "json";
 	};
