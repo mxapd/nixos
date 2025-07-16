@@ -14,17 +14,6 @@
       };
     };
 
-    #    plugins.jdtls = {
-    #      enable = true;
-    #      settings = {
-    #        cmd = [
-    #        (lib.getExe pkgs.jdt-language-server)
-    #          "-data" "/home/xam/.cache/jdtls/workspace/data"
-    #        ];
-    #      };
-    #    };
-
-
     plugins.lsp = {
       enable = true;
       servers = {
@@ -32,15 +21,8 @@
 	rust-analyzer.enable = true;
 	jdtls.enable = true;
 	lua_ls.enable = true;
-
-	pylsp = {
-	  enable = true;
-	  settings.plugins = {
-	    flake8.enabled = true;
-	    flake8.ignore = ["E501"];
-	    pycodestyle.enabled = false;
-	  };
-	};
+	pylsp.enable = true;
+	pylsp.settings.plugins.flake8.enabled = true;
       };
       # Diagnostic keymaps
       keymaps = {

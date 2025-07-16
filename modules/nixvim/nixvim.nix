@@ -42,24 +42,13 @@
       #render-markdown.enable = true;
       friendly-snippets.enable = true;
       friendly-snippets.autoLoad= true;
-      nvim-surround.enable = true;
-      trouble.enable = true;
     };
-
-    keymaps = [
-  {
-    mode = "n";
-    key = "<C-f>";
-    action = "<cmd>silent !tmux neww tmux-sessionizer<CR>";
-    options.silent = true;
-  }    ];
 
     autoGroups = {
       kickstart-highlight-yank = {
 	clear = true;
       };
     };
-
 
     autoCmd = [
       # Highlight when yanking (copying) text

@@ -16,7 +16,6 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
       };
-
   };
 
 
@@ -31,8 +30,8 @@
       specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
-	home-manager.nixosModules.home-manager {
-          home-manager.backupFileExtension = "ssdsadasasbyuissasssdadssssssasasssssssss";
+        home-manager.nixosModules.home-manager{
+          home-manager.backupFileExtension = "sssbyuissasssssssssasassskmdascsssssss";
           home-manager.users.xam = import ./home.nix;
           home-manager.sharedModules = [
               nixvim.homeManagerModules.nixvim

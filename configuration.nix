@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-# 
+#
 { config, pkgs, inputs, ... }:
 
 {
@@ -9,17 +9,16 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./modules/stylix.nix
-      ./modules/postgresql.nix
+      ./modules/fonts.nix
     ];
+
 
 # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes"];
-  
-  xdg.portal = {
+    xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
     wlr.enable = false;
@@ -29,26 +28,24 @@
     };
     configPackages = [
       pkgs.xdg-desktop-portal-gtk
-	pkgs.xdg-desktop-portal
+      pkgs.xdg-desktop-portal
     ];
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
-      #pkgs.xdg-desktop-portal-hyprland
     ];
   };
 
   networking = {
     hostName = "nixos";
     networkmanager.enable = true;
-    nameservers = ["1.1.1.1" "8.8.8.8"];
-#wireless.enable = true;
-#proxy.default = "http://user:password@proxy:port/";
-#proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    #  wireless.enable = true;
+    #proxy.default = "http://user:password@proxy:port/";
+    #proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
 
   time.timeZone = "Europe/Stockholm";
-  
-# Select internationalisation properties.
+
+  # Select internationalisation properties.
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
@@ -67,8 +64,7 @@
   console.keyMap = "sv-latin1";
 
   services = {
-    flatpak.enable = true; 
-# xserver.libinput.enable = true;
+    # xserver.libinput.enable = true;
     xserver.enable = true;
     xserver.xkb = {
       layout = "se";
@@ -82,12 +78,12 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-# If you want to use JACK applications, uncomment this
-#jack.enable = true;
+      # If you want to use JACK applications, uncomment this
+      #jack.enable = true;
 
-# use the example session manager (no others are packaged yet so this is enabled by default,
-# no need to redefine it in your config for now)
-#media-session.enable = true;
+      # use the example session manager (no others are packaged yet so this is enabled by default,
+      # no need to redefine it in your config for now)
+      #media-session.enable = true;
     };
     displayManager.sddm.enable = true;
     desktopManager.plasma6.enable = true;
@@ -95,21 +91,18 @@
     openssh = {
       enable = true;
     };
-    xserver.videoDrivers = ["nvidia"];
   };
 
   programs = {
     zsh.enable = true;
-#noisetorch.enable = true;
+    #noisetorch.enable = true;
     firefox.enable = true;
-    steam.enable = true;
-    gamemode.enable = true;
 
     hyprland = {
       enable = true;
-# set the flake package
+      # set the flake package
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-# make sure to also set the portal package, so that they are in sync
+      # make sure to also set the portal package, so that they are in sync
       portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
   };
@@ -122,52 +115,37 @@
     description = "xam";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      cargo
-      openssl
-      wasm-bindgen-cli
-      cargo-leptos
-      rustc
-      pkg-config
-      cargo-generate
-      openssl
-      lsof
-      rustlings
-      torzu
-      pgadmin4-desktopmode
-      tldr
-      tree
-      runelite
-      nautilus
-      pavucontrol
-      calibre
+      blueman
+      gcc
       rustup
-      clang
-      ollama-cuda
       piper
       zip
       gotop
       rar
       qbittorrent
-      #egl-wayland
+      egl-wayland
       git
       python3
       prismlauncher
       obsidian
       kitty
-      fastfetch
+      neofetch
       slack
       gamescope
       spotify
       vscodium
       libreoffice
-      #syncthing
+      syncthing
       ripgrep-all
+      ripgrep
       zoxide
       tmux
       libgcc
       zig
+      thinkfan
       nodejs_22
       gnumake
+      mariadb
       unzip
       lunarvim
       teamspeak_client
@@ -177,23 +155,13 @@
       mariadb
       jdk21
       gradle
-      vlc
-      blueman
-      fzf
     ];
   };
 
   nixpkgs.config.allowUnfree = true;
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
-  
-  users.extraGroups.vboxusers.members = [ "xam" ];
-  
-  #virtualisation.virtualbox.guest.enable = true;
-  #virtualisation.virtualbox.guest.dragAndDrop = true;
-  
   environment.systemPackages = with pkgs; [
+    auto-cpufreq
     grim
     slurp
     kitty
@@ -201,39 +169,18 @@
     waybar
     font-awesome
     gnome-calendar
+    mako
     libnotify
     hyprshot
     playerctl
-    
+    lm_sensors
+    brightnessctl
   ];
 
   hardware = {
     graphics = {
       enable = true;
       enable32Bit = true;
-    };
-
-    nvidia = {
-      # Modesetting is required.
-      modesetting.enable = true;
-      # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-      powerManagement.enable = false;
-      # Fine-grained power management. Turns off GPU when not in use.
-      # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-      powerManagement.finegrained = false;
-      # Use the NVidia open source kernel module (not to be confused with the
-      # independent third-party "nouveau" open source driver).
-      # Support is limited to the Turing and later architectures. Full list of
-      # supported GPUs is at:
-      # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
-      # Only available from driver 515.43.04+
-      # Currently alpha-quality/buggy, so false is currently the recommended setting.
-      open = true;
-      # Enable the Nvidia settings menu,
-      # accessible via `nvidia-settings`.
-      nvidiaSettings = true;
-      # Optionally, you may need to select the appropriate driver version for your specific GPU.
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
     };
 
     bluetooth.enable = true;

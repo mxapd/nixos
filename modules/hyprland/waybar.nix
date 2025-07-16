@@ -17,15 +17,16 @@ with lib;
         layer = "top";
         position = "bottom";
         modules-left = [
+	  "idle_inhibitor"
 	  "hyprland/workspaces" 
 	];
         modules-center = [ 
 	  "hyprland/window"
 	];
         modules-right = [
-	  "custom/room_temp"
 	  "network"
 	  "pulseaudio"
+	  "battery"
 	  "tray"
 	  "clock"
 	];
@@ -71,22 +72,8 @@ with lib;
           format-ethernet = " {bandwidthDownOctets}";
           format-wifi = "{icon} {signalStrength}%";
           format-disconnected = "󰤮";
-          tooltip = false;
+          tooltip = true;
         };
-
-	"pulseaudio" = {
-	  on-click = "pavucontrol";
-	};
-
-
-	"custom/room_temp" = {
-	    exec = "~/nixos/scripts/room_temp.sh";
-	    interval = 55;
-	    format = "{}";
-	    return-type = "json";
-	};
-
-
       }
     ];
     style = concatStrings [
@@ -127,10 +114,6 @@ with lib;
     min-height: 0;
     opacity: 1.0;
 
-}
-
-#custom-room_temp {
-  margin-right: 25px;
 }
 
 window#waybar {

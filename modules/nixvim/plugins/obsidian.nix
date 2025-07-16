@@ -16,7 +16,7 @@
 	workspaces = [
 	  {
 	    name = "personal";
-	    path = "~/Documents/digitalbrain/";
+	    path = "~/Documents/syncvault/";
 	  }
 	];
       };
