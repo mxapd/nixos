@@ -7,7 +7,7 @@
     ./plugins/gitsigns.nix
     ./plugins/telescope.nix
     ./plugins/lsp.nix
-    ./plugins/obsidian.nix
+    #./plugins/obsidian.nix
     ./plugins/alpha-nvim.nix
     ./plugins/neo-tree.nix
     ./plugins/wrapping.nix

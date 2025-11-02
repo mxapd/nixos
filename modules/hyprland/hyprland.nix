@@ -119,7 +119,7 @@
       exec-once = mako
 
       input {
-	kb_options = caps:swapescape
+  #	kb_options = caps:swapescape
       }
       '';
   };

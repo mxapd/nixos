@@ -5,6 +5,11 @@
 { config, pkgs, inputs, ... }:
 
 {
+  nixpkgs.config.permittedInsecurePackages = [
+    "qtwebengine-5.15.19"
+  ];
+
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -38,9 +43,14 @@
   };
 
   networking = {
+    
+    hosts = {
+      "10.42.0.89" = ["nextcloud.yggdrasil.com" "firefly.yggdrasil.com" "importer.yggdrasil.com" "gitea.yggdrasil.com"];
+    };
+
     hostName = "nixos";
     networkmanager.enable = true;
-    nameservers = ["1.1.1.1" "8.8.8.8"];
+    nameservers = [ "8.8.8.8" "10.42.0.1"];
 #wireless.enable = true;
 #proxy.default = "http://user:password@proxy:port/";
 #proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -122,6 +132,8 @@
     description = "xam";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      #zulu25
+      tailscale
       cargo
       openssl
       wasm-bindgen-cli
@@ -132,7 +144,6 @@
       openssl
       lsof
       rustlings
-      torzu
       pgadmin4-desktopmode
       tldr
       tree
@@ -193,6 +204,11 @@
   #virtualisation.virtualbox.guest.enable = true;
   #virtualisation.virtualbox.guest.dragAndDrop = true;
   
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+  };
+
   environment.systemPackages = with pkgs; [
     grim
     slurp
@@ -235,6 +251,8 @@
       # Optionally, you may need to select the appropriate driver version for your specific GPU.
       package = config.boot.kernelPackages.nvidiaPackages.beta;
     };
+
+    nvidia-container-toolkit.enable = true;
 
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;

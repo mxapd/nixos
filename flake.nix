@@ -32,7 +32,7 @@
       modules = [
         ./configuration.nix
 	home-manager.nixosModules.home-manager {
-          home-manager.backupFileExtension = "ssdsadasasbyuissasssdadssssssasasssssssss";
+          home-manager.backupFileExtension = "backup";
           home-manager.users.xam = import ./home.nix;
           home-manager.sharedModules = [
               nixvim.homeManagerModules.nixvim

@@ -5,9 +5,10 @@ if [[ $# -eq 1 ]]; then
 else
     projects=$(find ~/Projects -mindepth 1 -maxdepth 1 -type d)
     
-    projects="$projects"$'\n'"$HOME/nixos"
-    
-    selected=$(echo "$projects" | fzf)
+    projects="$projects"
+    nixos="$HOME/nixos"
+    university="$HOME/Documents/university/"    
+    selected=$(printf "%s\n%s\n%s\n" "$projects" "$nixos" "$university" | fzf)
 fi
 
 if [[ -z $selected ]]; then
