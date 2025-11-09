@@ -35,7 +35,7 @@
           home-manager.backupFileExtension = "backup";
           home-manager.users.xam = import ./home.nix;
           home-manager.sharedModules = [
-              nixvim.homeManagerModules.nixvim
+              nixvim.homeModules.nixvim
           ];
         }
         stylix.nixosModules.stylix ./configuration.nix
