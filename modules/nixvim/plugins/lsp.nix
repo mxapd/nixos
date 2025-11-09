@@ -29,12 +29,7 @@
       enable = true;
       servers = {
 	ccls.enable = true;
-	rust_analyzer = { 
-	  enable = true;
-	  installCargo = true;
-	  installRustc = true;
-	};
-
+	rust-analyzer.enable = true;
 	jdtls.enable = true;
 	lua_ls.enable = true;
 
