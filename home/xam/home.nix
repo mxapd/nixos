@@ -2,9 +2,7 @@
 
 {
   home.username = "xam";
-
   home.homeDirectory = "/home/xam";
-
   home.stateVersion = "23.05";
 
   home.packages = with pkgs; [
@@ -17,10 +15,6 @@
     ]))
 
     zoxide
-    
-    (writeShellScriptBin "hello" ''
-      echo "hello world"
-    '')
     
     (writeShellScriptBin "tmux-sessionizer" (builtins.readFile /home/xam/nixos/scripts/tmux-sessionizer))
     

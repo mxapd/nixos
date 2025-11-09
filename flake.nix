@@ -21,7 +21,7 @@
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
   in
   {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
@@ -31,13 +31,13 @@
 
 	{
           home-manager.backupFileExtension = "backup";
-          home-manager.users.xam = import ./home.nix;
+          home-manager.users.xam = import ./home/xam/home.nix;
           home-manager.sharedModules = [
               nixvim.homeModules.nixvim
           ];
         }
 
-        stylix.nixosModules.stylix ./configuration.nix
+        stylix.nixosModules.stylix 
       ];
     };
   };
