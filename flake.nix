@@ -21,12 +21,16 @@
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
   in
   {
+
+
+    # --DESKTOP--
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
-      modules = [
+      modules = [	
+	./common/global.nix
 	./machines/desktop/configuration.nix
-	
+
 	home-manager.nixosModules.home-manager 
 
 	{
