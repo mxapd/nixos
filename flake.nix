@@ -22,7 +22,6 @@
   in
   {
 
-
     # --DESKTOP--
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";

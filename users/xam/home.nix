@@ -30,6 +30,14 @@
       ];
     };
 
+    stylix.targets.hyprland.enable = true;
+  
+    imports = [
+      #./modules/neovim/neovim.nix
+      ./../../modules/nixvim/nixvim.nix
+      ./../../modules/hyprland/hyprland.nix
+    ];
+
     programs = {
       zoxide.enable = true;
       zoxide.enableZshIntegration = true;                            	

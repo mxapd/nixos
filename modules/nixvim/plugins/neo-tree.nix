@@ -5,13 +5,13 @@
     plugins.neo-tree = {
       enable = true;
 
-      filesystem = {
-	window = {
-	  mappings = {
-	    "\\" = "close_window";
-	  };
-	};
-      };
+      #filesystem = {
+	#window = {
+	  #mappings = {
+	  #  "\\" = "close_window";
+	 # };
+	#};
+      #};
     };
 
     # https://nix-community.github.io/nixvim/keymaps/index.html
