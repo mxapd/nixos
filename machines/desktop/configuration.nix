@@ -13,9 +13,8 @@
   imports =
     [ 
       ./hardware-configuration.nix
-      ./../../common/global.nix
-      ./../../modules/stylix.nix
-      ./../../modules/postgresql.nix
+      ./../modules/stylix.nix
+      ./../modules/postgresql.nix
     ];
 
   # Bootloader.
