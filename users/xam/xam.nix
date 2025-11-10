@@ -18,5 +18,5 @@
     sharedModules = [
       inputs.nixvim.homeModules.nixvim
     ];
-  }
+  };
 }
