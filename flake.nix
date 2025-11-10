@@ -29,21 +29,10 @@
       specialArgs = { inherit inputs; };
       modules = [	
 	./common/global.nix
-	./common/users.nix
-
 	./machines/desktop/configuration.nix
+	./users/xam/xam.nix
 
-	home-manager.nixosModules.home-manager 
-
-	{
-          home-manager.backupFileExtension = "backup";
-          home-manager.users.xam = import ./home/xam/home.nix;
-          home-manager.sharedModules = [
-              nixvim.homeModules.nixvim
-          ];
-        }
-
-        stylix.nixosModules.stylix 
+	stylix.nixosModules.stylix 
       ];
     };
   };

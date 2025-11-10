@@ -54,17 +54,12 @@
       };
     };
     stylix.targets.hyprland.enable = true; 
-    stylix.targets.kde.enable = false;
+
     imports = [
       #./modules/neovim/neovim.nix
-      ./modules/nixvim/nixvim.nix
-      ./modules/hyprland/hyprland.nix
+      ./../../modules/nixvim/nixvim.nix
+      ./../../modules/hyprland/hyprland.nix
     ];
-
-
-    home.sessionVariables = {
-      OBSIDIAN_VAULT = "/home/xam/Documents/digitalbrain";
-    };
 
     programs.kitty = {
       enable = true;
@@ -83,6 +78,7 @@
     };
 
     home.sessionVariables = {
+      OBSIDIAN_VAULT = "/home/xam/Documents/digitalbrain";
       EDITOR = "nvim";
       BROWSER = "firefox";
       PATH = "$HOME/.local/bin:$PATH";
