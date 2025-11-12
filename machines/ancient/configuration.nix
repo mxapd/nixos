@@ -63,8 +63,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    neovim
+    vim 
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -79,6 +79,42 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+
+  # enable mdadm for software raid
+  services.mdadm.enable = true;
+
+  fileSystems."/dev/md/storage_raid" = {
+    device = "/dev/md/storage_raid";
+    fsType = "ext4";
+    options = [ "nofail" ];
+  }
+
+  boot.initrd.mdadm.arrays = [
+      name = "storage_raid";
+      level = 1;
+      devices = [ 
+	"/dev/sda/ata-ST2000DM008-2UB102_WFL8WM1D-part1"
+	"/dev/sdc/ata-ST2000DM008-2UB102_WFL8SG9M-part1"]
+    ];
+
+  services.lvm.physicalVolumes = {
+    "dev/md/storage_raid" = {};
+  };
+
+  services.lvm.volumeGroups.storage_vg = {
+    physicalVolumes = [ "/dev/md/storage_raid" ];
+  };
+
+  services.lvm.logicalVolumes.storage_vg.data_lv = {
+    size = "100%FREE";
+  };
+  
+  fileSystems."/mnt/storage" = {
+    device = "/dev/storage_vg/data_lv";
+    fsType = "ext4"; 
+    options = [ "nofail" "noatime" ];
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
