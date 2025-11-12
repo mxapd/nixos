@@ -5,10 +5,7 @@
 { config, pkgs, inputs, ... }:
 
 {
-  nixpkgs.config.permittedInsecurePackages = [
-    "qtwebengine-5.15.19"
-  ];
-
+ 
 
   imports =
     [ 
@@ -128,7 +125,60 @@
     libnotify
     hyprshot
     playerctl
-    
+    wasm-bindgen-cli
+    cargo-leptos
+    rustc
+    pkg-config
+    cargo-generate
+    lsof
+    rustlings
+    pgadmin4-desktopmode
+    tldr
+    tree
+    runelite
+    nautilus
+    pavucontrol
+    calibre
+    rustup
+    clang
+    ollama-cuda
+    piper
+    zip
+    gotop
+    rar
+    qbittorrent
+    #egl-wayland
+    git
+    python3
+    prismlauncher
+    obsidian
+    kitty
+    fastfetch
+    slack
+    gamescope
+    spotify
+    vscodium
+    libreoffice
+    #syncthing
+    ripgrep-all
+    zoxide
+    tmux
+    libgcc
+    zig
+    nodejs_22
+    gnumake
+    unzip
+    lunarvim
+    teamspeak3
+    wl-clipboard
+    discord-canary
+    htop
+    mariadb
+    jdk21
+    gradle
+    vlc
+    blueman
+    fzf
   ];
 
   hardware = {

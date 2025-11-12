@@ -42,5 +42,17 @@
 	stylix.nixosModules.stylix 
       ];
     };
+  
+    nixosConfigurations.ancient = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
+      modules = [	
+	./common/global.nix
+	./machines/ancient/configuration.nix
+	./users/xam/xam.nix
+
+	stylix.nixosModules.stylix 
+      ];
+    };
   };
 }
