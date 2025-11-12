@@ -80,41 +80,11 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-
-  # enable mdadm for software raid
-  services.mdadm.enable = true;
-
-  fileSystems."/dev/md/storage_raid" = {
-    device = "/dev/md/storage_raid";
-    fsType = "ext4";
-    options = [ "nofail" ];
-  }
-
-  boot.initrd.mdadm.arrays = [
-      name = "storage_raid";
-      level = 1;
-      devices = [ 
-	"/dev/sda/ata-ST2000DM008-2UB102_WFL8WM1D-part1"
-	"/dev/sdc/ata-ST2000DM008-2UB102_WFL8SG9M-part1"]
-    ];
-
-  services.lvm.physicalVolumes = {
-    "dev/md/storage_raid" = {};
-  };
-
-  services.lvm.volumeGroups.storage_vg = {
-    physicalVolumes = [ "/dev/md/storage_raid" ];
-  };
-
-  services.lvm.logicalVolumes.storage_vg.data_lv = {
-    size = "100%FREE";
-  };
-  
-  fileSystems."/mnt/storage" = {
-    device = "/dev/storage_vg/data_lv";
-    fsType = "ext4"; 
-    options = [ "nofail" "noatime" ];
-  };
+  boot.swraid.enable = true; 
+  boot.swraid.mdadmConf = ''
+    MAILADDR root
+    ARRAY /dev/md0 metadata=1.2 UUID=c2372504:3357ee60:294af604:572ab5f2
+  '';
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

@@ -53,6 +53,7 @@
     htop
     wget
     tailscale
+    parted
   ];
   programs.zsh.enable = true;
 }
