@@ -54,5 +54,25 @@
 	stylix.nixosModules.stylix 
       ];
     };
+
+    nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
+      modules = [	
+	./common/global.nix
+	./machines/laptop/configuration.nix
+	./users/xam/xam.nix
+	
+	home-manager.nixosModules.home-manager {
+          home-manager.backupFileExtension = "backup";
+          home-manager.users.xam = import ./users/xam/home.nix;
+          home-manager.sharedModules = [
+              nixvim.homeModules.nixvim
+          ];
+        }
+
+	stylix.nixosModules.stylix 
+      ];
+    };
   };
 }
