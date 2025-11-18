@@ -43,6 +43,15 @@
     LC_TIME = "sv_SE.UTF-8";
   };
 
+
+  networking.firewall.allowedTCPPorts = [
+    8384 # Syncthing Web UI
+    # 22000 # Syncthing sync port (TCP, usually opened by syncthing.openFirewall = true)
+  ];
+  networking.firewall.allowedUDPPorts = [
+  # 21027 # Syncthing discovery port (UDP, usually opened by syncthing.openFirewall = true)
+  ];
+  
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -65,6 +74,8 @@
   environment.systemPackages = with pkgs; [
     neovim
     vim 
+    jellyfin-web
+    jellyfin-ffmpeg
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -86,18 +97,40 @@
     ARRAY /dev/md0 metadata=1.2 UUID=c2372504:3357ee60:294af604:572ab5f2
   '';
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  # mount syncthing lv
+  fileSystems."/mnt/syncthing" = {
+    device = "/dev/disk/by-uuid/f37bb345-eeff-4ff4-863a-027b25e3587a";
+    fsType = "ext4";
+    options = [ "defaults" "nofail" ];
+  };
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  # mount video lv
+  fileSystems."/mnt/video" = {
+    device = "/dev/raid_storage_vg/video";
+    fsType = "ext4";
+    options = [ "defaults" "nofail" ];
+  };
+  
+  # mount books lv
+   fileSystems."/mnt/books" = {
+    device = "/dev/raid_storage_vg/books";
+    fsType = "ext4";
+    options = [ "defaults" "nofail" ];
+  }; 
 
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+    user = "jellyfin";
+  };
+  
+  services.syncthing = {
+    enable  = true;
+    user = "xam";
+    group = "users";
+    openDefaultPorts = true;
+    dataDir = "/mnt/syncthing/xam";
+    configDir = "/mnt/syncthing/config";
+    guiAddress = "0.0.0.0:8384";
+  };
 }
