@@ -109,12 +109,9 @@
 
   security.rtkit.enable = true;
 
-  users.users.xam = {
-    shell = pkgs.zsh;
-    isNormalUser = true;
-    description = "xam";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
+  nixpkgs.config.allowUnfree = true;
+
+  environment.systemPackages = with pkgs; [
       blueman
       gcc
       rustup
@@ -148,19 +145,14 @@
       mariadb
       unzip
       lunarvim
-      teamspeak_client
+      teamspeak3
       wl-clipboard
       discord-canary
       htop
       mariadb
       jdk21
       gradle
-    ];
-  };
 
-  nixpkgs.config.allowUnfree = true;
-
-  environment.systemPackages = with pkgs; [
     auto-cpufreq
     grim
     slurp
