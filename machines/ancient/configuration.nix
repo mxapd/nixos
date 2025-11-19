@@ -50,8 +50,8 @@
     # 22000 # Syncthing sync port (TCP, usually opened by syncthing.openFirewall = true)
   ];
   networking.firewall.allowedUDPPorts = [
-  # 21027 # Syncthing discovery port (UDP, usually opened by syncthing.openFirewall = true)
-    8096 # jellyfin    
+    # 21027 # Syncthing discovery port (UDP, usually opened by syncthing.openFirewall = true)
+    #8096 # jellyfin    
   ];
   
   # Configure keymap in X11
@@ -75,20 +75,14 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     neovim
-    vim 
+    vim
+
+
+    nvtopPackages.v3d
+    ffmpeg-full
     jellyfin-web
     jellyfin-ffmpeg
   ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -134,5 +128,13 @@
     dataDir = "/mnt/syncthing/xam";
     configDir = "/mnt/syncthing/config";
     guiAddress = "0.0.0.0:8384";
+  };
+
+  nixpkgs.config.nvidia.acceptLicense = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
   };
 }
