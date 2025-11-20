@@ -6,6 +6,10 @@
     polarity = "dark";
     opacity.terminal = 0.95;
     
+    cursor.package = pkgs.bibata-cursors;
+    cursor.name = "Bibata-Modern-Ice";
+    cursor.size = 24;
+
     # orange purple gray or something
     # base16Scheme = {
     #   base00 = "151515";
