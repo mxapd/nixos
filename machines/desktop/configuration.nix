@@ -42,9 +42,6 @@
   networking = {
     hostName = "desktop";
     nameservers = [ "8.8.8.8" "10.42.0.1"];
-  
-  #proxy.default = "http://user:password@proxy:port/";
-  #proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
 
   console.keyMap = "sv-latin1";
@@ -65,12 +62,6 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-# If you want to use JACK applications, uncomment this
-#jack.enable = true;
-
-# use the example session manager (no others are packaged yet so this is enabled by default,
-# no need to redefine it in your config for now)
-#media-session.enable = true;
     };
     displayManager.sddm.enable = true;
     ratbagd.enable = true;
@@ -78,26 +69,34 @@
       enable = true;
     };
     xserver.videoDrivers = ["nvidia"];
+
+    syncthing = {
+      enable  = true;
+      user = "xam";
+      group = "users";
+      dataDir = "/home/xam/Documents/";
+      configDir = "/home/xam/.syncthing/";
+      guiAddress = "0.0.0.0:8384";
+  };
+
   };
 
   programs = {
     zsh.enable = true;
-#noisetorch.enable = true;
     firefox.enable = true;
     steam.enable = true;
     gamemode.enable = true;
 
     hyprland = {
       enable = true;
-# set the flake package
+      # set the flake package
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-# make sure to also set the portal package, so that they are in sync
+      # make sure to also set the portal package, so that they are in sync
       portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
   };
 
   security.rtkit.enable = true;
-
   
   nixpkgs.config.allowUnfree = true;
 
@@ -159,7 +158,7 @@
     spotify
     vscodium
     libreoffice
-    #syncthing
+    syncthing
     ripgrep-all
     zoxide
     tmux

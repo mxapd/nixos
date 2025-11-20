@@ -47,7 +47,7 @@
   networking.firewall.allowedTCPPorts = [
     8384 # Syncthing Web UI
     8096 # jellyfin    
-    # 22000 # Syncthing sync port (TCP, usually opened by syncthing.openFirewall = true)
+    # 22000 # Syncthing sync port (TCP, usually opened by #yncthing.openFirewall = true)
   ];
   networking.firewall.allowedUDPPorts = [
     # 21027 # Syncthing discovery port (UDP, usually opened by syncthing.openFirewall = true)
