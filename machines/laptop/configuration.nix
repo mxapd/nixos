@@ -123,12 +123,10 @@
       egl-wayland
       git
       python3
-      prismlauncher
       obsidian
       kitty
       neofetch
       slack
-      gamescope
       spotify
       vscodium
       libreoffice
@@ -184,6 +182,17 @@
 
     pulseaudio.enable = false;
   };
+
+  services.syncthing = {
+    enable  = true;
+    user = "xam";
+    group = "users";
+    openDefaultPorts = true;
+    dataDir = "/home/xam/Documents";
+    configDir = "/home/xam/.syncthing";
+    guiAddress = "0.0.0.0:8384";
+  };
+
   security.polkit.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
