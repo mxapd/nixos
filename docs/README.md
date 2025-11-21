@@ -1,5 +1,16 @@
 # NIXOS SYSTEM
 
+## HOSTS
+
+### desktop
+### laptop
+### server
+
+## users
+### xam
+### jellyfin
+
+
 ## TODO
 - fix insecure - configuration.nix : 8
 ```
