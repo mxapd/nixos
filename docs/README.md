@@ -1,8 +1,14 @@
+sorry no documentation yet
+
 # NIXOS SYSTEM
 
 ## HOSTS
 
 ### desktop
+#### filesystem
+#### services
+#### modules
+
 ### laptop
 ### server
 
@@ -10,6 +16,7 @@
 ### xam
 ### jellyfin
 
+## MODULES
 
 ## TODO
 - fix insecure - configuration.nix : 8
