@@ -46,7 +46,6 @@
 
   # --PROGRAMS--
   environment.systemPackages = with pkgs; [
-    neovim
     vim
     git
     tmux
@@ -54,6 +53,7 @@
     wget
     tailscale
     parted
+    feh
   ];
   programs.zsh.enable = true;
 }

@@ -7,7 +7,7 @@
       stateVersion = "23.05";         
     
       sessionVariables = {
-	OBSIDIAN_VAULT = "/home/xam/Documents/digitalbrain";
+	OBSIDIAN_VAULT = "/home/xam/Documents/obsidian/";
 	EDITOR = "nvim";
 	BROWSER = "firefox";
 	PATH = "$HOME/.local/bin:$PATH";
@@ -16,9 +16,7 @@
       packages = with pkgs; [
 	oh-my-zsh
 	git-credential-manager
-    
 	zoxide
-	
 	(python3.withPackages (ppkgs: [
 	  ppkgs.matplotlib
 	  ppkgs.pytest
@@ -101,7 +99,6 @@
       	if [ -z "$SSH_AUTH_SOCK" ]; then
       	  eval "$(ssh-agent -s)" > /dev/null
       	  ssh-add ~/.ssh/lnu_ed25519 2>/dev/null
-      	  #ssh-add /home/xam/.ssh/github_mxapd_ed25519 2>/dev/null
       	fi
 
       	if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
