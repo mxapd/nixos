@@ -54,6 +54,7 @@
     tailscale
     parted
     feh
+    ripgrep
   ];
   programs.zsh.enable = true;
 }

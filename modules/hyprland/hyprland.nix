@@ -86,7 +86,7 @@
 	"$modSHIFT,F,togglefloating,active"
 	
 
-	"$mod,o, exec, kitty --class tmux-notes -e tmux_notes_toggle"
+	"$mod,O, exec, kitty --class tmux-notes -e tmux_toggle_notes"
 	];
 
       bindm = [
