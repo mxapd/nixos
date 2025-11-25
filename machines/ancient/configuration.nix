@@ -116,6 +116,13 @@
     options = [ "defaults" "nofail" ];
   }; 
 
+  # mount git
+   fileSystems."/mnt/git" = {
+    device = "/dev/raid_storage_vg/git";
+    fsType = "ext4";
+    options = [ "defaults" "nofail" ];
+  };
+
   services.jellyfin = {
     enable = true;
     openFirewall = true;
@@ -134,19 +141,43 @@
 
   services.gitea = {
     enable = true;
-    appName = "xaM Local Git";
+    appName = "not your average git (it's way worse)";
     user = "gitea";
-    httpPort = 3000;
 
+    httpPort = 3000;
+    domain = "localhost";
+    rootUrl = "http://localhost:3000/";
+ 
+    # database for metadata (users, keys and stuff)
     database = {
       type = "sqlite3";
       path = "/var/lib/gitea/data/gitea.db";
     };
-
-    domain = "localhost";
-    rootUrl = "http://localhost:3000/";
   };
-  #networking.firewall.allowedTCPPorts = [ 3000 2222 ];
+
+ 
+  systemd.services.gitea-backup = {
+    description = "Mirror Gitea data to HDD backup directory";
+    after = [ "gitea.service" ];
+    serviceConfig = {
+      User = "root";
+      Type = "oneshot";
+      ExecStart = [ 
+	"/run/current-system/sw/bin/mkdir -p /mnt/git/"
+	"/run/current-system/sw/bin/rsync -a --delete /var/lib/gitea/ /mnt/git/''"
+      ];    
+    };
+  };
+
+  systemd.timers.gitea-backup = {
+    description = "Daily Gitea rsync backup";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "daily";
+      Persistent = true;
+      RandomizedDelaySec = "10m";
+    };
+  };
 
   nixpkgs.config.nvidia.acceptLicense = true;
   services.xserver.videoDrivers = [ "nvidia" ];
