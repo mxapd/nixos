@@ -130,6 +130,22 @@
     guiAddress = "0.0.0.0:8384";
   };
 
+  services.gitea = {
+    enable = true;
+    appName = "xaM Local Git";
+    user = "gitea";
+    httpPort = 3000;
+
+    database = {
+      type = "sqlite3";
+      path = "/var/lib/gitea/data/gitea.db";
+    };
+
+    domain = "localhost";
+    rootUrl = "http://localhost:3000/";
+  }
+  networking.firewall.allowedTCPPorts = [ 3000 2222 ];
+
   nixpkgs.config.nvidia.acceptLicense = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
