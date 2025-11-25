@@ -45,6 +45,8 @@
 
 
   networking.firewall.allowedTCPPorts = [
+    3000 # for gitea
+    2222 # also for gitea but not sure if needed
     8384 # Syncthing Web UI
     8096 # jellyfin    
     # 22000 # Syncthing sync port (TCP, usually opened by #yncthing.openFirewall = true)
@@ -143,8 +145,8 @@
 
     domain = "localhost";
     rootUrl = "http://localhost:3000/";
-  }
-  networking.firewall.allowedTCPPorts = [ 3000 2222 ];
+  };
+  #networking.firewall.allowedTCPPorts = [ 3000 2222 ];
 
   nixpkgs.config.nvidia.acceptLicense = true;
   services.xserver.videoDrivers = [ "nvidia" ];
