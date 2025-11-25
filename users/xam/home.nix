@@ -24,6 +24,7 @@
 
     
 	(writeShellScriptBin "tmux-sessionizer" (builtins.readFile /home/xam/nixos/scripts/tmux-sessionizer))
+	(writeShellScriptBin "tmux_toggle_notes" (builtins.readFile /home/xam/nixos/scripts/tmux_notes_toggle.sh))
     
       ];
     };
@@ -55,7 +56,11 @@
        	# set -g @continuum-save-interval '1' # minutes                 
        	#     '';                                                             
        	#   }                                                                 
-       	 ];                                                                  
+       	 ];
+      #	extraConfig = '
+      #	  bind-key o split-window -h -c $OBSIDIAN_VAULT "nvim"
+      #	  bind-key o run-shell "tmux has-session -t notes || tmux new-session -s notes -d -c $OBSIDIAN_VAULT 'nvim'; tmux switch-client -t notes"
+      #	'';
       };
 
       git = {

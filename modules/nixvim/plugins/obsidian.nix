@@ -1,8 +1,4 @@
 {
-  packages = with pkgs; [
-    obsidian       
-  ];
-
   programs.nixvim = {
     plugins.obsidian = {
       enable = true;
@@ -19,6 +15,8 @@
 	    path = "~/Documents/obsidian/";
 	  }
 	];
+	
+	notes_subdir = "Inbox";
       };
     };
   };

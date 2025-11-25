@@ -37,7 +37,6 @@
 	"$mod,d,exec, wofi --show drun"
 	"$mod,w,exec,firefox"
 	"$modSHIFT,M,exec, hyprctl dispatch exit"
-	"$mod,O,exec, obsidian"
 	"$mod,E,exec, dolphin"
 
 	# Screenshot a window
@@ -85,6 +84,9 @@
 
 
 	"$modSHIFT,F,togglefloating,active"
+	
+
+	"$mod,o, exec, kitty --class tmux-notes -e tmux_notes_toggle"
 	];
 
       bindm = [

@@ -9,7 +9,7 @@ else
     nixos="$HOME/nixos"
     university="$HOME/Documents/university/"    
     obsidian="$HOME/Documents/obsidian/"
-    selected=$(printf "%s\n%s\n%s\n" "$projects" "$nixos" "$university" | fzf)
+    selected=$(printf "%s\n%s\n%s\n%s\n" "$projects" "$nixos" "$university" "$obsidian" | fzf)
 fi
 
 if [[ -z $selected ]]; then
