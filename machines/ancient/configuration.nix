@@ -49,9 +49,11 @@
     2222 # also for gitea but not sure if needed
     8384 # Syncthing Web UI
     8096 # jellyfin    
+    80
     # 22000 # Syncthing sync port (TCP, usually opened by #yncthing.openFirewall = true)
   ];
   networking.firewall.allowedUDPPorts = [
+      80
     # 21027 # Syncthing discovery port (UDP, usually opened by syncthing.openFirewall = true)
     #8096 # jellyfin    
   ];
