@@ -9,7 +9,7 @@
   
   networking = {
     hosts = {
-      "10.42.0.89" = ["nextcloud.yggdrasil.com" "firefly.yggdrasil.com" "importer.yggdrasil.com" "gitea.yggdrasil.com"];
+      "100.64.0.17" = ["nextcloud.yggdrasil.com" "firefly.yggdrasil.com" "importer.yggdrasil.com" "gitea.yggdrasil.com"];
     };
 
     networkmanager.enable = true;

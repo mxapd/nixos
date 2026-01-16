@@ -41,7 +41,7 @@
 
   networking = {
     hostName = "desktop";
-    nameservers = [ "8.8.8.8" "10.42.0.1"];
+    nameservers = [ "8.8.8.8" "100.42.0.1"];
   };
 
   console.keyMap = "sv-latin1";

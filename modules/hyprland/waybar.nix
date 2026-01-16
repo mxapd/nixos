@@ -23,12 +23,23 @@ with lib;
 	  "hyprland/window"
 	];
         modules-right = [
+	  "disk"
 	  "custom/room_temp"
 	  "network"
 	  "pulseaudio"
 	  "tray"
 	  "clock"
 	];
+
+	"disk" = {
+  	  format = "{used}/{total} ({percentage}%) {bar}";
+  	  path = "/"; 
+  	  interval = 30;
+  	  tooltip = true;
+  	  bar-width = 10;
+  	  format-icons = [""];
+  	  format-warn = "{percentage}% 🔥";
+  	}
 
         "hyprland/workspaces" = {
           format = "{name}";
