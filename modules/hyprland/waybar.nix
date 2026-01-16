@@ -24,7 +24,7 @@ with lib;
 	];
         modules-right = [
 	  "disk"
-	  "custom/room_temp"
+	  #"custom/room_temp"
 	  "network"
 	  "pulseaudio"
 	  "tray"
@@ -32,14 +32,11 @@ with lib;
 	];
 
 	"disk" = {
-  	  format = "{used}/{total} ({percentage}%) {bar}";
-  	  path = "/"; 
-  	  interval = 30;
-  	  tooltip = true;
-  	  bar-width = 10;
-  	  format-icons = [""];
-  	  format-warn = "{percentage}% 🔥";
-  	}
+  	  path = "/";
+	  interval = "30";
+	  format = "{free} free |";
+	  unit = "GB";
+  	};
 
         "hyprland/workspaces" = {
           format = "{name}";
@@ -72,6 +69,7 @@ with lib;
 	};
 
 	"network" = {
+	  interval = "5";
           format-icons = [
 	    "󰤯"
             "󰤟"
@@ -79,13 +77,13 @@ with lib;
             "󰤥"
             "󰤨"
           ];
-          format-ethernet = " {bandwidthDownOctets}";
+          format-ethernet = "{bandwidthDownBytes} up {bandwidthUpBytes} down |";
           format-wifi = "{icon} {signalStrength}%";
           format-disconnected = "󰤮";
-          tooltip = false;
         };
 
 	"pulseaudio" = {
+	  format = "{volume}% |";
 	  on-click = "pavucontrol";
 	};
 
