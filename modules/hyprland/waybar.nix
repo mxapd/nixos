@@ -77,7 +77,7 @@ with lib;
             "󰤥"
             "󰤨"
           ];
-          format-ethernet = "{bandwidthDownBytes} up {bandwidthUpBytes} down |";
+          format-ethernet = "{bandwidthDownBytes} dwn {bandwidthUpBytes} up |";
           format-wifi = "{icon} {signalStrength}%";
           format-disconnected = "󰤮";
         };
