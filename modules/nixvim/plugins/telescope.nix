@@ -7,6 +7,12 @@
         ui-select.enable = true;
       };
 
+      settings = {
+	defaults = {
+        layout_strategy = "vertical";
+	};
+      };
+
       keymaps = {
         "<leader>sh" = {
           mode = "n";

@@ -27,7 +27,7 @@
           end
         '';
 
-	frontmatter_func.__raw = ''
+	frontmatter.func.__raw = ''
 	  function(note)
 	    if note.title then
 	      note:add_alias(note.title)
@@ -79,78 +79,41 @@
     };
 
     keymaps = [
-       # --- Note creation and daily notes ---
        {
          mode = "n";
          key = "<leader>on";
-         action = "<cmd>ObsidianNew<CR>";
-         options.desc = "Create new Obsidian note";
+         action = "<cmd>Obsidian new<CR>";
+         options.desc = "New note";
        }
        {
          mode = "n";
          key = "<leader>ot";
-         action = "<cmd>ObsidianToday<CR>";
+         action = "<cmd>Obsidian today<CR>";
          options.desc = "Open today's note";
        }
        {
          mode = "n";
          key = "<leader>oy";
-         action = "<cmd>ObsidianYesterday<CR>";
+         action = "<cmd>Obsidian yesterday<CR>";
          options.desc = "Open yesterday's note";
        }
        {
          mode = "n";
-         key = "<leader>oa";
-         action = "<cmd>ObsidianTodayInsertLink<CR>";
-         options.desc = "Insert link to today's note";
-       }
-    
-       # --- Searching and navigation ---
-       {
-         mode = "n";
          key = "<leader>os";
-         action = "<cmd>ObsidianSearch<CR>";
-         options.desc = "Global search across notes";
+         action = "<cmd>Obsidian search<CR>";
+         options.desc = "Search across notes";
        }
        {
          mode = "n";
          key = "<leader>of";
-         action = "<cmd>ObsidianQuickSwitch<CR>";
-         options.desc = "Fuzzy switch to note by title";
+         action = "<cmd>Obsidian quick_switch<CR>";
+         options.desc = "Find note by title";
        }
        {
          mode = "n";
          key = "<leader>ob";
-         action = "<cmd>ObsidianBacklinks<CR>";
+         action = "<cmd>Obsidian backlinks<CR>";
          options.desc = "Show backlinks for current note";
-       }
-    
-       # --- Linking and relationships ---
-       {
-         mode = "n";
-         key = "<leader>oi";
-         action = "<cmd>ObsidianLink<CR>";
-         options.desc = "Insert link to existing note";
-       }
-       {
-         mode = "n";
-         key = "<leader>ol";
-         action = "<cmd>ObsidianLinkNew<CR>";
-         options.desc = "Create and link a new note";
-       }
-    
-       # --- Integration with Obsidian app ---
-       {
-         mode = "n";
-         key = "<leader>om";
-         action = "<cmd>ObsidianOpen<CR>";
-         options.desc = "Open current note in Obsidian GUI";
-       }
-       {
-         mode = "n";
-         key = "<leader>og";
-         action = "<cmd>ObsidianGraph<CR>";
-         options.desc = "Show Obsidian graph view";
        }
      ];
   };
