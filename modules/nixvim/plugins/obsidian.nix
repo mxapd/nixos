@@ -23,7 +23,7 @@
 
         note_id_func.__raw = ''
           function(title)
-            return os.date("%Y%m%dT%H%M%S")
+            return title
           end
         '';
 

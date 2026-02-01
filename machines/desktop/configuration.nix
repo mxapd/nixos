@@ -12,6 +12,7 @@
       ./hardware-configuration.nix
       ./../../modules/stylix.nix
       ./../../modules/postgresql.nix
+      ./../../modules/torzu.nix
     ];
 
   # Bootloader.
