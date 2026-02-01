@@ -126,7 +126,7 @@
 	  echo "Rebuild successfull"
 
 	  # Prompt for commit
-	  read -r "Commit: " msg
+	  read -rp "Commit: " msg </dev/tty
 
 	  if [ -z "$msg" ]; then
 	    msg="Update $(date '+%Y-%m-%d %H:%M:%S')"
