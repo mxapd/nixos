@@ -15,6 +15,8 @@
     networkmanager.enable = true;
   };
 
+  programs.direnv.enable = true;
+
   # --TIME--
   time.timeZone = "Europe/Stockholm";
   
