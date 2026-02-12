@@ -5,10 +5,14 @@
     image = /home/xam/Pictures/wallpapers/eclipse.png;
     polarity = "dark";
     opacity.terminal = 0.95;
-    
+ 
+    targets.hyprland.enable = true;
+    #targets.gnome.enable = false;
+
+   
     cursor.package = pkgs.bibata-cursors;
     cursor.name = "Bibata-Modern-Ice";
-    cursor.size = 24;
+    cursor.size = 20;
 
     # orange purple gray or something
     # base16Scheme = {
