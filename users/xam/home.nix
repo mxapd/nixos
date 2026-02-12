@@ -47,9 +47,12 @@
 	  tmuxPlugins.tmux-which-key
                                                             
        	 ];
-	extraConfig = ''
-	  set -g @tmux-which-key-xdg-enable 1
-	'';
+        extraConfig = ''
+          # Set the prefix key (default is Ctrl-b)
+          set -g @tmux-which-key-xdg-enable 1
+          
+          run-shell ${pkgs.tmuxPlugins.tmux-which-key}/share/tmux-plugins/tmux-which-key/plugin.sh
+        '';
       };
 
       git = {
