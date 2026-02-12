@@ -93,7 +93,8 @@
 	shellAliases =  {
 	#rebuild = "rebuild_with_commit";
 
-	  mount-ancient="sudo mount -t cifs //ancient/video /mnt/ancient_share/video -o username=xam";
+	  mount-ancient="sudo mount -t cifs //ancient/video /mnt/ancient_share/video -o username=xam && \
+			 sudo mount -t cifs //ancient/books /mnt/ancient_share/books -o username=xam";
 	  nd="nix develop";
 	  ns="nix shell";
       	};
@@ -119,16 +120,15 @@
       	fi
 
       rebuild_with_commit() {
-	echo "Rebuilding NixOS configuration..."
+	echo "$(date '+%H:%M:%S'): Starting rebuild"
       
 	ret=$(pwd)
 	cd ~/nixos/
 
 	if sudo -E nixos-rebuild switch --flake .# --impure ; then
-	  echo "Rebuild successfull"
+	  echo "$(date '+%H:%M:%S'): Rebuild successfull"
 
-	  # Prompt for commit
-	  print -n "Commit: "
+	  print -n "Commit message: "
 	  read msg
 
 	  if [ -z "$msg" ]; then
@@ -137,13 +137,13 @@
 
 	  git add .
 	  git commit -am "$msg"
+	  echo "Committed: '$msg'"
 	  git push
-	  echo "Committed and pushed: '$msg'"
+	  echo "$(date '+%H:%M:%S'): Pushed"
 	else
-	  echo "Rebuild failed. No changes committed."
+	  echo "$(date '+%H:%M:%S'): Rebuild failed. No changes committed."
 	fi
 	cd $ret
-
       }
 
 	alias rebuild="rebuild_with_commit"
