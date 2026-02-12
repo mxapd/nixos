@@ -14,6 +14,7 @@
       };
       
       packages = with pkgs; [
+	dash
 	oh-my-zsh
 	git-credential-manager
 	zoxide
