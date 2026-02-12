@@ -45,6 +45,7 @@
 
 
   networking.firewall.allowedTCPPorts = [
+    445
     3000 # for gitea
     2222 # also for gitea but not sure if needed
     8384 # Syncthing Web UI
@@ -92,27 +93,44 @@
     enable = true; 
     settings = {
       global = {
+        # - General -
         "workgroup" = "WORKGROUP";
-        "server string" = "smbnix";
-        "netbios name" = "smbnix";
-        "security" = "user";
-        #"use sendfile" = "yes";
-        #"max protocol" = "smb2";
-        # note: localhost is the ipv6 localhost ::1
-        "hosts allow" = "192.168.0. 127.0.0.1 localhost";
+	"server string" = "ancient_samba";
+        "netbios name" = "ancient";
+ 	
+	# - Security -	
+	"security" = "user";
+	"hosts allow" = "100.64.0.0/10 192.168.1.0/24 127.0.0.1 localhost"; # add tailscale ip
         "hosts deny" = "0.0.0.0/0";
         "guest account" = "nobody";
         "map to guest" = "bad user";
+	"use sendfile" = "yes";
+
+	# note: localhost is the ipv6 localhost ::1
+	# note: "use sendfile" - uses the kernels sendfile() to transfer files directly from disk to network
       };
+
+      # - Shares -	
       "video" = {
         "path" = "/mnt/video";
         "browseable" = "yes";
-        "read only" = "no";
-        "guest ok" = "no";
-        "create mask" = "0644";
-        "directory mask" = "0755";
-        "force user" = "username";
-        "force group" = "groupname";
+        "read only" = "yes";
+	"writelist" = "xam";
+        "guest ok" = "yes"; 
+        "create mask" = "0644"; # rw-r--r--
+        "directory mask" = "0755"; # rwxr-xr-x
+        "force user" = "xam";
+      };
+
+      "books" = {
+        "path" = "/mnt/books";
+        "browseable" = "yes";
+        "read only" = "yes";
+	"writelist" = "xam";
+        "guest ok" = "yes"; 
+        "create mask" = "0644"; # rw-r--r--
+        "directory mask" = "0755"; # rwxr-xr-x
+        "force user" = "xam";
       };
     };
   };
@@ -121,6 +139,10 @@
     enable = true;
     openFirewall = true;
   };
+
+
+  networking.firewall.enable = true;
+  networking.firewall.allowPing = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
