@@ -47,7 +47,9 @@
 	  tmuxPlugins.tmux-which-key
                                                             
        	 ];
-
+	extraConfig = ''
+	  set -g @tmux-which-key-xdg-enable 1
+	'';
       };
 
       git = {
