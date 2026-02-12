@@ -43,24 +43,11 @@
                                                                    
       tmux = {                                                            
         enable = true;
-        plugins = with pkgs; [                                            
-	#          tmuxPlugins.cpu                                                   
-	#   {                                                                 
-       	#     plugin = tmuxPlugins.resurrect;                                 
-       	#     extraConfig = "set -g @resurrect-strategy-nvim 'session'";      
-       	#   }                                                                 
-       	#   {                                                                 
-       	#     plugin = tmuxPlugins.continuum;                                 
-       	#     extraConfig = ''                                                
-       	# set -g @continuum-restore 'on'                                
-       	# set -g @continuum-save-interval '1' # minutes                 
-       	#     '';                                                             
-       	#   }                                                                 
+        plugins = with pkgs; [
+	  tmuxPlugins.tmux-which-key
+                                                            
        	 ];
-      #	extraConfig = '
-      #	  bind-key o split-window -h -c $OBSIDIAN_VAULT "nvim"
-      #	  bind-key o run-shell "tmux has-session -t notes || tmux new-session -s notes -d -c $OBSIDIAN_VAULT 'nvim'; tmux switch-client -t notes"
-      #	'';
+
       };
 
       git = {
