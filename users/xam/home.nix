@@ -51,6 +51,7 @@
 	extraConfig = ''
 	  set -g @tmux-which-key-xdg-enable 1
 	  
+	  unbind Space
 	  bind-key Space run-shell "${pkgs.tmuxPlugins.tmux-which-key}/share/tmux-plugins/tmux-which-key/which-key.sh"
         '';
       };
