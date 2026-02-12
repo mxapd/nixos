@@ -136,9 +136,9 @@
 	  git add .
 	  git commit -am "$msg"
 	  git push
-	  echo "✅ Committed and pushed: '$msg'"
+	  echo "Committed and pushed: '$msg'"
 	else
-	  echo "❌ Rebuild failed — no changes committed."
+	  echo "Rebuild failed. No changes committed."
 	fi
 	cd $ret
 

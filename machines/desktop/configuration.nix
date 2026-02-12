@@ -5,7 +5,6 @@
 { config, pkgs, inputs, ... }:
 
 {
- 
 
   imports =
     [ 
@@ -103,12 +102,11 @@
 
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
-  
-  users.extraGroups.vboxusers.members = [ "xam" ];
-  
   #virtualisation.virtualbox.guest.enable = true;
   #virtualisation.virtualbox.guest.dragAndDrop = true;
   
+  users.extraGroups.vboxusers.members = [ "xam" ];
+ 
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "client";
@@ -134,7 +132,6 @@
     rustlings
     pgadmin4-desktopmode
     tldr
-    tree
     runelite
     nautilus
     pavucontrol
@@ -147,7 +144,6 @@
     gotop
     rar
     qbittorrent
-    #egl-wayland
     git
     python3
     prismlauncher
@@ -157,7 +153,6 @@
     slack
     gamescope
     spotify
-    vscodium
     libreoffice
     syncthing
     ripgrep-all

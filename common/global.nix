@@ -49,6 +49,7 @@
   # --PROGRAMS--
   environment.systemPackages = with pkgs; [
     vim
+    tree
     git
     tmux
     htop
