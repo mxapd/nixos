@@ -2,11 +2,11 @@
 
 {
   imports = [
-    ./../modules/stylix.nix
-    ./../modules/waybar.nix
-    ./../modules/hyprland.nix
-    ./../modules/nixvim/nixvim.nix
-    ./../modules/mako.nix
+    ./stylix.nix
+    ./waybar.nix
+    ./hyprland.nix
+    ./nixvim/nixvim.nix
+    ./mako.nix
   ];
 
   home = {
