@@ -92,6 +92,8 @@
 
 	shellAliases =  {
 	#rebuild = "rebuild_with_commit";
+
+	  mount-ancient="sudo mount -t cifs //ancient/video /mnt/ancient_share/video -o username=xam";
 	  nd="nix develop";
 	  ns="nix shell";
       	};
