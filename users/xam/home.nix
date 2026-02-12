@@ -14,7 +14,7 @@
       };
       
       packages = with pkgs; [
-	dash
+	dash  # dependency for tmux-which-key
 	oh-my-zsh
 	git-credential-manager
 	zoxide
@@ -48,11 +48,10 @@
 	  tmuxPlugins.tmux-which-key
                                                             
        	 ];
-        extraConfig = ''
-          # Set the prefix key (default is Ctrl-b)
-          set -g @tmux-which-key-xdg-enable 1
-          
-          run-shell ${pkgs.tmuxPlugins.tmux-which-key}/share/tmux-plugins/tmux-which-key/plugin.sh
+	extraConfig = ''
+	  set -g @tmux-which-key-xdg-enable 1
+	  
+	  bind-key Space run-shell "${pkgs.tmuxPlugins.tmux-which-key}/share/tmux-plugins/tmux-which-key/which-key.sh"
         '';
       };
 
