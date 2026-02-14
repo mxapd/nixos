@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-# 
 { config, pkgs, inputs, ... }:
 
 {
@@ -78,8 +74,7 @@
       dataDir = "/home/xam/Documents/";
       configDir = "/home/xam/.syncthing/";
       guiAddress = "0.0.0.0:8384";
-  };
-
+    };
   };
 
   programs = {
@@ -113,6 +108,13 @@
     useRoutingFeatures = "client";
   };
 
+
+  ## unsafe, need to find out what package relies on this lib and update
+  nixpkgs.config.permittedInsecurePackages = [
+    "qtwebengine-5.15.19"
+  ];
+
+
   environment.systemPackages = with pkgs; [
     grim
     slurp
@@ -131,7 +133,6 @@
     cargo-generate
     lsof
     rustlings
-    pgadmin4-desktopmode
     tldr
     runelite
     nautilus
@@ -148,8 +149,6 @@
     git
     python3
     prismlauncher
-    obsidian
-    kitty
     fastfetch
     slack
     gamescope
@@ -213,30 +212,5 @@
   };
 
   security.polkit.enable = true;
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.11"; # Did you read the comment?
+  system.stateVersion = "25.11"; 
 }

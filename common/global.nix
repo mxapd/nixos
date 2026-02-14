@@ -41,10 +41,6 @@
   nix.settings.experimental-features = [ "nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
 
-  ## unsafe, need to find out what package relies on this lib and update
-  nixpkgs.config.permittedInsecurePackages = [
-    "qtwebengine-5.15.19"
-  ];
 
   # --PROGRAMS--
   environment.systemPackages = with pkgs; [

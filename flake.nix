@@ -36,10 +36,9 @@
 	./core/base.nix
 	./core/tailscale.nix
 	./core/users.nix
+	./core/stylix.nix
 	
 	./hosts/desktop/configuration.nix
-
-	shared-hosts.outputs.nixosModules.sheardHosts
 
 	home-manager.nixosModules.home-manager {
           home-manager.backupFileExtension = "backup";
@@ -49,6 +48,7 @@
           ];
         }
 
+	shared-hosts.outputs.nixosModules.sheardHosts
 	stylix.nixosModules.stylix 
       ];
     };
@@ -57,10 +57,10 @@
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [	
-	./core/global.nix
+	./core/base.nix
 	./core/tailscale.nix
 	./core/users.nix
-	
+
 	./hosts/ancient/configuration.nix
 
 	shared-hosts.outputs.nixosModules.sheardHosts
@@ -74,6 +74,7 @@
 	./core/base.nix
 	./core/tailscale.nix
 	./core/users.nix
+	./core/stylix.nix
 	
 	./hosts/laptop/configuration.nix
 	
