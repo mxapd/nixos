@@ -11,6 +11,7 @@
   		   sudo mount -t cifs //192.168.1.204/books /mnt/ancient_share/books -o username=xam";
     nd="nix develop";
     ns="nix shell";
+    check="nix flake check --impure";
   };
 
   initContent = ''
