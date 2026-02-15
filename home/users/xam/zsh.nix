@@ -40,7 +40,7 @@
     fi
     
     # defined function for building and commiting nixos config
-    build_with_commit() {
+    rebuild_with_commit() {
     
       echo "$(date '+%H:%M:%S'): Starting rebuild"
     
