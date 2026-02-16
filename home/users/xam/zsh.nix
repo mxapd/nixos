@@ -47,11 +47,10 @@
       ret=$(pwd)
       cd ~/nixos/
     
-      if sudo -E nixos-rebuild switch --flake .# --impure ; then
+      if sudo -E nixos-rebuild switch --flake .# --impure 2>&1 | tee /tmp/nixos-rebuild.log ; then
 	echo "$(date '+%H:%M:%S'): Rebuild successfull"
-	read -p "Commit and push? (y/n) " -n 1 -r 
 	
-	
+	read -p "Commit and push? (y/n) " -n 1 -r  
   
 	echo
 

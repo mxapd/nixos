@@ -23,6 +23,7 @@ with lib;
 	  "hyprland/window"
 	];
         modules-right = [
+	  "custom/nixos-warnings"
 	  "disk"
 	  #"custom/room_temp"
 	  "network"
@@ -34,7 +35,7 @@ with lib;
 	"disk" = {
   	  path = "/";
 	  interval = "30";
-	  format = "{free} free |";
+	  format = " | {free} free |";
 	  unit = "GB";
   	};
 
@@ -61,7 +62,7 @@ with lib;
 	  format = "{:%H:%M %A%e %b}";
 	  tooltip-format = "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>";
 	  today-format = "<b>{}</b>";
-	  on-click = "gnome-calendar";
+	  on-click = "calcure";
 	};
 
 	"tray" = {
@@ -84,8 +85,15 @@ with lib;
 
 	"pulseaudio" = {
 	  format = "{volume}% |";
-	  on-click = "pavucontrol";
+	  on-click = "wiremix";
 	};
+
+        "custom/nixos-warnings" = {
+          exec = "nixos-warnings";
+          interval = 5;
+          tooltip = true;
+          tooltip-format = "Click to view warnings (not yet inpmlemented)";
+        };
 
 
 	#	"custom/room_temp" = {
@@ -95,9 +103,9 @@ with lib;
 	#	    return-type = "json";
 	#	};
 
-
       }
     ];
+
     style = concatStrings [
      ''
 
