@@ -36,7 +36,7 @@
 
       (writeShellScriptBin "tmux-sessionizer" (builtins.readFile /home/xam/nixos/scripts/tmux-sessionizer))
       (writeShellScriptBin "tmux_toggle_notes" (builtins.readFile /home/xam/nixos/scripts/tmux_notes_toggle))
-      (writeShellScriptBin "nixos-warnings" (builtins.readFile ../../../scripts/nixos-warnings.sh))
+      #(writeShellScriptBin "nixos-warnings" (builtins.readFile ../../../scripts/nixos-warnings.sh))
     ];
   };
 

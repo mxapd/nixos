@@ -40,6 +40,7 @@
     parted
     feh
     ripgrep
+    file
   ];
 
   programs.zsh.enable = true;

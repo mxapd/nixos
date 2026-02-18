@@ -89,7 +89,7 @@ with lib;
 	};
 
         "custom/nixos-warnings" = {
-          exec = "nixos-warnings";
+	  exec = "echo '⚠ '$(nixos-warnings count)' warnings'";
           interval = 5;
           tooltip = true;
           tooltip-format = "Click to view warnings (not yet inpmlemented)";

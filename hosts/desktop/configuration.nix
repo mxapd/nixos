@@ -117,6 +117,8 @@
 
   environment.systemPackages = with pkgs; [
     inputs.agenix.packages."${pkgs.system}".default
+    (pkgs.callPackage ../../custom-pkgs/nixos-warnings.nix { })
+
     grim
     slurp
     kitty
