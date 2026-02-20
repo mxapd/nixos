@@ -115,7 +115,7 @@
         "path" = "/mnt/video";
         "browseable" = "yes";
         "read only" = "yes";
-	"writelist" = "xam";
+	"write list" = "xam";
         "guest ok" = "yes"; 
         "create mask" = "0644"; # rw-r--r--
         "directory mask" = "0755"; # rwxr-xr-x
@@ -126,7 +126,7 @@
         "path" = "/mnt/books";
         "browseable" = "yes";
         "read only" = "yes";
-	"writelist" = "xam";
+	"write list" = "xam";
         "guest ok" = "yes"; 
         "create mask" = "0644"; # rw-r--r--
         "directory mask" = "0755"; # rwxr-xr-x
