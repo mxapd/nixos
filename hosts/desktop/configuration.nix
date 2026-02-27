@@ -140,10 +140,9 @@
     runelite
     nautilus
     pavucontrol
-    calibre
     rustup
     clang
-    ollama-cuda
+    #ollama-cuda
     piper
     zip
     gotop
@@ -167,7 +166,7 @@
     gnumake
     unzip
     lunarvim
-    teamspeak3
+    #teamspeak3
     wl-clipboard
     discord-canary
     htop

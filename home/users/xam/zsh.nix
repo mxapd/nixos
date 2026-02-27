@@ -8,7 +8,7 @@
 
   shellAliases =  {
     mount-ancient= "sudo mount -t cifs //192.168.1.204/video /mnt/ancient_share/video -o username=xam,uid=1000,gid=100,rw && \
-		    sudo mount -t cifs //192.168.1.204/books /mnt/ancient_share/books -o username=xam,uid=1000,gid=100,rw
+		    sudo mount -t cifs //192.168.1.204/books /mnt/ancient_share/books -o username=xam,uid=1000,gid=100,rw";
     nd="nix develop";
     ns="nix shell";
     check="nix flake check --impure";
@@ -38,48 +38,6 @@
     if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
       exec tmux
     fi
-    
-    # defined function for building and commiting nixos config
-    rebuild_with_commit() {
-    
-      echo "$(date '+%H:%M:%S'): Starting rebuild"
-    
-      ret=$(pwd)
-      cd ~/nixos/
-    
-      if sudo -E nixos-rebuild switch --flake .# --impure 2>&1 | tee /tmp/nixos-rebuild.log ; then
-	echo "$(date '+%H:%M:%S'): Rebuild successfull"
-	
-	read -p "Commit and push? (y/n) " -n 1 -r  
-  
-	echo
-
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
-	  print -n "Commit message: "
-	  read msg
-	
-	  if [ -z "$msg" ]; then
-	    msg="Update $(date '+%Y-%m-%d %H:%M:%S')"
-	  fi
-          
-	  git add .
-	  git commit -am "$msg"
-	  echo "Committed: '$msg'"
-	  
-	  git push
-	  echo "$(date '+%H:%M:%S'): Pushed"
-	else
-	  echo "Skipped commit"
-	fi
-      else
-	echo "$(date '+%H:%M:%S'): Rebuild failed. No changes committed."
-      fi
-    
-      cd $ret
-    }
-    
-    
-    alias rebuild="rebuild_with_commit"
     
     PROMPT='[%1~] •%f '
     RPROMPT='$(git_prompt_info) %T'	
