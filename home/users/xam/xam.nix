@@ -28,7 +28,7 @@
       git-credential-manager
       zoxide
       wiremix
-      calcure
+      calcurse
       (python3.withPackages (ppkgs: [
         ppkgs.matplotlib
         ppkgs.pytest
