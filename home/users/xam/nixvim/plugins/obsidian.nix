@@ -3,6 +3,8 @@
     plugins.obsidian = {
       enable = true;
       settings = {
+	legacy_commands = false;
+	
 	frontmatter = {
 	  enabled = true;
 	};
