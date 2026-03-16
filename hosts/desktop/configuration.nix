@@ -77,6 +77,7 @@
     };
   };
 
+
   programs = {
     zsh.enable = true;
     firefox.enable = true;
@@ -107,13 +108,6 @@
     enable = true;
     useRoutingFeatures = "client";
   };
-
-
-  ## unsafe, need to find out what package relies on this lib and update
-  nixpkgs.config.permittedInsecurePackages = [
-    "qtwebengine-5.15.19"
-  ];
-
 
   environment.systemPackages = with pkgs; [
     inputs.agenix.packages."${pkgs.system}".default
@@ -165,8 +159,7 @@
     nodejs_22
     gnumake
     unzip
-    lunarvim
-    #teamspeak3
+    teamspeak3
     wl-clipboard
     discord-canary
     htop

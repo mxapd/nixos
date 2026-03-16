@@ -207,7 +207,7 @@ services.radicale = {
 
   services.gitea = {
     enable = true;
-    appName = "not your average git (it's way worse)";
+    appName = "not your average git";
     user = "gitea";
 
     httpPort = 3000;

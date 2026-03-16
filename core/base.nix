@@ -43,5 +43,12 @@
     file
   ];
 
+
+  ## unsafe, need to find out what package relies on this lib and update
+  nixpkgs.config.permittedInsecurePackages = [
+    "qtwebengine-5.15.19"
+  ];
+
+
   programs.zsh.enable = true;
 }

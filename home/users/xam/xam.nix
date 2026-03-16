@@ -23,7 +23,10 @@
       PATH = "$HOME/.local/bin:$PATH";
     };
     
+
+
     packages = with pkgs; [
+      #teamspeak3
       oh-my-zsh
       git-credential-manager
       zoxide

@@ -12,6 +12,10 @@
       #./../../modules/fonts.nix
     ];
 
+  ## unsafe, need to find out what package relies on this lib and update
+  nixpkgs.config.permittedInsecurePackages = [
+    "qtwebengine-5.15.19"
+  ];
 
 # Bootloader.
   boot.loader.systemd-boot.enable = true;
