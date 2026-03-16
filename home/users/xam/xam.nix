@@ -26,7 +26,9 @@
 
 
     packages = with pkgs; [
+      opencode
       #teamspeak3
+      ollama
       oh-my-zsh
       git-credential-manager
       zoxide

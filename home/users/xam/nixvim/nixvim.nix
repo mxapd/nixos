@@ -32,6 +32,27 @@
       conceallevel = 2;
     };
 
+extraPlugins = [
+  (pkgs.vimUtils.buildVimPlugin {
+    name = "99-nvim";
+    nvimSkipModules = [ "99.editor.lsp" ];
+    src = pkgs.fetchFromGitHub {
+      owner = "ThePrimeagen";
+      repo = "99";
+      rev = "ec9872f7df7f4eb8b319719c1c253eb3ea8877ed";
+      hash = "sha256-z8hafm8EWS7dXoDXnZ/1ddvtpWKVUtJfvQmWT4zXIdg=";
+    };
+  })
+];
+
+extraConfigLua = ''
+  require("99").setup({
+    provider = "opencode",
+  })
+'';
+    
+    #------------------------------
+
     plugins = {
       web-devicons.enable = true;
       bufferline.enable = true;
