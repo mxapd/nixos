@@ -99,7 +99,6 @@
         executable = "${pkgs.opencode}/bin/opencode";
 	extraArgs = [
 	  "--noprofile"
-	  "--net=none"
      	  "--whitelist=\${HOME}/Projects"
      	  "--whitelist=\${HOME}/.config/opencode"
      	  "--whitelist=\${HOME}/.local/state/opencode"
