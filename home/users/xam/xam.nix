@@ -22,11 +22,9 @@
       BROWSER = "firefox";
       PATH = "$HOME/.local/bin:$PATH";
     };
-    
 
 
     packages = with pkgs; [
-      opencode
       #teamspeak3
       ollama
       oh-my-zsh
@@ -38,6 +36,7 @@
         ppkgs.matplotlib
         ppkgs.pytest
       ]))
+
 
       (writeShellScriptBin "tmux-sessionizer" (builtins.readFile /home/xam/nixos/scripts/tmux-sessionizer))
       (writeShellScriptBin "tmux_toggle_notes" (builtins.readFile /home/xam/nixos/scripts/tmux_notes_toggle))
