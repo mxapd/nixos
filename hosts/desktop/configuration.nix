@@ -92,30 +92,30 @@
     };
   };
 
-  programs.firejail = {
-    enable = true;
-    wrappedBinaries = {
-      opencode = {
-        executable = "${pkgs.opencode}/bin/opencode";
-	extraArgs = [
-	  "--noprofile"
-     	  "--whitelist=\${HOME}/Projects"
-     	  "--whitelist=\${HOME}/.config/opencode"
-     	  "--whitelist=\${HOME}/.local/state/opencode"
-     	  "--whitelist=\${HOME}/.local/share/opencode"
-     	  "--read-only=\${HOME}/nixos"
-     	  "--blacklist=\${HOME}/.ssh"
-     	  "--blacklist=\${HOME}/.gnupg"
-     	  "--blacklist=\${HOME}/.aws"
-     	  "--blacklist=\${HOME}/.config/gcloud"
-     	  "--blacklist=\${HOME}/.netrc"
-     	  "--blacklist=\${HOME}/.npmrc"
-     	  "--private-tmp"
-     	  "--caps.drop=all"
-	];
-      };
-    };
-  };
+  #  programs.firejail = {
+  #    enable = true;
+  #    wrappedBinaries = {
+  #      opencode = {
+  #        executable = "${pkgs.opencode}/bin/opencode";
+  #	extraArgs = [
+  #     	  "--private"
+  #	  "--whitelist=\${HOME}/Projects"
+  #     	  "--whitelist=\${HOME}/.config/opencode"
+  #     	  "--whitelist=\${HOME}/.local/state/opencode"
+  #     	  "--whitelist=\${HOME}/.local/share/opencode"
+  #     	  "--read-only=\${HOME}/nixos"
+  #     	  "--blacklist=\${HOME}/.ssh"
+  #     	  "--blacklist=\${HOME}/.gnupg"
+  #     	  "--blacklist=\${HOME}/.aws"
+  #     	  "--blacklist=\${HOME}/.config/gcloud"
+  #     	  "--blacklist=\${HOME}/.netrc"
+  #     	  "--blacklist=\${HOME}/.npmrc"
+  #     	  "--private-tmp"
+  #     	  "--caps.drop=all"
+  #	];
+  #      };
+  #    };
+  #  };
 
   security.rtkit.enable = true;
   
