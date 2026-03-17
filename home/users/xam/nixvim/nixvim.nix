@@ -36,18 +36,15 @@ extraPlugins = [
   (pkgs.vimUtils.buildVimPlugin {
     name = "99-nvim";
     nvimSkipModules = [ "99.editor.lsp" ];
-    src = pkgs.fetchFromGitHub {
-      owner = "ThePrimeagen";
-      repo = "99";
-      rev = "ec9872f7df7f4eb8b319719c1c253eb3ea8877ed";
-      hash = "sha256-z8hafm8EWS7dXoDXnZ/1ddvtpWKVUtJfvQmWT4zXIdg=";
-    };
+    src = /home/xam/Projects/99;
   })
 ];
 
 extraConfigLua = ''
   require("99").setup({
-    provider = "opencode",
+    provider = require("99.providers").OpenCodeProvider,
+    model = "opencode/big-pickle",
+    tmp_dir = "/home/xam/.99/tmp",
   })
 '';
     
@@ -68,39 +65,36 @@ extraConfigLua = ''
     };
 
     keymaps = [
-  {
-    mode = "n";
-    key = "<C-f>";
-    action = "<cmd>silent !tmux neww tmux-sessionizer<CR>";
-    options.silent = true;
-  }    ];
-
-    autoGroups = {
-      kickstart-highlight-yank = {
-	clear = true;
-      };
-    };
-
-
-    autoCmd = [
-      # Highlight when yanking (copying) text
-      #  Try it with `yap` in normal mode
-      #  See `:help vim.highlight.on_yank()`
       {
-	event = ["TextYankPost"];
-	desc = "Highlight when yanking (copying) text";
-	group = "kickstart-highlight-yank";
-	callback.__raw = ''
-	  function()
-	    vim.highlight.on_yank()
-	  end
-	  '';
+        mode = "n";
+        key = "<C-f>";
+        action = "<cmd>silent !tmux neww tmux-sessionizer<CR>";
+        options.silent = true;
       }
       {
-	event = ["VimEnter"];
-	desc = "Set custom Visual highlight";
-	command = "highlight Visual guibg=#555555 guifg=NONE";
+        mode = "n";
+        key = "<leader>9s";
+        action = "<cmd>lua require(\"99\").search()<CR>";
+        options.desc = "99 search";
       }
-    ];    
+      {
+        mode = "v";
+        key = "<leader>9v";
+        action = "<cmd>lua require(\"99\").visual()<CR>";
+        options.desc = "99 visual";
+      }
+      {
+        mode = "n";
+        key = "<leader>9g";
+        action = "<cmd>lua require(\"99\").vibe()<CR>";
+        options.desc = "99 vibe";
+      }
+      {
+        mode = "n";
+        key = "<leader>9x";
+        action = "<cmd>lua require(\"99\").stop_all_requests()<CR>";
+        options.desc = "99 stop requests";
+      }
+    ];
   };
 }
