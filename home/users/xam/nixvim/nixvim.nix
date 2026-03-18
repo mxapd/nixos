@@ -43,7 +43,7 @@ extraPlugins = [
 extraConfigLua = ''
   require("99").setup({
     provider = require("99.providers").OllamaProvider,
-    model = "deepseek-coder-v2:16b",
+    model = "qwen2.5-coder:7b",
     tmp_dir = "/home/xam/.99/tmp",
   })
 '';
