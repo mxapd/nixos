@@ -42,8 +42,8 @@ extraPlugins = [
 
 extraConfigLua = ''
   require("99").setup({
-    provider = require("99.providers").OpenCodeProvider,
-    model = "opencode/big-pickle",
+    provider = require("99.providers").OllamaProvider,
+    model = "deepseek-coder-v2:16b",
     tmp_dir = "/home/xam/.99/tmp",
   })
 '';
@@ -63,6 +63,35 @@ extraConfigLua = ''
       nvim-surround.enable = true;
       trouble.enable = true;
     };
+
+    autoGroups = {
+      kickstart-highlight-yank = {
+	clear = true;
+      };
+    };
+
+
+    autoCmd = [
+      # Highlight when yanking (copying) text
+      #  Try it with `yap` in normal mode
+      #  See `:help vim.highlight.on_yank()`
+      {
+	event = ["TextYankPost"];
+	desc = "Highlight when yanking (copying) text";
+	group = "kickstart-highlight-yank";
+	callback.__raw = ''
+	  function()
+	    vim.highlight.on_yank()
+	  end
+	  '';
+      }
+      {
+	event = ["VimEnter"];
+	desc = "Set custom Visual highlight";
+	command = "highlight Visual guibg=#555555 guifg=NONE";
+      }
+    ];    
+
 
     keymaps = [
       {
