@@ -25,6 +25,8 @@
 
 
     packages = with pkgs; [
+      cargo
+      rustc
       #teamspeak3
       ollama
       oh-my-zsh
@@ -72,6 +74,9 @@
                                                                  
     tmux = {                                                            
       enable = true;
+      extraConfig = ''
+	set -g allow-passthrough on
+      '';
     };
 
     kitty = {
