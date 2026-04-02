@@ -18,18 +18,9 @@
     agenix.url = "github:ryantm/agenix";
 
     shared-hosts.url = "git+ssh://gitea@gitea.yggdrasil.com/vinx/Shared-Intranet-Host.git?ref=main";
-
-    pai-opencode-src = {
-      url = "github:Steffen025/pai-opencode";
-      flake = false;
-    };
-    opencode-src = {
-      url = "github:Steffen025/opencode/feature/model-tiers";
-      flake = false;
-    };
   };
 
-  outputs = { self, nixpkgs, stylix, home-manager, nixvim, shared-hosts, agenix, pai-opencode-src, opencode-src,... } @ inputs:
+  outputs = { self, nixpkgs, stylix, home-manager, nixvim, shared-hosts, agenix, ... } @ inputs:
 
   let
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -63,10 +54,7 @@
   
     nixosConfigurations.ancient = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { 
-	  inherit inputs;
-	  inherit pai-opencode-src opencode-src;
-	};
+      specialArgs = { inherit inputs; };
       modules = [	
 	./core/base.nix
 	./core/tailscale.nix

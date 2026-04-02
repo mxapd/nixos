@@ -62,7 +62,6 @@ extraConfigLua = ''
       friendly-snippets.autoLoad= true;
       nvim-surround.enable = true;
       trouble.enable = true;
-      #image.enable = true;
     };
 
     autoGroups = {

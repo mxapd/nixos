@@ -137,7 +137,6 @@
     inputs.agenix.packages."${pkgs.system}".default
     (pkgs.callPackage ../../custom-pkgs/nixos-warnings.nix { })
 
-    bun
     grim
     slurp
     kitty
