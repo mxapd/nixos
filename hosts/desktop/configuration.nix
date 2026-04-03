@@ -193,6 +193,8 @@
     vlc
     blueman
     fzf
+
+    bun
   ];
 
   hardware = {

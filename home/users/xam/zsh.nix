@@ -42,6 +42,8 @@
     PROMPT='[%1~] •%f '
     RPROMPT='$(git_prompt_info) %T'	
     
+
+
     '';
 
     oh-my-zsh = {
