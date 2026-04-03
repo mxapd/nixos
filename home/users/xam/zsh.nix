@@ -12,6 +12,7 @@
     nd="nix develop";
     ns="nix shell";
     check="nix flake check --impure";
+    pai="bun ~/.opencode/PAI/Tools/pai.ts";
   };
 
   initContent = ''

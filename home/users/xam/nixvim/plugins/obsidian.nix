@@ -21,7 +21,17 @@
 	  }
 	];
 	
-	notes_subdir = "Inbox";
+	# Where I create new notes (Mimir extracted notes)
+	notes_subdir = "Inbox/Mimir";
+	
+	# Daily notes configuration
+	daily_notes = {
+	  folder = "Daily";
+	  date_format = "%Y-%m-%d";
+	  alias_format = "%B %-d, %Y";
+	  default_tags = [ "daily-note" ];
+	  template = null;
+	};
 
         note_id_func.__raw = ''
           function(title)
@@ -116,6 +126,24 @@
          key = "<leader>ob";
          action = "<cmd>Obsidian backlinks<CR>";
          options.desc = "Show backlinks for current note";
+       }
+       {
+         mode = "n";
+         key = "<leader>oi";
+         action = "<cmd>e ~/Documents/obsidian/Inbox/<CR>";
+         options.desc = "Open Inbox folder";
+       }
+       {
+         mode = "n";
+         key = "<leader>om";
+         action = "<cmd>e ~/Documents/obsidian/Inbox/Mimir/<CR>";
+         options.desc = "Open Mimir folder";
+       }
+       {
+         mode = "n";
+         key = "<leader>od";
+         action = "<cmd>e ~/Documents/obsidian/Daily/<CR>";
+         options.desc = "Open Daily notes folder";
        }
      ];
   };
