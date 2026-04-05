@@ -9,6 +9,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hermes-agent.url = "github:NousResearch/hermes-agent";
     
     stylix.url = "github:danth/stylix";
     nixvim = {
@@ -20,7 +22,7 @@
     shared-hosts.url = "git+ssh://gitea@gitea.yggdrasil.com/vinx/Shared-Intranet-Host.git?ref=main";
   };
 
-  outputs = { self, nixpkgs, stylix, home-manager, nixvim, shared-hosts, agenix, ... } @ inputs:
+  outputs = { self, nixpkgs, stylix, home-manager, nixvim, shared-hosts, agenix, hermes-agent,... } @ inputs:
 
   let
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -104,6 +106,7 @@
 
 	agenix.nixosModules.default
 	shared-hosts.outputs.nixosModules.sheardHosts
+	hermes-agent.nixosModules.default
       ];
     };
   };
