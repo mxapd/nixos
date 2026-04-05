@@ -1,0 +1,5 @@
+/run/current-system/sw/bin/bash
+/run/current-system/sw/bin/sh
+/nix/store/58wcnwvcyffg0i17jqbi076spkhnijr6-bash-interactive-5.2p37/bin/bash
+/nix/store/58wcnwvcyffg0i17jqbi076spkhnijr6-bash-interactive-5.2p37/bin/sh
+/bin/sh
