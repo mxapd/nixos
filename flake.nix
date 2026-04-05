@@ -91,5 +91,20 @@
 	stylix.nixosModules.stylix 
       ];
     };
+
+    nixosConfigurations.hermes = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      specialArgs = { inherit inputs; };
+      modules = [
+	./core/base.nix
+	./core/tailscale.nix
+	./core/users.nix
+
+	./hosts/hermes/configuration.nix
+
+	agenix.nixosModules.default
+	shared-hosts.outputs.nixosModules.sheardHosts
+      ];
+    };
   };
 }
