@@ -105,7 +105,6 @@
 	./hosts/hermes/configuration.nix
 
 	agenix.nixosModules.default
-	shared-hosts.outputs.nixosModules.sheardHosts
 	hermes-agent.nixosModules.default
       ];
     };

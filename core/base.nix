@@ -41,6 +41,7 @@
     feh
     ripgrep
     file
+    age
   ];
 
 
