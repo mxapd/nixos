@@ -21,15 +21,14 @@
 	  }
 	];
 	
-	# Where I create new notes (Mimir extracted notes)
-	notes_subdir = "Inbox/Mimir";
+	# Where new notes are created
+	notes_subdir = "Inbox";
 	
-	# Daily notes configuration
+	# Daily notes configuration - matches MimirDaily format
 	daily_notes = {
-	  folder = "Daily";
+	  folder = "Inbox";
 	  date_format = "%Y-%m-%d";
-	  alias_format = "%B %-d, %Y";
-	  default_tags = [ "daily-note" ];
+	  default_tags = ["daily-note"];
 	  template = null;
 	};
 
@@ -41,24 +40,29 @@
 
 	frontmatter.func.__raw = ''
 	  function(note)
-	    if note.title then
-	      note:add_alias(note.title)
-	    end
+	    -- Clean, minimal YAML frontmatter
+	    -- Matches MimirDaily standard format
 	    
 	    local out = {
 	      id = note.id,
-	      title = note.title or note.id,
+	      date = os.date("%Y-%m-%d"),
 	      tags = note.tags or {},
-	      date = os.date("%Y-%m-%d %H:%M"),
-	      aliases = note.aliases
 	    }
-	
+	    
+	    -- Add type based on context
+	    if note.metadata and note.metadata.type then
+	      out.type = note.metadata.type
+	    end
+	    
+	    -- Merge any additional metadata
 	    if note.metadata and not vim.tbl_isempty(note.metadata) then
 	      for k, v in pairs(note.metadata) do
-	        out[k] = v
+	        if k ~= "type" or not out.type then
+	          out[k] = v
+	        end
 	      end
 	    end
-	
+	    
 	    return out
 	  end
 	'';
@@ -126,24 +130,6 @@
          key = "<leader>ob";
          action = "<cmd>Obsidian backlinks<CR>";
          options.desc = "Show backlinks for current note";
-       }
-       {
-         mode = "n";
-         key = "<leader>oi";
-         action = "<cmd>e ~/Documents/obsidian/Inbox/<CR>";
-         options.desc = "Open Inbox folder";
-       }
-       {
-         mode = "n";
-         key = "<leader>om";
-         action = "<cmd>e ~/Documents/obsidian/Inbox/Mimir/<CR>";
-         options.desc = "Open Mimir folder";
-       }
-       {
-         mode = "n";
-         key = "<leader>od";
-         action = "<cmd>e ~/Documents/obsidian/Daily/<CR>";
-         options.desc = "Open Daily notes folder";
        }
      ];
   };

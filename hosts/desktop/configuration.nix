@@ -42,7 +42,9 @@
   programs.direnv.enable = true;
   
   console.keyMap = "sv-latin1";
-
+  
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  
   services = {
     flatpak.enable = true; 
     # xserver.libinput.enable = true;
