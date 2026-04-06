@@ -1,6 +1,7 @@
 let
   # root nixos desktop
   nixos_desktop = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAwA0Qn2WZa+mz79ehNsLBOj2uV+dTJOuoLduxsOk+bk";
+  # hermes host - SSH ed25519 host key
   hermes = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO8Jgq6sCmPA7WcZttZQ5JOxV09JLsPfhfooOUQSsJHf";
 in
 {

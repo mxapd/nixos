@@ -1,8 +1,10 @@
 # hosts/hermes/hermes-agent.nix
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
-  # Decrypt the agenix secret — readable by the hermes service user
+  # Use default agenix - SSH host keys at /etc/ssh/ssh_host_*_key
+  # No age.identityPaths needed - uses defaults from services.openssh.hostKeys
+
   age.secrets.hermes-env = {
     file = ../../secrets/hermes-env.age;
     owner = "hermes";
@@ -10,9 +12,15 @@
   };
 
   services.hermes-agent = {
-    enable = true;
-    settings.model.default = "opencode-go/kimi-k2.5";
-    environmentFiles = [ config.sops.secrets."hermes-env".path ];
+    enable = false;
+    settings = {
+      model.default = "opencode-go/kimi-k2.5";
+      model.provider = "opencode-go";
+    };
     addToSystemPackages = true;
+  };
+
+  systemd.services.hermes-agent = {
+    serviceConfig.EnvironmentFile = config.age.secrets.hermes-env.path;
   };
 }
