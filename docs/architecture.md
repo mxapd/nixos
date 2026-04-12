@@ -36,11 +36,11 @@ flowchart TB
             OLD2["editor.nix<br/>(OLD - unused)"]
         end
         
-        subgraph Hosts["hosts/ (per-host directories)"]
-            DT["desktop/desktop.nix<br/>+ hardware-configuration.nix"]
-            LP["laptop/laptop.nix<br/>+ hardware-configuration.nix"]
-            AN["ancient/ancient.nix<br/>+ hardware-configuration.nix"]
-            HR["hermes/hermes.nix<br/>+ hardware-configuration.nix"]
+        subgraph Hosts["hosts/ (flat structure)"]
+            DT["desktop.nix<br/>nixos + home configs"]
+            LP["laptop.nix<br/>nixos + home configs"]
+            AN["ancient.nix<br/>nixos config"]
+            HR["hermes.nix<br/>nixos config"]
         end
         
         subgraph NixOS["nixosModules/"]
@@ -104,12 +104,11 @@ flowchart TB
 │                       │  │  bluetooth│  │                     │
 │                       │  ├───────────┤  │                     │
 │                       │  │   hosts/  │  │                     │
-│                       │  │ desktop/  │  │                     │
-│                       │  │  ├─ hw.nix │  │                     │
-│                       │  │  └─ cfg.nix│  │                     │
-│                       │  │ laptop/   │  │                     │
-│                       │  │ ancient/  │  │                     │
-│                       │  │ hermes/   │  │                     │
+│                       │  │ (flat)    │  │                     │
+│                       │  │ ancient.nix│  │                     │
+│                       │  │ desktop.nix│  │                     │
+│                       │  │ hermes.nix │  │                     │
+│                       │  │ laptop.nix │  │                     │
 │                       │  └───────────┘  │                     │
 │                       └─────────────────┘                     │
 │                                  │                              │
@@ -162,7 +161,7 @@ flowchart LR
 flowchart LR
     subgraph "Current State (Clean)"
         A["modules/home-manager/shell.nix<br/>Defines: home, packages, programs"]
-        B["modules/hosts/desktop/desktop.nix<br/>Imports: shell module"]
+        B["modules/hosts/desktop.nix<br/>Imports: shell module"]
     end
     
     A -->|used by| B
@@ -174,8 +173,10 @@ flowchart LR
 | File | Purpose | Status |
 |------|---------|--------|
 | `modules/home-manager/shell.nix` | Base home config (username, packages, programs) | ✅ Used by all hosts |
-| `modules/hosts/desktop/desktop.nix` | Desktop host config + home setup | ✅ Clean, imports shell |
-| `modules/hosts/laptop/laptop.nix` | Laptop host config (KDE) | ✅ Clean, imports shell |
+| `modules/hosts/desktop.nix` | Desktop host (NixOS + home config) | ✅ Clean, imports shell |
+| `modules/hosts/laptop.nix` | Laptop host (KDE desktop) | ✅ Clean, imports shell |
+| `modules/hosts/ancient.nix` | Server host (RAID, NVIDIA, services) | ✅ Inline hardware config |
+| `modules/hosts/hermes.nix` | ARM host (minimal, hermes-agent) | ✅ Inline hardware config |
 | `modules/home-manager/desktops/hyprland/` | Modular Hyprland (waybar, mako, config) | ✅ Active |
 | `modules/home-manager/editors/nixvim.nix` | Nixvim editor config | ✅ Active |
 
