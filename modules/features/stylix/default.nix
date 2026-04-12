@@ -1,12 +1,13 @@
 # modules/features/stylix/default.nix
 # NixOS stylix theming configuration
 
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   stylix = {
     enable = true;
-    image = ../../eclipse.png;
+    # Wallpaper path provided by host or use default
+    image = inputs.self + "/eclipse.png";
     polarity = "dark";
     opacity.terminal = 0.95;
 
