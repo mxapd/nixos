@@ -43,7 +43,7 @@ Your System (True Dendritic)
 │       ├── desktop.nix   # Complete desktop config
 │       ├── laptop.nix    # Complete laptop config
 │       ├── ancient.nix   # Complete server config
-│       └── hermes.nix    # Complete ARM server config
+│       └── hermes.nix    # Rock 4 SE ARM board (RK3399)
 ├── home/                 # Home-manager configs
 │   └── xam/             # Your user config
 └── secrets/             # Agenix secrets
@@ -154,6 +154,9 @@ done
   outputs = inputs@{ flake-parts, import-tree, ... }:
     flake-parts.lib.mkFlake { 
       inherit inputs; 
+      # Support all your hosts:
+      # - x86_64-linux: desktop, laptop, ancient (Intel/AMD)
+      # - aarch64-linux: hermes (Rock 4 SE ARM board - RK3399)
       systems = [ "x86_64-linux" "aarch64-linux" ];
     } (
       # Auto-discover all modules in ./modules/
@@ -775,7 +778,10 @@ Server configuration:
 
 **File: modules/hosts/hermes.nix**
 
-ARM server configuration
+Rock 4 SE ARM board configuration (RK3399 SoC)
+- Board-specific boot configuration (extlinux)
+- RK3399 kernel modules (panfrost GPU)
+- Minimal feature set for ARM board
 
 ---
 
