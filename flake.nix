@@ -55,6 +55,12 @@
           features-dev = import ./modules/features/dev/default.nix;
           features-editor = import ./modules/features/editor/default.nix;
 
+          # Phase 5: Server features
+          features-server-gitea = import ./modules/features/server/gitea/default.nix;
+          features-server-syncthing = import ./modules/features/server/syncthing/default.nix;
+          features-server-samba = import ./modules/features/server/samba/default.nix;
+          features-server-media = import ./modules/features/server/media/default.nix;
+
           # Host configurations - orchestrate features
           hosts-desktop = import ./modules/hosts/desktop/default.nix;
           hosts-laptop = import ./modules/hosts/laptop/default.nix;
@@ -77,6 +83,12 @@
           features-shell = import ./modules/features/shell/home.nix;
           features-dev = import ./modules/features/dev/home.nix;
           features-editor = import ./modules/features/editor/home.nix;
+
+          # Phase 5: Server features (home parts - mostly empty)
+          features-server-gitea = import ./modules/features/server/gitea/home.nix;
+          features-server-syncthing = import ./modules/features/server/syncthing/home.nix;
+          features-server-samba = import ./modules/features/server/samba/home.nix;
+          features-server-media = import ./modules/features/server/media/home.nix;
         };
 
         nixosConfigurations = {
