@@ -13,6 +13,11 @@
     inputs.self.nixosModules.features-tailscale
     inputs.self.nixosModules.features-ssh
     inputs.self.nixosModules.features-audio
+
+    # Phase 3: Desktop environment
+    inputs.self.nixosModules.features-desktop
+    inputs.self.nixosModules.features-gaming
+    inputs.self.nixosModules.features-hardware
   ];
 
   # Desktop-specific configuration

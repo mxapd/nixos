@@ -45,6 +45,11 @@
           features-ssh = import ./modules/features/ssh/default.nix;
           features-audio = import ./modules/features/audio/default.nix;
 
+          # Phase 3: Desktop environment
+          features-desktop = import ./modules/features/desktop/default.nix;
+          features-gaming = import ./modules/features/gaming/default.nix;
+          features-hardware = import ./modules/features/hardware/default.nix;
+
           # Host configurations - orchestrate features
           hosts-desktop = import ./modules/hosts/desktop/default.nix;
           hosts-laptop = import ./modules/hosts/laptop/default.nix;
@@ -61,6 +66,9 @@
           features-fonts = import ./modules/features/fonts/home.nix;
           features-ssh = import ./modules/features/ssh/home.nix;
           features-audio = import ./modules/features/audio/home.nix;
+          features-desktop = import ./modules/features/desktop/home.nix;
+          features-gaming = import ./modules/features/gaming/home.nix;
+          features-hardware = import ./modules/features/hardware/home.nix;
         };
 
         nixosConfigurations = {

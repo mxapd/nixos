@@ -13,6 +13,11 @@
     inputs.self.nixosModules.features-tailscale
     inputs.self.nixosModules.features-ssh
     inputs.self.nixosModules.features-audio
+
+    # Phase 3: Desktop environment (laptop has different hardware)
+    inputs.self.nixosModules.features-desktop
+    # Note: Laptop doesn't use features-gaming or features-hardware (NVIDIA-specific)
+    # Gaming and hardware configs stay in hosts/laptop/configuration.nix for now
   ];
 
   # Laptop-specific configuration
