@@ -81,9 +81,9 @@
         ];
       })
 
-      # Import postgresql and torzu modules
-      ../../modules/postgresql.nix
-      ../../modules/torzu.nix
+      # Import legacy modules
+      ../../modules/_legacy/postgresql.nix
+      ../../modules/_legacy/torzu.nix
 
       # Dendritic feature modules (using new naming)
       self.nixosModules.base
