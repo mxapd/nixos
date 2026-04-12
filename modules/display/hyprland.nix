@@ -1,10 +1,10 @@
-# modules/desktop/desktop.nix
-# Desktop Environment - Hyprland Wayland compositor (NixOS system level)
+# modules/display/hyprland.nix
+# Display/Compositor - Hyprland Wayland setup (NixOS system level)
 
 { self, inputs, ... }:
 
 {
-  flake.nixosModules.desktop = { config, pkgs, inputs, lib, ... }:
+  flake.nixosModules.hyprland = { config, pkgs, inputs, lib, ... }:
   {
     # Enable Hyprland at system level
     programs.hyprland = {

@@ -95,7 +95,7 @@
       self.nixosModules.tailscale
       self.nixosModules.ssh
       self.nixosModules.audio
-      self.nixosModules.desktop
+      self.nixosModules.hyprland
       self.nixosModules.gaming
       self.nixosModules.nvidia
       self.nixosModules.shell

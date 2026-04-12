@@ -89,7 +89,7 @@
       self.nixosModules.tailscale
       self.nixosModules.ssh
       self.nixosModules.audio
-      self.nixosModules.desktop
+      self.nixosModules.hyprland
       self.nixosModules.shell
       self.nixosModules.dev
       self.nixosModules.editor

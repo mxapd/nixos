@@ -1,4 +1,4 @@
-# modules/drivers/nvidia.nix
+# modules/hardware/nvidia.nix
 # NVIDIA GPU configuration (NixOS system level)
 
 { self, inputs, ... }:
