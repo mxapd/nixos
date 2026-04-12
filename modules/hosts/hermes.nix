@@ -54,6 +54,9 @@
       # Import hermes-agent module
       ../../hosts/hermes/hermes-agent.nix
 
+      # External flake modules
+      inputs.agenix.nixosModules.default
+
       # Dendritic feature modules (minimal for ARM server)
       self.nixosModules.base
       self.nixosModules.users

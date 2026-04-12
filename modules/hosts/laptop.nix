@@ -79,6 +79,7 @@
       })
 
       # External flake modules
+      inputs.agenix.nixosModules.default
       inputs.stylix.nixosModules.stylix
 
       # Dendritic feature modules
