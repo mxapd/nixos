@@ -28,8 +28,8 @@ flowchart TB
                 NVX["nixvim.nix<br/>flake.homeModules.editors.nixvim"]
             end
             
-            subgraph Desktop["desktop/"]
-                HY["hyprland.nix<br/>flake.homeModules.desktop.hyprland"]
+            subgraph Desktops["desktops/"]
+                HY["hyprland/hyprland.nix<br/>flake.homeModules.desktops.hyprland"]
             end
             
             OLD1["desktop.nix<br/>(OLD - unused)"]
@@ -55,7 +55,7 @@ flowchart TB
     subgraph Outputs["Outputs"]
         NixOS["nixosConfigurations<br/>desktop, laptop, ancient, hermes"]
         HomeConf["homeConfigurations<br/>desktop, laptop"]
-        HomeMod["homeModules<br/>shell, zsh, git, editors.nixvim, desktop.hyprland"]
+        HomeMod["homeModules<br/>shell, zsh, git, editors.nixvim, desktops.hyprland"]
     end
 
     Inputs --> Flake
@@ -87,7 +87,7 @@ flowchart TB
 │                       │  │  zsh.nix  │  │                     │
 │                       │  │  git.nix  │  │                     │
 │                       │  │  editors/ │  │                     │
-│                       │  │  desktop/ │  │                     │
+│                       │  │  desktops/│  │                     │
 │                       │  └───────────┘  │                     │
 │                       │                 │                     │
 │                       │  ┌───────────┐  │                     │
@@ -119,7 +119,7 @@ flowchart LR
         HM_ZSH["self.homeModules.zsh"]
         HM_GT["self.homeModules.git"]
         HM_NV["self.homeModules.editors.nixvim"]
-        HM_HY["self.homeModules.desktop.hyprland"]
+        HM_HY["self.homeModules.desktops.hyprland"]
     end
     
     subgraph HomeModules["flake.homeModules.*"]
@@ -127,7 +127,7 @@ flowchart LR
         ZS[".zsh"]
         GT[".git"]
         NV[".editors.nixvim"]
-        HY[".desktop.hyprland"]
+        HY[".desktops.hyprland"]
     end
     
     Base -->|duplicates| SH

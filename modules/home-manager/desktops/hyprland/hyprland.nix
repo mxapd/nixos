@@ -1,10 +1,10 @@
-# modules/home-manager/desktop/hyprland.nix
+# modules/home-manager/desktops/hyprland/hyprland.nix
 # Hyprland Wayland compositor configuration
 
 { self, inputs, lib, pkgs, ... }:
 
 {
-  flake.homeModules.desktop.hyprland = { config, pkgs, lib, ... }:
+  flake.homeModules.desktops.hyprland = { config, pkgs, lib, ... }:
     let
       concatStrings = lib.concatStrings;
     in

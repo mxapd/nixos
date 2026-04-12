@@ -152,7 +152,7 @@
       self.homeModules.editors.nixvim
       
       # Hyprland desktop
-      self.homeModules.desktop.hyprland
+      self.homeModules.desktops.hyprland
     ];
   };
 }
