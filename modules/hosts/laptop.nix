@@ -74,7 +74,6 @@
         ];
 
         hardware.graphics = { enable = true; enable32Bit = true; };
-        hardware.bluetooth = { enable = true; powerOnBoot = true; };
       })
 
       # External flake modules
@@ -90,6 +89,7 @@
       self.nixosModules.ssh
       self.nixosModules.audio
       self.nixosModules.hyprland
+      self.nixosModules.bluetooth
       self.nixosModules.shell
       self.nixosModules.dev
       self.nixosModules.editor

@@ -98,6 +98,7 @@
       self.nixosModules.hyprland
       self.nixosModules.gaming
       self.nixosModules.nvidia
+      self.nixosModules.bluetooth
       self.nixosModules.shell
       self.nixosModules.dev
       self.nixosModules.editor
