@@ -33,15 +33,11 @@
   };
 
   outputs = inputs@{ flake-parts, import-tree, ... }:
-    flake-parts.lib.mkFlake { 
-      inherit inputs;
-      # Support all your hosts:
-      # - x86_64-linux: desktop, laptop, ancient (Intel/AMD)
-      # - aarch64-linux: hermes (Rock 4 SE ARM board - RK3399)
-      systems = [ "x86_64-linux" "aarch64-linux" ];
-    } (
+    flake-parts.lib.mkFlake { inherit inputs; }
       # Auto-discover all modules in ./modules/
       # Each .nix file should export flake.nixosModules.* or flake.nixosConfigurations.*
-      import-tree ./modules
-    );
+      # Systems are defined per-host in modules/hosts/*.nix
+      # - x86_64-linux: desktop, laptop, ancient
+      # - aarch64-linux: hermes (Rock 4 SE ARM board)
+      (import-tree ./modules);
 }
