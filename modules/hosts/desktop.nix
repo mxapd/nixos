@@ -85,6 +85,9 @@
       ../../modules/_legacy/postgresql.nix
       ../../modules/_legacy/torzu.nix
 
+      # External flake modules
+      inputs.stylix.nixosModules.stylix
+
       # Dendritic feature modules (using new naming)
       self.nixosModules.base
       self.nixosModules.users

@@ -78,6 +78,9 @@
         hardware.bluetooth = { enable = true; powerOnBoot = true; };
       })
 
+      # External flake modules
+      inputs.stylix.nixosModules.stylix
+
       # Dendritic feature modules
       self.nixosModules.base
       self.nixosModules.users
