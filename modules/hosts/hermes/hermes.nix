@@ -9,8 +9,13 @@
     system = "aarch64-linux";
     specialArgs = { inherit inputs self; };
     modules = [
-      # Hardware configuration
-      ./hardware-configuration.nix
+      # Hardware configuration (imported as a module to get modulesPath)
+      ({ modulesPath, ... }: {
+        imports = [ 
+          (modulesPath + "/installer/scan/not-detected.nix")
+          ./hardware.nix 
+        ];
+      })
 
       # Bootloader and basic system config
       ({ config, pkgs, ... }: {

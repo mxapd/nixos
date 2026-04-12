@@ -1,6 +1,6 @@
 # modules/hosts/ancient/ancient.nix
 # Ancient server host configuration
-# Imports: hardware-configuration.nix + system configuration
+# Imports: hardware.nix + system configuration
 
 { self, inputs, ... }:
 
@@ -9,8 +9,13 @@
     system = "x86_64-linux";
     specialArgs = { inherit inputs self; };
     modules = [
-      # Hardware configuration
-      ./hardware-configuration.nix
+      # Hardware configuration (imported as a module to get modulesPath)
+      ({ modulesPath, ... }: {
+        imports = [ 
+          (modulesPath + "/installer/scan/not-detected.nix")
+          ./hardware.nix 
+        ];
+      })
 
       # Bootloader and system config
       ({ config, pkgs, ... }: {
