@@ -43,7 +43,8 @@ Your System (True Dendritic)
 │       ├── desktop.nix   # Complete desktop config
 │       ├── laptop.nix    # Complete laptop config
 │       ├── ancient.nix   # Complete server config
-│       └── hermes.nix    # Complete ARM server config
+│       ├── hermes.nix    # Complete ARM VPS config
+│       └── mimir.nix     # Complete Rock 4 SE ARM board
 ├── home/                 # Home-manager configs
 │   └── xam/             # Your user config
 └── secrets/             # Agenix secrets
@@ -101,7 +102,7 @@ git status  # Should be clean
 #### 0.3 Verify Current System Builds
 ```bash
 # Test all 4 hosts build
-for host in desktop laptop ancient hermes; do
+for host in desktop laptop ancient hermes mimir; do
   echo "Testing $host..."
   nix build .#nixosConfigurations.$host --no-link 2>&1 | tail -5
 done
@@ -154,6 +155,9 @@ done
   outputs = inputs@{ flake-parts, import-tree, ... }:
     flake-parts.lib.mkFlake { 
       inherit inputs; 
+      # Support all your hosts:
+      # - x86_64-linux: desktop, laptop, ancient (Intel/AMD)
+      # - aarch64-linux: hermes (ARM64), mimir (Rock 4 SE - ARM64)
       systems = [ "x86_64-linux" "aarch64-linux" ];
     } (
       # Auto-discover all modules in ./modules/
@@ -775,7 +779,80 @@ Server configuration:
 
 **File: modules/hosts/hermes.nix**
 
-ARM server configuration
+ARM VPS configuration
+
+#### 6.5 Migrate Mimir Host (Rock 4 SE)
+
+**File: modules/hosts/mimir.nix**
+
+Rock 4 SE ARM board configuration - similar to hermes but:
+- Different hardware (RK3399 SoC)
+- Potentially different boot configuration
+- Board-specific settings
+
+```nix
+# modules/hosts/mimir.nix
+{ self, inputs, ... }:
+
+{
+  flake.nixosConfigurations.mimir = inputs.nixpkgs.lib.nixosSystem {
+    system = "aarch64-linux";
+    specialArgs = { inherit inputs; };
+    modules = [
+      # Hardware configuration
+      ({ config, lib, pkgs, modulesPath, ... }: {
+        imports = [
+          (modulesPath + "/installer/scan/not-detected.nix")
+        ];
+        
+        # Rock 4 SE specific boot config
+        boot.loader.grub.enable = false;
+        boot.loader.generic-extlinux-compatible.enable = true;
+        
+        # RK3399 specific kernel modules
+        boot.initrd.availableKernelModules = [ 
+          "usb_storage" "usbhid" 
+        ];
+        boot.kernelModules = [ "panfrost" ];  # GPU driver
+        
+        # File systems (adjust UUIDs for your setup)
+        fileSystems."/" = {
+          device = "/dev/disk/by-uuid/YOUR-MIMIR-ROOT-UUID";
+          fsType = "ext4";
+        };
+        
+        nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
+      })
+      
+      # Features (similar to hermes - minimal)
+      self.nixosModules.base
+      self.nixosModules.users
+      self.nixosModules.ssh
+      self.nixosModules.tailscale
+      self.nixosModules.dev
+      self.nixosModules.editor
+      
+      # External modules
+      inputs.agenix.nixosModules.default
+      
+      # Host-specific config
+      ({ config, pkgs, ... }: {
+        networking.hostName = "mimir";
+        networking.extraHosts = ''
+          100.64.0.17 gitea.yggdrasil.com
+        '';
+        
+        # Board-specific packages
+        environment.systemPackages = with pkgs; [
+          vim
+          git
+          htop
+        ];
+      })
+    ];
+  };
+}
+```
 
 ---
 
@@ -820,7 +897,7 @@ nix flake show 2>&1 | grep -E "nixosModules|nixosConfigurations"
 
 #### 8.2 Dry-Build All Hosts
 ```bash
-for host in desktop laptop ancient hermes; do
+for host in desktop laptop ancient hermes mimir; do
   echo "=== Testing $host ==="
   nixos-rebuild dry-build --flake .#$host 2>&1 | tail -20
 done
@@ -864,7 +941,7 @@ All `.nix` files in this directory are automatically discovered by `import-tree`
 - `desktop/` - Desktop environment (desktop, gaming, hardware)
 - `user/` - User tools (shell, dev, editor)
 - `server/` - Server services (gitea, syncthing, samba, media)
-- `hosts/` - Host definitions (desktop, laptop, ancient, hermes)
+- `hosts/` - Host definitions (desktop, laptop, ancient, hermes, mimir)
 
 ## Adding a Feature
 
@@ -893,7 +970,7 @@ git commit -m "feat: Complete migration to true dendritic architecture
 - Reduce flake.nix from 171 lines to ~15 lines
 - Add enable options to all features
 - Organize by category (core, desktop, user, server)
-- Test all 4 hosts build successfully
+- Test all 5 hosts build successfully (desktop, laptop, ancient, hermes, mimir)
 
 BREAKING CHANGE: Module structure completely reorganized.
 Old: modules/features/<category>/<feature>/default.nix
@@ -940,11 +1017,12 @@ git push origin main
 ## Success Criteria
 
 - [ ] flake.nix under 20 lines
-- [ ] All 4 hosts build successfully
+- [ ] All 5 hosts build successfully
 - [ ] Desktop host reboots and works
 - [ ] Laptop host builds
 - [ ] Ancient host builds
 - [ ] Hermes host builds
+- [ ] Mimir (Rock 4 SE) host builds
 - [ ] No manual registration needed for new files
 - [ ] Documentation updated
 - [ ] Old branch preserved as backup
