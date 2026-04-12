@@ -36,11 +36,11 @@ flowchart TB
             OLD2["editor.nix<br/>(OLD - unused)"]
         end
         
-        subgraph Hosts["hosts/"]
-            DT["desktop.nix<br/>nixosConfigurations.desktop<br/>homeConfigurations.desktop"]
-            LP["laptop.nix<br/>nixosConfigurations.laptop<br/>homeConfigurations.laptop"]
-            AN["ancient.nix"]
-            HR["hermes.nix"]
+        subgraph Hosts["hosts/ (per-host directories)"]
+            DT["desktop/desktop.nix<br/>+ hardware-configuration.nix"]
+            LP["laptop/laptop.nix<br/>+ hardware-configuration.nix"]
+            AN["ancient/ancient.nix<br/>+ hardware-configuration.nix"]
+            HR["hermes/hermes.nix<br/>+ hardware-configuration.nix"]
         end
         
         subgraph NixOS["nixosModules/"]
@@ -104,8 +104,12 @@ flowchart TB
 │                       │  │  bluetooth│  │                     │
 │                       │  ├───────────┤  │                     │
 │                       │  │   hosts/  │  │                     │
-│                       │  │ desktop.nix│  │                     │
-│                       │  │ laptop.nix│  │                     │
+│                       │  │ desktop/  │  │                     │
+│                       │  │  ├─ hw.nix │  │                     │
+│                       │  │  └─ cfg.nix│  │                     │
+│                       │  │ laptop/   │  │                     │
+│                       │  │ ancient/  │  │                     │
+│                       │  │ hermes/   │  │                     │
 │                       │  └───────────┘  │                     │
 │                       └─────────────────┘                     │
 │                                  │                              │
@@ -150,27 +154,30 @@ flowchart LR
     style SH fill:#ccffcc
 ```
 
-### Current Issue: Duplication
+### Resolved Issues
+
+✅ **DRY Principle Applied**: Hosts now import `self.homeModules.shell` instead of duplicating inline config.
 
 ```mermaid
 flowchart LR
-    subgraph "Current State (Hybrid)"
+    subgraph "Current State (Clean)"
         A["modules/home-manager/shell.nix<br/>Defines: home, packages, programs"]
-        B["modules/hosts/desktop.nix<br/>Duplicates: home, packages, programs"]
+        B["modules/hosts/desktop/desktop.nix<br/>Imports: shell module"]
     end
     
-    A -.->|not used| B
-    B -->|uses instead| C["homeConfigurations.desktop"]
+    A -->|used by| B
+    B -->|defines| C["homeConfigurations.desktop"]
 ```
 
-### The Problem Summary
+### Architecture Summary
 
-| File | Purpose | Issue |
-|------|---------|-------|
-| `modules/home-manager/shell.nix` | Dendritic module for base config | Defined but NOT used in hosts |
-| `modules/hosts/desktop.nix` | Host config | Has DUPLICATE inline base config |
-| `modules/home-manager/desktop.nix` | Old monolithic | Should be deleted |
-| `modules/home-manager/editor.nix` | Old nixvim | Should be deleted |
+| File | Purpose | Status |
+|------|---------|--------|
+| `modules/home-manager/shell.nix` | Base home config (username, packages, programs) | ✅ Used by all hosts |
+| `modules/hosts/desktop/desktop.nix` | Desktop host config + home setup | ✅ Clean, imports shell |
+| `modules/hosts/laptop/laptop.nix` | Laptop host config (KDE) | ✅ Clean, imports shell |
+| `modules/home-manager/desktops/hyprland/` | Modular Hyprland (waybar, mako, config) | ✅ Active |
+| `modules/home-manager/editors/nixvim.nix` | Nixvim editor config | ✅ Active |
 
 ### What Works vs What Doesn't
 
