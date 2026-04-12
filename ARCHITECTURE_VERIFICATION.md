@@ -22,7 +22,10 @@ Based on research from [vic/import-tree](https://github.com/vic/import-tree), [D
   };
 
   outputs = inputs@{ flake-parts, import-tree, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } (
+    flake-parts.lib.mkFlake { 
+      inherit inputs;
+      systems = [ "x86_64-linux" "aarch64-linux" ];
+    } (
       # Auto-discover ALL modules in ./modules
       import-tree ./modules
     );
@@ -178,11 +181,14 @@ If you want to move closer to "True Dendritic":
    # Add to flake.nix
    import-tree.url = "github:vic/import-tree";
    
-   # Change outputs to:
-   outputs = inputs@{ flake-parts, import-tree, ... }:
-     flake-parts.lib.mkFlake { inherit inputs; } (
-       import-tree ./modules
-     );
+    # Change outputs to:
+    outputs = inputs@{ flake-parts, import-tree, ... }:
+      flake-parts.lib.mkFlake { 
+        inherit inputs;
+        systems = [ "x86_64-linux" "aarch64-linux" ];
+      } (
+        import-tree ./modules
+      );
    ```
    - Eliminates manual exports
    - More magical

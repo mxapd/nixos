@@ -426,7 +426,10 @@ nixosModules = {
 ```nix
 # flake.nix - NEVER changes when adding features
 outputs = inputs@{ flake-parts, import-tree, ... }:
-  flake-parts.lib.mkFlake { inherit inputs; } (
+  flake-parts.lib.mkFlake { 
+    inherit inputs;
+    systems = [ "x86_64-linux" "aarch64-linux" ];
+  } (
     import-tree ./modules  # Auto-discovers ALL .nix files
   );
 ```

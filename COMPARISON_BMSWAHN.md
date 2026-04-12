@@ -20,7 +20,10 @@ Both are valid! They represent the two main approaches to dendritic NixOS.
   inputs.import-tree.url = "github:vic/import-tree";
   
   outputs = inputs@{ flake-parts, import-tree, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } (
+    flake-parts.lib.mkFlake { 
+      inherit inputs;
+      systems = [ "x86_64-linux" "aarch64-linux" ];
+    } (
       import-tree ./modules  # ← AUTO-DISCOVERS ALL .nix files!
     );
 }
@@ -273,7 +276,10 @@ You could create a **hybrid**:
   inputs.import-tree.url = "github:vic/import-tree";
   
   outputs = inputs@{ flake-parts, import-tree, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } (
+    flake-parts.lib.mkFlake { 
+      inherit inputs;
+      systems = [ "x86_64-linux" "aarch64-linux" ];
+    } (
       # Use import-tree for auto-discovery
       import-tree ./modules
     );
