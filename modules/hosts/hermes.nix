@@ -54,7 +54,7 @@
       inputs.agenix.nixosModules.default
 
       # Import hermes-agent configuration (uses age.* options)
-      ../../modules/hermes-agent.nix
+      ../../modules/_legacy/hermes-agent.nix
 
       # Config that uses age options (must be after agenix module)
       ({ config, ... }: {
