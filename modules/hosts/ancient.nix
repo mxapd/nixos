@@ -1,6 +1,6 @@
-# modules/hosts/ancient/ancient.nix
-# Ancient server host configuration
-# Imports: hardware.nix + system configuration
+# modules/hosts/ancient.nix
+# Ancient server host configuration - complete system definition
+# Combines: hardware-configuration.nix + configuration.nix + feature orchestration
 
 { self, inputs, ... }:
 
@@ -9,12 +9,30 @@
     system = "x86_64-linux";
     specialArgs = { inherit inputs self; };
     modules = [
-      # Hardware configuration (imported as a module to get modulesPath)
-      ({ modulesPath, ... }: {
-        imports = [ 
-          (modulesPath + "/installer/scan/not-detected.nix")
-          ./hardware.nix 
-        ];
+      # Hardware configuration (from hosts/ancient/hardware-configuration.nix)
+      ({ config, lib, pkgs, modulesPath, ... }: {
+        imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+
+        boot.initrd.availableKernelModules = [ "uhci_hcd" "ehci_pci" "ata_piix" "ahci" "pata_jmicron" "firewire_ohci" "usb_storage" "usbhid" "sd_mod" ];
+        boot.initrd.kernelModules = [ ];
+        boot.kernelModules = [ "kvm-intel" ];
+        boot.extraModulePackages = [ ];
+
+        fileSystems."/" = {
+          device = "/dev/disk/by-uuid/88effb11-d848-4813-b241-d644a8c088f0";
+          fsType = "ext4";
+        };
+
+        fileSystems."/boot" = {
+          device = "/dev/disk/by-uuid/4E10-0279";
+          fsType = "vfat";
+          options = [ "fmask=0022" "dmask=0022" ];
+        };
+
+        swapDevices = [ { device = "/dev/disk/by-uuid/80f6d7d7-6933-46cb-b091-921cd6b509cc"; } ];
+        networking.useDHCP = lib.mkDefault true;
+        nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+        hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
       })
 
       # Bootloader and system config
