@@ -52,7 +52,7 @@
       })
 
       # Import hermes-agent module
-      ../../hosts/hermes/hermes-agent.nix
+      ../../modules/hermes-agent.nix
 
       # External flake modules
       inputs.hermes-agent.nixosModules.default
