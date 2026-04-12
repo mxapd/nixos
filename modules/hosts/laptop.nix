@@ -100,23 +100,8 @@
   flake.homeConfigurations.laptop = inputs.home-manager.lib.homeManagerConfiguration {
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
     modules = [
-      # Shell base config
-      {
-        home = {
-          username = "xam";
-          homeDirectory = "/home/xam";
-          stateVersion = "25.11";
-          sessionVariables = {
-            OBSIDIAN_VAULT = "/home/xam/Documents/obsidian/";
-            EDITOR = "nvim";
-            BROWSER = "firefox";
-          };
-        };
-        programs.zoxide.enable = true;
-        programs.zoxide.enableZshIntegration = true;
-        programs.tmux.enable = true;
-        programs.kitty.enable = true;
-      }
+      # Shell base config (username, home directory, packages, programs)
+      self.homeModules.shell
       
       # Zsh configuration
       self.homeModules.zsh

@@ -108,39 +108,8 @@
   flake.homeConfigurations.desktop = inputs.home-manager.lib.homeManagerConfiguration {
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
     modules = [
-      # Shell base config (username, home directory, packages)
-      {
-        home = {
-          username = "xam";
-          homeDirectory = "/home/xam";
-          stateVersion = "25.11";
-          sessionVariables = {
-            OBSIDIAN_VAULT = "/home/xam/Documents/obsidian/";
-            EDITOR = "nvim";
-            BROWSER = "firefox";
-            PATH = "$HOME/.local/bin:$PATH";
-          };
-          packages = with pkgs; [
-            ollama
-            oh-my-zsh
-            git-credential-manager
-            zoxide
-            wiremix
-            bun
-            calcurse
-            (python3.withPackages (ppkgs: [
-              ppkgs.matplotlib
-              ppkgs.pytest
-            ]))
-            bubblewrap
-          ];
-        };
-        programs.zoxide.enable = true;
-        programs.zoxide.enableZshIntegration = true;
-        programs.tmux.enable = true;
-        programs.kitty.enable = true;
-        programs.kitty.extraConfig = "confirm_os_window_close 0\n";
-      }
+      # Shell base config (username, home directory, packages, programs)
+      self.homeModules.shell
       
       # Zsh configuration
       self.homeModules.zsh
