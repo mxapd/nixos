@@ -97,7 +97,7 @@
       self.nixosModules.audio
       self.nixosModules.desktop
       self.nixosModules.gaming
-      self.nixosModules.hardware
+      self.nixosModules.nvidia
       self.nixosModules.shell
       self.nixosModules.dev
       self.nixosModules.editor
