@@ -51,12 +51,12 @@
         environment.systemPackages = with pkgs; [ git vim ];
       })
 
-      # Import hermes-agent module
-      ../../modules/hermes-agent.nix
-
-      # External flake modules
+      # External flake modules (must be before hermes-agent.nix)
       inputs.hermes-agent.nixosModules.default
       inputs.agenix.nixosModules.default
+
+      # Import hermes-agent configuration
+      ../../modules/hermes-agent.nix
 
       # Dendritic feature modules (minimal for ARM server)
       self.nixosModules.base
