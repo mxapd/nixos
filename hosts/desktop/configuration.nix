@@ -1,7 +1,6 @@
 { config, pkgs, inputs, ... }:
 
 {
-
   imports =
     [ 
       ./hardware-configuration.nix
@@ -9,67 +8,30 @@
       ./../../modules/torzu.nix
     ];
 
-  # Bootloader.
+  # Bootloader - hardware specific
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   
-  # disable automatic enabling of virtualization. i think i added this because virtualbox uses their own kernel modules
+  # Hardware-specific kernel params
   boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
 
-  xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-    wlr.enable = false;
-    config = {
-      common.default = ["gtk"];
-      hyprland.default = ["gtk" "hyprland"];
-    };
-    configPackages = [
-      pkgs.xdg-desktop-portal-gtk
-	pkgs.xdg-desktop-portal
-    ];
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      #pkgs.xdg-desktop-portal-hyprland
-    ];
-  };
-
+  # Host-specific networking
   networking = {
     hostName = "desktop";
     nameservers = [ "8.8.8.8" "100.42.0.1"];
   };
 
+  # User preferences
   programs.direnv.enable = true;
   
-  console.keyMap = "sv-latin1";
-  
-boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-nix.settings.extra-platforms = [ "aarch64-linux" ];
-
+  # Host-specific services
   services = {
     flatpak.enable = true; 
-    # xserver.libinput.enable = true;
-    xserver.enable = true;
-    xserver.xkb = {
-      layout = "se";
-      variant = "";
-    };
     mysql.enable = true;
     mysql.package = pkgs.mariadb;
     printing.enable = true;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
-    displayManager.sddm.enable = true;
-    ratbagd.enable = true;
-    openssh = {
-      enable = true;
-    };
-    xserver.videoDrivers = ["nvidia"];
-
+    
+    # Syncthing with host-specific paths
     syncthing = {
       enable  = true;
       user = "xam";
@@ -80,97 +42,37 @@ nix.settings.extra-platforms = [ "aarch64-linux" ];
     };
   };
 
-  programs = {
-    zsh.enable = true;
-    firefox.enable = true;
-    steam.enable = true;
-    gamemode.enable = true;
-    
-    hyprland = {
-      enable = true;
-      # set the flake package
-      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      # make sure to also set the portal package, so that they are in sync
-      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-    };
-  };
+  # User applications
+  programs.firefox.enable = true;
 
-  #  programs.firejail = {
-  #    enable = true;
-  #    wrappedBinaries = {
-  #      opencode = {
-  #        executable = "${pkgs.opencode}/bin/opencode";
-  #	extraArgs = [
-  #     	  "--private"
-  #	  "--whitelist=\${HOME}/Projects"
-  #     	  "--whitelist=\${HOME}/.config/opencode"
-  #     	  "--whitelist=\${HOME}/.local/state/opencode"
-  #     	  "--whitelist=\${HOME}/.local/share/opencode"
-  #     	  "--read-only=\${HOME}/nixos"
-  #     	  "--blacklist=\${HOME}/.ssh"
-  #     	  "--blacklist=\${HOME}/.gnupg"
-  #     	  "--blacklist=\${HOME}/.aws"
-  #     	  "--blacklist=\${HOME}/.config/gcloud"
-  #     	  "--blacklist=\${HOME}/.netrc"
-  #     	  "--blacklist=\${HOME}/.npmrc"
-  #     	  "--private-tmp"
-  #     	  "--caps.drop=all"
-  #	];
-  #      };
-  #    };
-  #  };
-
-  security.rtkit.enable = true;
-  
-  nixpkgs.config.allowUnfree = true;
-
+  # Virtualization
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
-  #virtualisation.virtualbox.guest.enable = true;
-  #virtualisation.virtualbox.guest.dragAndDrop = true;
-  
   users.extraGroups.vboxusers.members = [ "xam" ];
- 
+  
+  # Tailscale with host-specific routing
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "client";
   };
 
+  # Host-specific packages
   environment.systemPackages = with pkgs; [
     inputs.agenix.packages."${pkgs.system}".default
     (pkgs.callPackage ../../custom-pkgs/nixos-warnings.nix { })
 
-    grim
-    slurp
+    # Desktop applications
     kitty
     wofi
-    waybar
     font-awesome
     gnome-calendar
-    libnotify
     hyprshot
     playerctl
-    wasm-bindgen-cli
-    cargo-leptos
-    rustc
-    pkg-config
-    cargo-generate
-    lsof
-    rustlings
-    tldr
-    runelite
     nautilus
     pavucontrol
-    rustup
-    clang
-    #ollama-cuda
     piper
-    zip
     gotop
-    rar
     qbittorrent
-    git
-    python3
     prismlauncher
     fastfetch
     slack
@@ -179,13 +81,8 @@ nix.settings.extra-platforms = [ "aarch64-linux" ];
     libreoffice
     syncthing
     ripgrep-all
-    zoxide
     tmux
-    libgcc
-    zig
-    nodejs_22
-    gnumake
-    unzip
+    zoxide
     teamspeak3
     wl-clipboard
     discord-canary
@@ -196,45 +93,31 @@ nix.settings.extra-platforms = [ "aarch64-linux" ];
     vlc
     blueman
     fzf
-
     bun
+
+    # Development tools
+    grim
+    slurp
+    libnotify
+    wasm-bindgen-cli
+    cargo-leptos
+    rustc
+    pkg-config
+    cargo-generate
+    lsof
+    rustlings
+    tldr
+    runelite
+    zip
+    rar
+    rustup
+    clang
+    libgcc
+    zig
+    nodejs_22
+    gnumake
+    unzip
+    git
+    python3
   ];
-
-  hardware = {
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
-
-    nvidia = {
-      # Modesetting is required.
-      modesetting.enable = true;
-      # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-      powerManagement.enable = false;
-      # Fine-grained power management. Turns off GPU when not in use.
-      # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-      powerManagement.finegrained = false;
-      # Use the NVidia open source kernel module (not to be confused with the
-      # independent third-party "nouveau" open source driver).
-      # Support is limited to the Turing and later architectures. Full list of
-      # supported GPUs is at:
-      # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
-      # Only available from driver 515.43.04+
-      # Currently alpha-quality/buggy, so false is currently the recommended setting.
-      open = true;
-      # Enable the Nvidia settings menu,
-      # accessible via `nvidia-settings`.
-      nvidiaSettings = true;
-      # Optionally, you may need to select the appropriate driver version for your specific GPU.
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
-    };
-
-    nvidia-container-toolkit.enable = true;
-
-    bluetooth.enable = true;
-    bluetooth.powerOnBoot = true;
-  };
-
-  security.polkit.enable = true;
-  system.stateVersion = "25.11"; 
 }

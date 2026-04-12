@@ -1,6 +1,6 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# and in the NixOS manual (accessible by running 'nixos-help').
 #
 { config, pkgs, inputs, ... }:
 
@@ -8,157 +8,109 @@
   imports =
     [ 
       ./hardware-configuration.nix
-      #./../../modules/stylix.nix
-      #./../../modules/fonts.nix
     ];
 
-  ## unsafe, need to find out what package relies on this lib and update
+  # Agenix SSH identity for secrets
+  age.identityPaths = [ 
+    "/home/xam/.ssh/id_ed25519" 
+    "/home/xam/.ssh/id_rsa"
+  ];
+
+  # Laptop-specific package exceptions
   nixpkgs.config.permittedInsecurePackages = [
     "qtwebengine-5.15.19"
   ];
 
-# Bootloader.
+  # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes"];
-    xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-    wlr.enable = false;
-    config = {
-      common.default = ["gtk"];
-      hyprland.default = ["gtk" "hyprland"];
-    };
-    configPackages = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal
-    ];
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-    ];
-  };
-
+  # Host-specific networking
   networking = {
-    hostName = "nixos";
+    hostName = "laptop";
     networkmanager.enable = true;
-    #  wireless.enable = true;
-    #proxy.default = "http://user:password@proxy:port/";
-    #proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
 
-  time.timeZone = "Europe/Stockholm";
-
-  # Select internationalisation properties.
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    extraLocaleSettings = {
-      LC_ADDRESS = "sv_SE.UTF-8";
-      LC_IDENTIFICATION = "sv_SE.UTF-8";
-      LC_MEASUREMENT = "sv_SE.UTF-8";
-      LC_MONETARY = "sv_SE.UTF-8";
-      LC_NAME = "sv_SE.UTF-8";
-      LC_NUMERIC = "sv_SE.UTF-8";
-      LC_PAPER = "sv_SE.UTF-8";
-      LC_TELEPHONE = "sv_SE.UTF-8";
-      LC_TIME = "sv_SE.UTF-8";
-    };
-  };
-
-  console.keyMap = "sv-latin1";
-
+  # Time and locale handled by dendritic features/base
+  # Override laptop-specific packages here
+  
+  # Host-specific services
   services = {
-    # xserver.libinput.enable = true;
-    xserver.enable = true;
-    xserver.xkb = {
-      layout = "se";
-      variant = "";
-    };
     mysql.enable = true;
     mysql.package = pkgs.mariadb;
     printing.enable = true;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      # If you want to use JACK applications, uncomment this
-      #jack.enable = true;
-
-      # use the example session manager (no others are packaged yet so this is enabled by default,
-      # no need to redefine it in your config for now)
-      #media-session.enable = true;
-    };
-    displayManager.sddm.enable = true;
+    
+    # Laptop has Plasma6 instead of just Hyprland
     desktopManager.plasma6.enable = true;
-    ratbagd.enable = true;
-    openssh = {
+    
+    # Disable power-profiles-daemon to avoid conflict with auto-cpufreq
+    power-profiles-daemon.enable = false;
+    
+    # Syncthing with laptop-specific paths
+    syncthing = {
       enable = true;
+      user = "xam";
+      group = "users";
+      openDefaultPorts = true;
+      dataDir = "/home/xam/Documents";
+      configDir = "/home/xam/.syncthing";
+      guiAddress = "0.0.0.0:8384";
     };
+    
+    # Laptop power management
+    auto-cpufreq.enable = true;
   };
 
-  programs = {
-    zsh.enable = true;
-    #noisetorch.enable = true;
-    firefox.enable = true;
+  # User applications
+  programs.firefox.enable = true;
 
-    hyprland = {
-      enable = true;
-      # set the flake package
-      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      # make sure to also set the portal package, so that they are in sync
-      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-    };
-  };
+  services.flatpak.enable = true;
 
-  security.rtkit.enable = true;
-
-  nixpkgs.config.allowUnfree = true;
-
+  # Laptop-specific packages
   environment.systemPackages = with pkgs; [
-      blueman
-      gcc
-      rustup
-      piper
-      zip
-      gotop
-      rar
-      qbittorrent
-      egl-wayland
-      git
-      python3
-      obsidian
-      kitty
-      neofetch
-      slack
-      spotify
-      vscodium
-      libreoffice
-      syncthing
-      ripgrep-all
-      ripgrep
-      zoxide
-      tmux
-      libgcc
-      zig
-      thinkfan
-      nodejs_22
-      gnumake
-      mariadb
-      unzip
-      lunarvim
-      teamspeak3
-      wl-clipboard
-      discord-canary
-      htop
-      mariadb
-      jdk21
-      gradle
+    # System tools
+    blueman
+    gcc
+    rustup
+    piper
+    zip
+    gotop
+    rar
+    qbittorrent
+    egl-wayland
+    git
+    python3
+    obsidian
+    kitty
+    neofetch
+    slack
+    spotify
+    vscodium
+    libreoffice
+    syncthing
+    ripgrep-all
+    ripgrep
+    zoxide
+    tmux
+    libgcc
+    zig
+    thinkfan
+    nodejs_22
+    gnumake
+    mariadb
+    unzip
+    lunarvim
+    teamspeak3
+    wl-clipboard
+    discord-canary
+    htop
+    jdk21
+    gradle
 
+    # Desktop environment
     auto-cpufreq
     grim
     slurp
-    kitty
     wofi
     waybar
     font-awesome
@@ -171,10 +123,7 @@
     brightnessctl
   ];
 
-  services.flatpak = {
-    enable = true;
-  };
-
+  # Laptop hardware settings
   hardware = {
     graphics = {
       enable = true;
@@ -183,21 +132,5 @@
 
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
-
-    pulseaudio.enable = false;
   };
-
-  services.syncthing = {
-    enable  = true;
-    user = "xam";
-    group = "users";
-    openDefaultPorts = true;
-    dataDir = "/home/xam/Documents";
-    configDir = "/home/xam/.syncthing";
-    guiAddress = "0.0.0.0:8384";
-  };
-
-  security.polkit.enable = true;
-
-  system.stateVersion = "25.11";
 }

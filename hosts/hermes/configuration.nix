@@ -11,25 +11,22 @@
       ./hermes-agent.nix
     ];
 
-  # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
+  # Agenix SSH identity for secrets
+  age.identityPaths = [ 
+    "/home/nixos/.ssh/id_ed25519"
+  ];
+
+  # ARM bootloader (different from x86_64)
   boot.loader.grub.enable = false;
-  # Enables the generation of /boot/extlinux/extlinux.conf
   boot.loader.generic-extlinux-compatible.enable = true;
 
-  networking.hostName = "hermes"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  # Host-specific networking
+  networking.hostName = "hermes";
   networking.extraHosts = ''
     100.64.0.17 gitea.yggdrasil.com
   '';
 
-
-  # Set your time zone.
-  time.timeZone = "Europe/Stockholm";
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
- 
+  # Hermes uses different user account
   users.users.nixos = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
@@ -39,9 +36,5 @@
       git
       vim
     ];
-  };  
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  };
 }
-
