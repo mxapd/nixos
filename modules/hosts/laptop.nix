@@ -61,6 +61,8 @@
           openDefaultPorts = true;
           dataDir = "/home/xam/Documents";
           configDir = "/home/xam/.syncthing";
+          # SECURITY: 0.0.0.0 exposes web UI to network
+          # Use "127.0.0.1:8384" for local-only or configure firewall
           guiAddress = "0.0.0.0:8384";
         };
 

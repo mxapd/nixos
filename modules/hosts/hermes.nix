@@ -42,6 +42,8 @@
         users.users.nixos = {
           isNormalUser = true;
           extraGroups = [ "wheel" ];
+          # SECURITY WARNING: Change this password after first login!
+          # Or remove this line and use agenix to set a proper password
           initialPassword = "nixos";
           packages = with pkgs; [ git vim ];
         };

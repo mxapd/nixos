@@ -59,14 +59,17 @@
           appName = cfg.appName;
           user = "gitea";
 
-          httpPort = cfg.httpPort;
-          domain = cfg.domain;
-          rootUrl = cfg.rootUrl;
-
           # Database for metadata (users, keys, etc.)
           database = {
             type = "sqlite3";
             path = cfg.databasePath;
+          };
+
+          # Server settings (new format for NixOS 24.11+)
+          settings.server = {
+            HTTP_PORT = cfg.httpPort;
+            DOMAIN = cfg.domain;
+            ROOT_URL = cfg.rootUrl;
           };
         };
 

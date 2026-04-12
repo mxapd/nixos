@@ -107,6 +107,9 @@
             group = "users";
             dataDir = "/mnt/syncthing/xam";
             configDir = "/mnt/syncthing/config";
+            # SECURITY: 0.0.0.0 exposes web UI to network
+            # Ancient is a server, so this may be intentional for LAN access
+            # Consider adding firewall rules or authentication
             guiAddress = "0.0.0.0:8384";
           };
           samba = {
