@@ -28,7 +28,7 @@
         nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
       })
 
-      # Bootloader and system config
+      # Bootloader and basic system config
       ({ config, pkgs, ... }: {
         boot.loader.grub.enable = false;
         boot.loader.generic-extlinux-compatible.enable = true;
@@ -37,8 +37,6 @@
         networking.extraHosts = ''
           100.64.0.17 gitea.yggdrasil.com
         '';
-
-        age.identityPaths = [ "/home/nixos/.ssh/id_ed25519" ];
 
         # Different user account on hermes
         users.users.nixos = {
@@ -51,12 +49,17 @@
         environment.systemPackages = with pkgs; [ git vim ];
       })
 
-      # External flake modules (must be before hermes-agent.nix)
+      # External flake modules (must be before any age.* usage)
       inputs.hermes-agent.nixosModules.default
       inputs.agenix.nixosModules.default
 
-      # Import hermes-agent configuration
+      # Import hermes-agent configuration (uses age.* options)
       ../../modules/hermes-agent.nix
+
+      # Config that uses age options (must be after agenix module)
+      ({ config, ... }: {
+        age.identityPaths = [ "/home/nixos/.ssh/id_ed25519" ];
+      })
 
       # Dendritic feature modules (minimal for ARM server)
       self.nixosModules.base
