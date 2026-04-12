@@ -9,6 +9,10 @@
     inputs.self.nixosModules.features-base
     inputs.self.nixosModules.features-users
     inputs.self.nixosModules.features-stylix
+    inputs.self.nixosModules.features-fonts
+    inputs.self.nixosModules.features-tailscale
+    inputs.self.nixosModules.features-ssh
+    inputs.self.nixosModules.features-audio
   ];
 
   # Desktop-specific configuration

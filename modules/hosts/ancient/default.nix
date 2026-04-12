@@ -8,6 +8,8 @@
     # Enable features for ancient (minimal server)
     inputs.self.nixosModules.features-base
     inputs.self.nixosModules.features-users
+    inputs.self.nixosModules.features-tailscale
+    inputs.self.nixosModules.features-ssh
   ];
 
   # Ancient-specific configuration

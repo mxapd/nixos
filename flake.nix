@@ -39,6 +39,12 @@
           features-users = import ./modules/features/users/default.nix;
           features-stylix = import ./modules/features/stylix/default.nix;
 
+          # Phase 2: Core features
+          features-tailscale = import ./modules/features/tailscale/default.nix;
+          features-fonts = import ./modules/features/fonts/default.nix;
+          features-ssh = import ./modules/features/ssh/default.nix;
+          features-audio = import ./modules/features/audio/default.nix;
+
           # Host configurations - orchestrate features
           hosts-desktop = import ./modules/hosts/desktop/default.nix;
           hosts-laptop = import ./modules/hosts/laptop/default.nix;
@@ -51,6 +57,10 @@
           features-base = import ./modules/features/base/home.nix;
           features-users = import ./modules/features/users/home.nix;
           features-stylix = import ./modules/features/stylix/home.nix;
+          features-tailscale = import ./modules/features/tailscale/home.nix;
+          features-fonts = import ./modules/features/fonts/home.nix;
+          features-ssh = import ./modules/features/ssh/home.nix;
+          features-audio = import ./modules/features/audio/home.nix;
         };
 
         nixosConfigurations = {
