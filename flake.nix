@@ -9,7 +9,6 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    # NEW: import-tree for auto-discovery of all modules
     import-tree = {
       url = "github:vic/import-tree";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -34,10 +33,5 @@
 
   outputs = inputs@{ flake-parts, import-tree, ... }:
     flake-parts.lib.mkFlake { inherit inputs; }
-      # Auto-discover all modules in ./modules/
-      # Each .nix file should export flake.nixosModules.* or flake.nixosConfigurations.*
-      # Systems are defined per-host in modules/hosts/*.nix
-      # - x86_64-linux: desktop, laptop, ancient
-      # - aarch64-linux: hermes (Rock 4 SE ARM board)
       (import-tree ./modules);
 }

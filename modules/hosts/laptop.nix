@@ -1,6 +1,5 @@
 # modules/hosts/laptop.nix
-# Laptop host configuration - complete system definition
-# Combines: hardware-configuration.nix + configuration.nix + feature orchestration
+# Laptop host configuration - uses KDE Plasma6
 
 { self, inputs, ... }:
 
@@ -9,7 +8,7 @@
     system = "x86_64-linux";
     specialArgs = { inherit inputs self; };
     modules = [
-      # Hardware configuration (from hosts/laptop/hardware-configuration.nix)
+      # Hardware configuration
       ({ config, lib, pkgs, modulesPath, ... }: {
         imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
@@ -61,8 +60,6 @@
           openDefaultPorts = true;
           dataDir = "/home/xam/Documents";
           configDir = "/home/xam/.syncthing";
-          # SECURITY: 0.0.0.0 exposes web UI to network
-          # Use "127.0.0.1:8384" for local-only or configure firewall
           guiAddress = "0.0.0.0:8384";
         };
 
@@ -93,10 +90,78 @@
       self.nixosModules.ssh
       self.nixosModules.audio
       self.nixosModules.desktop
-      # Laptop doesn't use gaming and hardware modules (NVIDIA-specific)
       self.nixosModules.shell
       self.nixosModules.dev
       self.nixosModules.editor
+    ];
+  };
+
+  # Home Manager configuration for laptop (KDE - no hyprland)
+  flake.homeConfigurations.laptop = inputs.home-manager.lib.homeManagerConfiguration {
+    pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+    modules = [
+      # User config
+      {
+        home = {
+          username = "xam";
+          homeDirectory = "/home/xam";
+          stateVersion = "25.11";
+          sessionVariables = {
+            OBSIDIAN_VAULT = "/home/xam/Documents/obsidian/";
+            EDITOR = "nvim";
+            BROWSER = "firefox";
+          };
+        };
+      }
+
+      # Shell: zsh, tmux, kitty, zoxide
+      {
+        programs.zsh = {
+          enable = true;
+          syntaxHighlighting.enable = true;
+          shellAliases = {
+            mount-ancient = "sudo mount -t cifs //192.168.1.204/video /mnt/ancient_share/video -o username=xam,uid=1000,gid=100,rw";
+            nd = "nix develop";
+            ns = "nix shell";
+            check = "nix flake check --impure";
+          };
+          oh-my-zsh = {
+            enable = true;
+            plugins = [ "git" ];
+            theme = "wedisagree";
+          };
+        };
+        programs.zoxide.enable = true;
+        programs.zoxide.enableZshIntegration = true;
+        programs.tmux.enable = true;
+        programs.kitty.enable = true;
+      }
+
+      # Git
+      {
+        programs.git = {
+          enable = true;
+          userName = "xam";
+          userEmail = "m.porseryd@gmail.com";
+        };
+      }
+
+      # Editor (nixvim)
+      {
+        programs.nixvim = {
+          enable = true;
+          globals = {
+            mapleader = " ";
+            maplocalleader = " ";
+          };
+          opts = {
+            number = true;
+            relativenumber = true;
+            shiftwidth = 2;
+            clipboard = "unnamedplus";
+          };
+        };
+      }
     ];
   };
 }

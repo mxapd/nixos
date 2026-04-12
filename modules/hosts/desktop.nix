@@ -1,6 +1,5 @@
 # modules/hosts/desktop.nix
 # Desktop host configuration - complete system definition
-# Combines: hardware-configuration.nix + configuration.nix + feature orchestration
 
 { self, inputs, ... }:
 
@@ -9,7 +8,7 @@
     system = "x86_64-linux";
     specialArgs = { inherit inputs self; };
     modules = [
-      # Hardware configuration (from hosts/desktop/hardware-configuration.nix)
+      # Hardware configuration
       ({ config, lib, pkgs, modulesPath, ... }: {
         imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
@@ -58,8 +57,6 @@
           group = "users";
           dataDir = "/home/xam/Documents/";
           configDir = "/home/xam/.syncthing/";
-          # SECURITY: 0.0.0.0 exposes web UI to network
-          # Use "127.0.0.1:8384" for local-only or configure firewall
           guiAddress = "0.0.0.0:8384";
         };
 
@@ -90,7 +87,7 @@
       # External flake modules
       inputs.stylix.nixosModules.stylix
 
-      # Dendritic feature modules (using new naming)
+      # Dendritic feature modules
       self.nixosModules.base
       self.nixosModules.users
       self.nixosModules.stylix
@@ -104,6 +101,87 @@
       self.nixosModules.shell
       self.nixosModules.dev
       self.nixosModules.editor
+    ];
+  };
+
+  # Home Manager configuration for desktop
+  # Each .nix file is imported and contributes to the home-manager config
+  flake.homeConfigurations.desktop = inputs.home-manager.lib.homeManagerConfiguration {
+    pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+    modules = [
+      # User config
+      {
+        home = {
+          username = "xam";
+          homeDirectory = "/home/xam";
+          stateVersion = "25.11";
+          sessionVariables = {
+            OBSIDIAN_VAULT = "/home/xam/Documents/obsidian/";
+            EDITOR = "nvim";
+            BROWSER = "firefox";
+          };
+        };
+      }
+
+      # Shell: zsh, tmux, kitty, zoxide
+      {
+        programs.zsh = {
+          enable = true;
+          syntaxHighlighting.enable = true;
+          shellAliases = {
+            mount-ancient = "sudo mount -t cifs //192.168.1.204/video /mnt/ancient_share/video -o username=xam,uid=1000,gid=100,rw";
+            nd = "nix develop";
+            ns = "nix shell";
+            check = "nix flake check --impure";
+          };
+          oh-my-zsh = {
+            enable = true;
+            plugins = [ "git" ];
+            theme = "wedisagree";
+          };
+        };
+        programs.zoxide.enable = true;
+        programs.zoxide.enableZshIntegration = true;
+        programs.tmux.enable = true;
+        programs.kitty.enable = true;
+      }
+
+      # Git
+      {
+        programs.git = {
+          enable = true;
+          userName = "xam";
+          userEmail = "m.porseryd@gmail.com";
+        };
+      }
+
+      # Editor (nixvim)
+      {
+        programs.nixvim = {
+          enable = true;
+          globals = {
+            mapleader = " ";
+            maplocalleader = " ";
+          };
+          opts = {
+            number = true;
+            relativenumber = true;
+            shiftwidth = 2;
+            clipboard = "unnamedplus";
+          };
+        };
+      }
+
+      # Desktop (hyprland, waybar, mako)
+      {
+        programs.waybar.enable = true;
+        services.mako.enable = true;
+        wayland.windowManager.hyprland = {
+          enable = true;
+          xwayland.enable = true;
+        };
+        home.sessionVariables.NIXOS_OZONE_WL = "1";
+      }
     ];
   };
 }
