@@ -4,6 +4,6 @@ let
 in
 {
   environment.systemPackages = [
-    torzu-flake.packages.${pkgs.system}.default
+    torzu-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

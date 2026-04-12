@@ -71,7 +71,7 @@
         users.extraGroups.vboxusers.members = [ "xam" ];
 
         environment.systemPackages = with pkgs; [
-          inputs.agenix.packages."${pkgs.system}".default
+          inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
           (pkgs.callPackage ../../custom-pkgs/nixos-warnings.nix { })
           kitty wofi font-awesome gnome-calendar hyprshot playerctl nautilus pavucontrol piper gotop
           qbittorrent prismlauncher fastfetch slack gamescope spotify libreoffice syncthing ripgrep-all
