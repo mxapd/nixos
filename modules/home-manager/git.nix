@@ -4,7 +4,7 @@
 { self, inputs, lib, ... }:
 
 {
-  flake.homeModules.git = { config, pkgs, ... }:
+  flake.homeModules.git = { config, pkgs, lib, ... }:
     {
       programs.git = {
         enable = true;

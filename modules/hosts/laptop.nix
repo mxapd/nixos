@@ -1,7 +1,7 @@
 # modules/hosts/laptop.nix
 # Laptop host configuration - uses KDE Plasma6
 
-{ self, inputs, ... }:
+{ self, inputs, lib, ... }:
 
 {
   flake.nixosConfigurations.laptop = inputs.nixpkgs.lib.nixosSystem {
@@ -100,7 +100,7 @@
   flake.homeConfigurations.laptop = inputs.home-manager.lib.homeManagerConfiguration {
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
     modules = [
-      # User config
+      # Shell base config
       {
         home = {
           username = "xam";
@@ -112,56 +112,20 @@
             BROWSER = "firefox";
           };
         };
-      }
-
-      # Shell: zsh, tmux, kitty, zoxide
-      {
-        programs.zsh = {
-          enable = true;
-          syntaxHighlighting.enable = true;
-          shellAliases = {
-            mount-ancient = "sudo mount -t cifs //192.168.1.204/video /mnt/ancient_share/video -o username=xam,uid=1000,gid=100,rw";
-            nd = "nix develop";
-            ns = "nix shell";
-            check = "nix flake check --impure";
-          };
-          oh-my-zsh = {
-            enable = true;
-            plugins = [ "git" ];
-            theme = "wedisagree";
-          };
-        };
         programs.zoxide.enable = true;
         programs.zoxide.enableZshIntegration = true;
         programs.tmux.enable = true;
         programs.kitty.enable = true;
       }
-
-      # Git
-      {
-        programs.git = {
-          enable = true;
-          userName = "xam";
-          userEmail = "m.porseryd@gmail.com";
-        };
-      }
-
-      # Editor (nixvim)
-      {
-        programs.nixvim = {
-          enable = true;
-          globals = {
-            mapleader = " ";
-            maplocalleader = " ";
-          };
-          opts = {
-            number = true;
-            relativenumber = true;
-            shiftwidth = 2;
-            clipboard = "unnamedplus";
-          };
-        };
-      }
+      
+      # Zsh configuration
+      self.homeModules.zsh
+      
+      # Git configuration
+      self.homeModules.git
+      
+      # Nixvim editor
+      self.homeModules.editors.nixvim
     ];
   };
 }
