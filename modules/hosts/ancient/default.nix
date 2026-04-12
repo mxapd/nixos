@@ -10,6 +10,10 @@
     inputs.self.nixosModules.features-users
     inputs.self.nixosModules.features-tailscale
     inputs.self.nixosModules.features-ssh
+
+    # Server doesn't need desktop, but needs editor and dev tools
+    inputs.self.nixosModules.features-dev
+    inputs.self.nixosModules.features-editor
   ];
 
   # Ancient-specific configuration

@@ -18,6 +18,11 @@
     inputs.self.nixosModules.features-desktop
     # Note: Laptop doesn't use features-gaming or features-hardware (NVIDIA-specific)
     # Gaming and hardware configs stay in hosts/laptop/configuration.nix for now
+
+    # Phase 4: User features
+    inputs.self.nixosModules.features-shell
+    inputs.self.nixosModules.features-dev
+    inputs.self.nixosModules.features-editor
   ];
 
   # Laptop-specific configuration

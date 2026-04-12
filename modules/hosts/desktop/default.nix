@@ -18,6 +18,11 @@
     inputs.self.nixosModules.features-desktop
     inputs.self.nixosModules.features-gaming
     inputs.self.nixosModules.features-hardware
+
+    # Phase 4: User features
+    inputs.self.nixosModules.features-shell
+    inputs.self.nixosModules.features-dev
+    inputs.self.nixosModules.features-editor
   ];
 
   # Desktop-specific configuration

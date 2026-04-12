@@ -50,6 +50,11 @@
           features-gaming = import ./modules/features/gaming/default.nix;
           features-hardware = import ./modules/features/hardware/default.nix;
 
+          # Phase 4: User features
+          features-shell = import ./modules/features/shell/default.nix;
+          features-dev = import ./modules/features/dev/default.nix;
+          features-editor = import ./modules/features/editor/default.nix;
+
           # Host configurations - orchestrate features
           hosts-desktop = import ./modules/hosts/desktop/default.nix;
           hosts-laptop = import ./modules/hosts/laptop/default.nix;
@@ -69,6 +74,9 @@
           features-desktop = import ./modules/features/desktop/home.nix;
           features-gaming = import ./modules/features/gaming/home.nix;
           features-hardware = import ./modules/features/hardware/home.nix;
+          features-shell = import ./modules/features/shell/home.nix;
+          features-dev = import ./modules/features/dev/home.nix;
+          features-editor = import ./modules/features/editor/home.nix;
         };
 
         nixosConfigurations = {
