@@ -2,7 +2,7 @@
 {
   users.users.xam = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "wireshark"];
     shell = pkgs.zsh;
   };
 }
