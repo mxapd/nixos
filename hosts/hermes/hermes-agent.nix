@@ -12,7 +12,7 @@
   };
 
   services.hermes-agent = {
-    enable = false;
+    enable = true;
     settings = {
       model.default = "opencode-go/kimi-k2.5";
       model.provider = "opencode-go";
