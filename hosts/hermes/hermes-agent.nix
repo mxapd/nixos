@@ -12,12 +12,12 @@
   };
 
   services.hermes-agent = {
-    enable = true;
+    enable = false;
     settings = {
       model.default = "opencode-go/kimi-k2.5";
       model.provider = "opencode-go";
     };
-    addToSystemPackages = true;
+    addToSystemPackages = false;
   };
 
   systemd.services.hermes-agent = {
