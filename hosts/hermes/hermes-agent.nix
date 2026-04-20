@@ -11,19 +11,13 @@
     group = "hermes";
   };
 
-  # Install Python for manual hermes-agent setup
-  environment.systemPackages = with pkgs; [
-    python311
-    python311Packages.pip
-  ];
-
   services.hermes-agent = {
     enable = false;
     settings = {
       model.default = "opencode-go/kimi-k2.5";
       model.provider = "opencode-go";
     };
-    addToSystemPackages = false;
+    addToSystemPackages = true;
   };
 
   systemd.services.hermes-agent = {
