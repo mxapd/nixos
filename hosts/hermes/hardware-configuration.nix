@@ -28,4 +28,21 @@
   # networking.interfaces.end0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
+
+  # Enable SDIO (WiFi) on ROCK 4SE
+  hardware.deviceTree.overlays = [
+    {
+      name = "enable-sdio-wifi";
+      dtsText = ''
+        /dts-v1/;
+        /plugin/;
+        / {
+          compatible = "radxa,rock-4se", "rockchip,rk3399";
+        };
+        &sdio0 {
+          status = "okay";
+        };
+      '';
+    }
+  ];
 }
