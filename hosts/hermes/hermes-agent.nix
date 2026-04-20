@@ -11,6 +11,12 @@
     group = "hermes";
   };
 
+  # Install Python for manual hermes-agent setup
+  environment.systemPackages = with pkgs; [
+    python311
+    python311Packages.pip
+  ];
+
   services.hermes-agent = {
     enable = false;
     settings = {
