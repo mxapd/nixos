@@ -11,7 +11,7 @@
   boot.initrd.availableKernelModules = [ "usbhid" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "brcmfmac" "cfg80211" ];
-  boot.extraModulePackages = [ pkgs.firmwareLinuxNonfree ];
+  boot.extraModulePackages = [ pkgs.linux-firmware ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/44444444-4444-4444-8888-888888888888";
