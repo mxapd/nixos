@@ -81,6 +81,9 @@ nix.settings.extra-platforms = [ "aarch64-linux" ];
   };
 
   programs = {
+    gnupg = {
+      agent.enable = true;
+    };
     zsh.enable = true;
     firefox.enable = true;
     steam.enable = true;
@@ -140,6 +143,7 @@ nix.settings.extra-platforms = [ "aarch64-linux" ];
     inputs.agenix.packages."${pkgs.system}".default
     (pkgs.callPackage ../../custom-pkgs/nixos-warnings.nix { })
 
+    pi-coding-agent
     grim
     slurp
     kitty

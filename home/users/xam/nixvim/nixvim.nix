@@ -32,21 +32,21 @@
       conceallevel = 2;
     };
 
-extraPlugins = [
-  (pkgs.vimUtils.buildVimPlugin {
-    name = "99-nvim";
-    nvimSkipModules = [ "99.editor.lsp" ];
-    src = /home/xam/Projects/99;
-  })
-];
-
-extraConfigLua = ''
-  require("99").setup({
-    provider = require("99.providers").OllamaProvider,
-    model = "qwen2.5-coder:7b",
-    tmp_dir = "/home/xam/.99/tmp",
-  })
-'';
+    #extraPlugins = [
+    #  (pkgs.vimUtils.buildVimPlugin {
+    #    name = "99-nvim";
+    #    nvimSkipModules = [ "99.editor.lsp" ];
+    #    src = /home/xam/Projects/99;
+    #  })
+    #];
+    #
+    #extraConfigLua = ''
+    #  require("99").setup({
+    #    provider = require("99.providers").OllamaProvider,
+    #    model = "qwen2.5-coder:7b",
+    #    tmp_dir = "/home/xam/.99/tmp",
+    #  })
+    #'';
     
     #------------------------------
 
