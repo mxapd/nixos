@@ -83,6 +83,7 @@
   };
 
   programs = {
+    wireshark.enable = true;
     zsh.enable = true;
     firefox.enable = true;
     steam.enable = true;
@@ -115,6 +116,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    wireshark
     grim
     slurp
     kitty

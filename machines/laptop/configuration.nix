@@ -36,7 +36,7 @@
   };
 
   networking = {
-    hostName = "nixos";
+    hostName = "laptop";
     networkmanager.enable = true;
     #  wireless.enable = true;
     #proxy.default = "http://user:password@proxy:port/";
@@ -94,6 +94,7 @@
   };
 
   programs = {
+    wireshark.enable = true;
     zsh.enable = true;
     #noisetorch.enable = true;
     firefox.enable = true;
@@ -112,6 +113,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+      wireshark
       blueman
       gcc
       rustup

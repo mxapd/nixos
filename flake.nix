@@ -2,7 +2,7 @@
   description = "A very basic flake";
 
   inputs = {
-    shared-hosts.url = "git+ssh://gitea@gitea.yggdrasil.com/vinx/Shared-Intranet-Host.git?ref=main";
+    #shared-hosts.url = "git+ssh://gitea@gitea.yggdrasil.com/vinx/Shared-Intranet-Host.git?ref=main";
 
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     hyprland.url = "github:hyprwm/Hyprland";
@@ -17,7 +17,7 @@
       };
   };
 
-  outputs = { self, nixpkgs, stylix, home-manager, nixvim, shared-hosts, ... } @ inputs:
+  outputs = { self, nixpkgs, stylix, home-manager, nixvim, ... } @ inputs:
 
   let
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -33,7 +33,6 @@
 	./machines/desktop/configuration.nix
 	./users/xam/xam.nix
 	
-	shared-hosts.outputs.nixosModules.sheardHosts
 
 	home-manager.nixosModules.home-manager {
           home-manager.backupFileExtension = "backup";
@@ -55,7 +54,6 @@
 	./machines/ancient/configuration.nix
 	./users/xam/xam.nix
 
-	shared-hosts.outputs.nixosModules.sheardHosts
 
 	stylix.nixosModules.stylix 
       ];
@@ -69,7 +67,6 @@
 	./machines/laptop/configuration.nix
 	./users/xam/xam.nix
 	
-	shared-hosts.outputs.nixosModules.sheardHosts
 
 	home-manager.nixosModules.home-manager {
           home-manager.backupFileExtension = "backup";

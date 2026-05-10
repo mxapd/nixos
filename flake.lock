@@ -605,20 +605,6 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1764947035,
-        "narHash": "sha256-EYHSjVM4Ox4lvCXUMiKKs2vETUSL5mx+J2FfutM7T9w=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "a672be65651c80d3f592a89b3945466584a22069",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_4": {
-      "locked": {
         "lastModified": 1767767207,
         "narHash": "sha256-Mj3d3PfwltLmukFal5i3fFt27L6NiKXdBezC1EBuZs4=",
         "owner": "NixOS",
@@ -709,27 +695,7 @@
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",
-        "shared-hosts": "shared-hosts",
         "stylix": "stylix"
-      }
-    },
-    "shared-hosts": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_3"
-      },
-      "locked": {
-        "lastModified": 1769015828,
-        "narHash": "sha256-zGkmPneoLQUFlc82Dn03cSELJN5qah3KDA5aa/HdfkM=",
-        "ref": "main",
-        "rev": "283ed8ce7f605ac91f4d12de603fa0346773afb9",
-        "revCount": 25,
-        "type": "git",
-        "url": "ssh://gitea@gitea.yggdrasil.com/vinx/Shared-Intranet-Host.git"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "ssh://gitea@gitea.yggdrasil.com/vinx/Shared-Intranet-Host.git"
       }
     },
     "stylix": {
@@ -741,7 +707,7 @@
         "firefox-gnome-theme": "firefox-gnome-theme",
         "flake-parts": "flake-parts_2",
         "gnome-shell": "gnome-shell",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_3",
         "nur": "nur",
         "systems": "systems_3",
         "tinted-foot": "tinted-foot",

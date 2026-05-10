@@ -57,6 +57,7 @@
     parted
     feh
     ripgrep
+    fzf
   ];
   programs.zsh.enable = true;
 }
