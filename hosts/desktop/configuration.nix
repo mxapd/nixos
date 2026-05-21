@@ -126,7 +126,8 @@ nix.settings.extra-platforms = [ "aarch64-linux" ];
   security.rtkit.enable = true;
   
   nixpkgs.config.allowUnfree = true;
-
+  
+  virtualisation.docker.enable = true;
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
   #virtualisation.virtualbox.guest.enable = true;
@@ -143,6 +144,7 @@ nix.settings.extra-platforms = [ "aarch64-linux" ];
     inputs.agenix.packages."${pkgs.system}".default
     (pkgs.callPackage ../../custom-pkgs/nixos-warnings.nix { })
 
+    docker
     pi-coding-agent
     grim
     slurp
@@ -190,7 +192,6 @@ nix.settings.extra-platforms = [ "aarch64-linux" ];
     nodejs_22
     gnumake
     unzip
-    teamspeak3
     wl-clipboard
     discord-canary
     htop
