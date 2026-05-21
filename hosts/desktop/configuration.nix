@@ -129,13 +129,7 @@ nix.settings.extra-platforms = [ "aarch64-linux" ];
   
   virtualisation.docker = {
     enable = true;
-    daemon.settings = {
-      dns = [ "8.8.8.8" "1.1.1.1" ];
-    };
   }; 
-
-  users.users.xam.extraGroups = [ "docker" ];
-
 
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
