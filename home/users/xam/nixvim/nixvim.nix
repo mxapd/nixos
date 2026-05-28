@@ -12,6 +12,7 @@
     ./plugins/neo-tree.nix
     ./plugins/wrapping.nix
     ./plugins/conform.nix
+    ./plugins/toc.nix
     #./plugins/dashboard.nix
   ];
 

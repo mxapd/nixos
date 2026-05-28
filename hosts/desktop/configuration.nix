@@ -7,6 +7,7 @@
       ./hardware-configuration.nix
       ./../../modules/postgresql.nix
       ./../../modules/torzu.nix
+      ./../../modules/obs.nix
     ];
 
   # Bootloader.
