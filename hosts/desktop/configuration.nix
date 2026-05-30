@@ -44,32 +44,38 @@
   
   console.keyMap = "sv-latin1";
   
-boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-nix.settings.extra-platforms = [ "aarch64-linux" ];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  nix.settings.extra-platforms = [ "aarch64-linux" ];
 
   services = {
     flatpak.enable = true; 
-    # xserver.libinput.enable = true;
+    
     xserver.enable = true;
     xserver.xkb = {
       layout = "se";
       variant = "";
     };
+    xserver.videoDrivers = ["nvidia"];
+
     mysql.enable = true;
     mysql.package = pkgs.mariadb;
+    
     printing.enable = true;
+    
     pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+    
     displayManager.sddm.enable = true;
-    ratbagd.enable = true;
+    
+    ratbagd.enable = true; # for gaming mice, logitech superlight
+    
     openssh = {
       enable = true;
     };
-    xserver.videoDrivers = ["nvidia"];
 
     syncthing = {
       enable  = true;
@@ -85,48 +91,21 @@ nix.settings.extra-platforms = [ "aarch64-linux" ];
     gnupg = {
       agent.enable = true;
     };
+
     zsh.enable = true;
     firefox.enable = true;
+    
     steam.enable = true;
     gamemode.enable = true;
     
     hyprland = {
       enable = true;
-      # set the flake package
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      # make sure to also set the portal package, so that they are in sync
       portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
   };
 
-  #  programs.firejail = {
-  #    enable = true;
-  #    wrappedBinaries = {
-  #      opencode = {
-  #        executable = "${pkgs.opencode}/bin/opencode";
-  #	extraArgs = [
-  #     	  "--private"
-  #	  "--whitelist=\${HOME}/Projects"
-  #     	  "--whitelist=\${HOME}/.config/opencode"
-  #     	  "--whitelist=\${HOME}/.local/state/opencode"
-  #     	  "--whitelist=\${HOME}/.local/share/opencode"
-  #     	  "--read-only=\${HOME}/nixos"
-  #     	  "--blacklist=\${HOME}/.ssh"
-  #     	  "--blacklist=\${HOME}/.gnupg"
-  #     	  "--blacklist=\${HOME}/.aws"
-  #     	  "--blacklist=\${HOME}/.config/gcloud"
-  #     	  "--blacklist=\${HOME}/.netrc"
-  #     	  "--blacklist=\${HOME}/.npmrc"
-  #     	  "--private-tmp"
-  #     	  "--caps.drop=all"
-  #	];
-  #      };
-  #    };
-  #  };
-
   security.rtkit.enable = true;
-  
-  nixpkgs.config.allowUnfree = true;
   
   virtualisation.docker = {
     enable = true;
@@ -138,11 +117,6 @@ nix.settings.extra-platforms = [ "aarch64-linux" ];
   #virtualisation.virtualbox.guest.dragAndDrop = true;
   
   users.extraGroups.vboxusers.members = [ "xam" ];
- 
-  services.tailscale = {
-    enable = true;
-    useRoutingFeatures = "client";
-  };
 
   environment.systemPackages = with pkgs; [
     inputs.agenix.packages."${pkgs.system}".default
@@ -173,7 +147,6 @@ nix.settings.extra-platforms = [ "aarch64-linux" ];
     pavucontrol
     rustup
     clang
-    #ollama-cuda
     piper
     zip
     gotop
@@ -205,7 +178,6 @@ nix.settings.extra-platforms = [ "aarch64-linux" ];
     vlc
     blueman
     fzf
-
     bun
   ];
 

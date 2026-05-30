@@ -22,29 +22,7 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "Europe/Stockholm";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "sv_SE.UTF-8";
-    LC_IDENTIFICATION = "sv_SE.UTF-8";
-    LC_MEASUREMENT = "sv_SE.UTF-8";
-    LC_MONETARY = "sv_SE.UTF-8";
-    LC_NAME = "sv_SE.UTF-8";
-    LC_NUMERIC = "sv_SE.UTF-8";
-    LC_PAPER = "sv_SE.UTF-8";
-    LC_TELEPHONE = "sv_SE.UTF-8";
-    LC_TIME = "sv_SE.UTF-8";
-  };
-
-
-  networking.firewall.allowedTCPPorts = [
+   networking.firewall.allowedTCPPorts = [
     445
     3000 # for gitea
     2222 # also for gitea but not sure if needed
@@ -54,6 +32,7 @@
     80
     # 22000 # Syncthing sync port (TCP, usually opened by #yncthing.openFirewall = true)
   ];
+
   networking.firewall.allowedUDPPorts = [
       80
     # 21027 # Syncthing discovery port (UDP, usually opened by syncthing.openFirewall = true)
@@ -66,7 +45,6 @@
     variant = "";
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.xam = {
     isNormalUser = true;
     description = "Xam";
@@ -74,11 +52,7 @@
     packages = with pkgs; [];
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     neovim
     vim
