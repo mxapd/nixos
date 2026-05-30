@@ -120,6 +120,7 @@
 
   environment.systemPackages = with pkgs; [
     inputs.agenix.packages."${pkgs.system}".default
+    
     (pkgs.callPackage ../../custom-pkgs/nixos-warnings.nix { })
 
     docker
@@ -152,17 +153,14 @@
     gotop
     rar
     qbittorrent
-    git
     python3
     prismlauncher
-    fastfetch
     slack
     gamescope
     spotify
     libreoffice
     syncthing
     ripgrep-all
-    zoxide
     tmux
     libgcc
     zig
@@ -177,7 +175,6 @@
     gradle
     vlc
     blueman
-    fzf
     bun
   ];
 

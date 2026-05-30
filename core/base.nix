@@ -42,6 +42,9 @@
     ripgrep
     file
     age
+    fzf
+    zoxide
+    fastfetch
   ];
 
 
