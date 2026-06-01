@@ -9,7 +9,10 @@
       ./../../modules/torzu.nix
       ./../../modules/obs.nix
     ];
-
+  
+  networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [ 5900 ]; # wayvrc
+  
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
