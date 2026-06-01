@@ -133,8 +133,8 @@
       python3
       obsidian
       kitty
-      neofetch
       slack
+      fastfetch
       spotify
       vscodium
       libreoffice
@@ -150,8 +150,6 @@
       gnumake
       mariadb
       unzip
-      lunarvim
-      teamspeak3
       wl-clipboard
       discord-canary
       htop
