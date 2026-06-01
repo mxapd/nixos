@@ -118,7 +118,7 @@
     extraConfig = ''
       exec-once = waybar
       exec-once = mako
-      exec_always wayvnc
+      exec-once = wayvnc 0.0.0.0 5900
 
       input {
   #	kb_options = caps:swapescape
