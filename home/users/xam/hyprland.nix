@@ -109,7 +109,6 @@
       ];
 
       monitor = [
-	#"DP-1, 1920x1080@119.88Hz, 0x0,1"
 	"DP-1, 2560x1440@180.00Hz, 0x0,1"
 	"DP-3,1920x1080@144.00Hz,-1920x0,1"
       ];
@@ -119,6 +118,7 @@
     extraConfig = ''
       exec-once = waybar
       exec-once = mako
+      exec_always wayvnc
 
       input {
   #	kb_options = caps:swapescape
@@ -126,7 +126,7 @@
       '';
   };
 
-#xdg.portal.enable = true;
-#xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  #xdg.portal.enable = true;
+  #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   home.sessionVariables.NIXOS_OZONE_WL= "1";
 }

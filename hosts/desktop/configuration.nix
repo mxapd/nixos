@@ -123,6 +123,7 @@
     
     (pkgs.callPackage ../../custom-pkgs/nixos-warnings.nix { })
 
+    wayvnc
     docker
     pi-coding-agent
     grim
