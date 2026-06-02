@@ -204,7 +204,7 @@ services.radicale = {
       Type = "oneshot";
       ExecStart = [ 
 	"/run/current-system/sw/bin/mkdir -p /mnt/git/"
-	"/run/current-system/sw/bin/rsync -a --delete /var/lib/gitea/ /mnt/git/''"
+	"/run/current-system/sw/bin/rsync -a --delete /var/lib/gitea/ /mnt/git/"
       ];    
     };
   };

@@ -42,6 +42,7 @@
 	./core/users.nix
 	./core/stylix.nix
 	./core/secrets.nix
+	./core/ssh-access.nix
 	
 	./hosts/desktop/configuration.nix
 
@@ -66,8 +67,9 @@
 	./core/base.nix
 	./core/tailscale.nix
 	./core/users.nix
-
-	./hosts/ancient/configuration.nix
+	./core/ssh-access.nix
+	
+	  ./hosts/ancient/configuration.nix
 
 	agenix.nixosModules.default
 	#shared-hosts.outputs.nixosModules.sheardHosts
@@ -83,6 +85,8 @@
 	./core/users.nix
 	./core/stylix.nix
 	./core/secrets.nix
+	./core/ssh-access.nix
+
 	
 	./hosts/laptop/configuration.nix
 
@@ -107,6 +111,7 @@
 	./core/base.nix
 	./core/tailscale.nix
 	./core/users.nix
+	./core/ssh-access.nix
 
 	./hosts/hermes/configuration.nix
 
