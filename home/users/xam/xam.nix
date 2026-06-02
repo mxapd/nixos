@@ -65,13 +65,13 @@
       (writeShellApplication {
         name = "tmux-sessionizer";
         runtimeInputs = with pkgs; [ tmux fzf findutils procps ];
-        text = builtins.readFile ../../../scripts/tmux-sessionizer;
+        text = builtins.readFile ../../../scripts/tmux-sessionizer.sh;
       })
 
       (writeShellApplication {
         name = "tmux_toggle_notes";
         runtimeInputs = with pkgs; [ tmux ];
-        text = builtins.readFile ../../../scripts/tmux_notes_toggle;
+        text = builtins.readFile ../../../scripts/tmux_notes_toggle.sh;
       })
 
       (writeShellApplication {

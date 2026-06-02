@@ -7,11 +7,12 @@
 
 
   shellAliases =  {
-    mount-ancient= "sudo mount -t cifs //192.168.1.204/video /mnt/ancient_share/video -o username=xam,uid=1000,gid=100,rw && \
-		    sudo mount -t cifs //192.168.1.204/books /mnt/ancient_share/books -o username=xam,uid=1000,gid=100,rw";
+    cd="z";
+    mount-ancient="sudo mount -t cifs //192.168.1.204/video /mnt/ancient_share/video -o username=xam,uid=1000,gid=100,rw && \
+		   sudo mount -t cifs //192.168.1.204/books /mnt/ancient_share/books -o username=xam,uid=1000,gid=100,rw";
     nd="nix develop";
     ns="nix shell";
-    check="nix flake check --impure";
+    check="nix flake check";
     pai="bun ~/.opencode/PAI/Tools/pai.ts";
   };
 
