@@ -41,6 +41,7 @@
 	./core/tailscale.nix
 	./core/users.nix
 	./core/stylix.nix
+	./core/secrets.nix
 	
 	./hosts/desktop/configuration.nix
 
@@ -65,6 +66,7 @@
 	./core/base.nix
 	./core/tailscale.nix
 	./core/users.nix
+	./core/secrets.nix
 
 	./hosts/ancient/configuration.nix
 
@@ -81,6 +83,7 @@
 	./core/tailscale.nix
 	./core/users.nix
 	./core/stylix.nix
+	./core/secrets.nix
 	
 	./hosts/laptop/configuration.nix
 
@@ -105,6 +108,7 @@
 	./core/base.nix
 	./core/tailscale.nix
 	./core/users.nix
+	./core/secrets.nix
 
 	./hosts/hermes/configuration.nix
 
