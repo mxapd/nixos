@@ -9,6 +9,7 @@
     ./mako.nix
     ./git.nix
     ./zsh.nix
+    ./ssh.nix
   ];
 
   home = {
