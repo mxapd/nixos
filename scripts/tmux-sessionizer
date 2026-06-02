@@ -3,13 +3,12 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    projects=$(find ~/Projects -mindepth 1 -maxdepth 1 -type d)
+    projects=$(find ~/Projects -mindepth 1 -maxdepth 1 -type d ! -name '.*')
     
     projects="$projects"
     nixos="$HOME/nixos"
     university="$HOME/Documents/university/"    
-    obsidian="$HOME/Documents/obsidian/"
-    selected=$(printf "%s\n%s\n%s\n%s\n" "$projects" "$nixos" "$university" "$obsidian" | fzf)
+    selected=$(printf "%s\n%s\n%s\n%s\n" "$projects" "$nixos" "$university" | fzf)
 fi
 
 if [[ -z $selected ]]; then
