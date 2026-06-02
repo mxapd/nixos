@@ -5,9 +5,9 @@ echo "$(date '+%H:%M:%S'): Starting rebuild"
 ret=$(pwd)
 cd ~/nixos/
 
-NIXOS_REBUILD_CMD="sudo -E nixos-rebuild switch --flake .# --impure"
+NIXOS_REBUILD_CMD="sudo -E nixos-rebuild switch --flake .#"
 
-if [[ "$1" == "--cool" || "$1" == "-c" ]]; then
+if [[ "${1:-}" == "--cool" || "${1:-}" == "-c" ]]; then
   NIXOS_REBUILD_CMD="systemd-run --scope -p CPUQuota=30% -- $NIXOS_REBUILD_CMD"
 fi
 

@@ -4,19 +4,25 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     hyprland.url = "github:hyprwm/Hyprland";
+    hermes-agent.url = "github:NousResearch/hermes-agent";
+    agenix.url = "github:ryantm/agenix";
+    stylix.url = "github:danth/stylix";
+    
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hermes-agent.url = "github:NousResearch/hermes-agent";
     
-    stylix.url = "github:danth/stylix";
+    torzu = {
+      url = "git+http://gitea.yggdrasil.com/BMSwahn/Torzu";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    agenix.url = "github:ryantm/agenix";
+    
 
     #shared-hosts.url = "git+ssh://gitea@gitea.yggdrasil.com/vinx/Shared-Intranet-Host.git?ref=main";
   };
