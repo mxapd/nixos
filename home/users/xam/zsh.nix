@@ -25,26 +25,11 @@
 
     zle -N tmux_sessionizer_widget
     bindkey '^f' tmux_sessionizer_widget
-    
-    
-    # loading ssh keys
-    
-    if [ -z "$SSH_AUTH_SOCK" ]; then
-      eval "$(ssh-agent -s)" > /dev/null
-      ssh-add ~/.ssh/lnu_ed25519 2>/dev/null
-    fi
-    
+
     # automatically start a tmux session when opening an shell if apropriate
-    
     if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
       exec tmux
     fi
-    
-    PROMPT='[%1~] •%f '
-    RPROMPT='$(git_prompt_info) %T'	
-    
-
-
     '';
 
     oh-my-zsh = {
