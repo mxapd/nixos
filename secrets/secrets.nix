@@ -1,13 +1,17 @@
-let
-  # root nixos desktop
-  nixos_desktop = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAwA0Qn2WZa+mz79ehNsLBOj2uV+dTJOuoLduxsOk+bk";
-  # hermes host - SSH ed25519 host key
-  hermes = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO8Jgq6sCmPA7WcZttZQ5JOxV09JLsPfhfooOUQSsJHf";
-in
+{ ... }:
+
 {
-  "github_ssh_mxapd.age".publicKeys = [ nixos_desktop ];
-  "gitlab_ssh_lnu.age".publicKeys = [ nixos_desktop ];
-  "gitea_ssh_ancient.age".publicKeys = [ nixos_desktop ];
-  "gitea_ssh_swahnlabs.age".publicKeys = [ nixos_desktop ];
-  "hermes-env.age".publicKeys = [ hermes ];
+  age.secrets.github-ssh-key = {
+    file = ./github_ssh_mxapd.age;
+    path = "/home/xam/.ssh/github_mxapd";
+    owner = "xam";
+    mode = "600";
+  };
+
+  age.secrets.gitlab-ssh-key = {
+    file = ./gitlab_ssh_lnu.age;
+    path = "/home/xam/.ssh/gitlab_lnu";
+    owner = "xam";
+    mode = "600";
+  };
 }

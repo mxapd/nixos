@@ -8,6 +8,7 @@
       ./../../modules/postgresql.nix
       ./../../modules/torzu.nix
       ./../../modules/obs.nix
+      ./../../secrets/secrets.nix
     ];
   
   networking.firewall.enable = true;
