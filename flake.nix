@@ -66,7 +66,6 @@
 	./core/base.nix
 	./core/tailscale.nix
 	./core/users.nix
-	./core/secrets.nix
 
 	./hosts/ancient/configuration.nix
 
@@ -108,7 +107,6 @@
 	./core/base.nix
 	./core/tailscale.nix
 	./core/users.nix
-	./core/secrets.nix
 
 	./hosts/hermes/configuration.nix
 
