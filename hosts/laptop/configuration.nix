@@ -8,7 +8,6 @@
   imports =
     [ 
       ./hardware-configuration.nix
-      ./../../modules/stylix.nix
     ];
 
   ## unsafe, need to find out what package relies on this lib and update
