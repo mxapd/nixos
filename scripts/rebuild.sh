@@ -3,7 +3,7 @@
 echo "$(date '+%H:%M:%S'): Starting rebuild"
 
 ret=$(pwd)
-cd ~/nixos/
+cd ~/nixos/ || { echo "Could not cd to ~/nixos"; exit 1; }
 
 NIXOS_REBUILD_CMD="sudo -E nixos-rebuild switch --flake .#"
 
