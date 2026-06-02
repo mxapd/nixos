@@ -15,7 +15,6 @@
     
     torzu = {
       url = "git+http://gitea.yggdrasil.com/BMSwahn/Torzu";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixvim = {

@@ -1,9 +1,6 @@
-{ pkgs, ... }:
-let
-  torzu-flake = builtins.getFlake "git+http://gitea.yggdrasil.com/BMSwahn/Torzu";
-in
+{ pkgs, inputs, ... }:
 {
   environment.systemPackages = [
-    torzu-flake.packages.${pkgs.system}.default
+    inputs.torzu.packages.${pkgs.system}.default
   ];
 }
