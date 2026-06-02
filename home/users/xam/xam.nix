@@ -61,10 +61,26 @@
         ${pkgs.opencode}/bin/opencode "$@"
       '')
 
-      (writeShellScriptBin "tmux-sessionizer" (builtins.readFile /home/xam/nixos/scripts/tmux-sessionizer))
-      (writeShellScriptBin "tmux_toggle_notes" (builtins.readFile /home/xam/nixos/scripts/tmux_notes_toggle))
+
+      (writeShellApplication {
+        name = "tmux-sessionizer";
+        runtimeInputs = with pkgs; [ tmux fzf findutils procps ];
+        text = builtins.readFile ../../../scripts/tmux-sessionizer;
+      })
+
+      (writeShellApplication {
+        name = "tmux_toggle_notes";
+        runtimeInputs = with pkgs; [ tmux ];
+        text = builtins.readFile ../../../scripts/tmux_notes_toggle;
+      })
+
+      (writeShellApplication {
+        name = "rebuild";
+        runtimeInputs = with pkgs; [ git util-linux ];
+        text = builtins.readFile ../../../scripts/rebuild.sh;
+      })
+
       #(writeShellScriptBin "nixos-warnings" (builtins.readFile ../../../scripts/nixos-warnings.sh))
-      (writeShellScriptBin "rebuild" (builtins.readFile /home/xam/nixos/scripts/rebuild.sh))
     ];
   };
 

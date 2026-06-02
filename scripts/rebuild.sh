@@ -17,7 +17,7 @@ if script -q -e -c "$NIXOS_REBUILD_CMD" /tmp/nixos-rebuild.log ; then
 
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     printf "Commit message: "
-    read msg
+    read -r msg
 
     if [ -z "$msg" ]; then
       msg="Update $(date '+%Y-%m-%d %H:%M:%S')"
