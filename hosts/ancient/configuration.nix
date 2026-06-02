@@ -29,14 +29,14 @@
     8384 # Syncthing Web UI
     8096 # jellyfin    
     5232 # redicale calendar
-    80
+    # 80
     # 22000 # Syncthing sync port (TCP, usually opened by #yncthing.openFirewall = true)
   ];
 
   networking.firewall.allowedUDPPorts = [
-      80
+    # 80
     # 21027 # Syncthing discovery port (UDP, usually opened by syncthing.openFirewall = true)
-    #8096 # jellyfin    
+    8096 # jellyfin    
   ];
   
   # Configure keymap in X11
