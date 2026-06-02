@@ -1,6 +1,15 @@
 {  pkgs, ...}:
 
 {
+
+  networking.hosts = {
+    "100.64.0.14" = [ "ancient" ];
+    #"100.64.0.Y" = [ "hermes" ];
+    "100.64.0.6" = [ "desktop" ];
+    "100.64.0.7" = [ "laptop" ];
+  };
+
+
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "client";
