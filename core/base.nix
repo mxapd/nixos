@@ -31,6 +31,7 @@
 
   # --PROGRAMS--
   environment.systemPackages = with pkgs; [
+    btop
     vim
     tree
     git

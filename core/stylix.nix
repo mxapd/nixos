@@ -10,6 +10,8 @@
     cursor.name = "Bibata-Modern-Ice";
     cursor.size = 20;
 
+    targets.kmscon.enable = false;
+
     #gruvbox-material-hard
     base16Scheme = {
       base00 = "#202020";
