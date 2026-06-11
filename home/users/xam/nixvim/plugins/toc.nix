@@ -1,5 +1,4 @@
-{ 
-programs.nixvim = {
+{ programs.nixvim = {
   extraConfigLua = ''
     -- ========================================
     -- Markdown Table of Contents Generator
@@ -51,29 +50,40 @@ programs.nixvim = {
     local function parse_headings(lines)
       local headings = {}
       local slug_counts = {}
+    
       local in_code = false
+      local fence_char = nil
       local fence_length = 0
-
+    
       for _, line in ipairs(lines) do
-        local fence = line:match("^```+")
+        -- Allow optional indentation and both ``` / ~~~ fences
+        local _, fence, rest = line:match("^(%s*)([`~][`~][`~]+)(.*)$")
+    
         if fence then
-          if in_code and #fence >= fence_length then
-            in_code = false
-            fence_length = 0
-          else
+          local char = fence:sub(1, 1)
+          local len = #fence
+    
+          if not in_code then
             in_code = true
-            fence_length = #fence
+            fence_char = char
+            fence_length = len
+          elseif char == fence_char and len >= fence_length then
+            in_code = false
+            fence_char = nil
+            fence_length = 0
           end
+    
         elseif not in_code then
           local hashes, text = line:match("^(#+)%s+(.+)")
           if hashes and #hashes <= 6 then
             local level = #hashes
             local slug = github_slug(text)
-            -- Deduplicate slugs: first gets no suffix, second gets -1, etc.
+    
             slug_counts[slug] = (slug_counts[slug] or 0) + 1
             if slug_counts[slug] > 1 then
               slug = slug .. "-" .. (slug_counts[slug] - 1)
             end
+    
             table.insert(headings, {
               level = level,
               text = text,
@@ -83,9 +93,8 @@ programs.nixvim = {
         end
       end
 
-      return headings
-    end
-
+  return headings
+end
     -- Build TOC lines from parsed headings (indented bullet list)
     local function generate_toc(headings)
       local lines = {}
@@ -198,5 +207,4 @@ programs.nixvim = {
       end,
     })
   '';
-  }; 
-}
+}; }
