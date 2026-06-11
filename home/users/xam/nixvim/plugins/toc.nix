@@ -1,4 +1,5 @@
-{ programs.nixvim = {
+{ 
+programs.nixvim = {
   extraConfigLua = ''
     -- ========================================
     -- Markdown Table of Contents Generator
@@ -197,4 +198,5 @@
       end,
     })
   '';
-}; }
+  }; 
+}
