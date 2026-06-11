@@ -13,6 +13,7 @@
     ./plugins/wrapping.nix
     ./plugins/conform.nix
     ./plugins/toc.nix
+    ./plugins/aerial.nix
     #./plugins/dashboard.nix
   ];
 
