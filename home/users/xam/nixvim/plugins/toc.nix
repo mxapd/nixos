@@ -51,10 +51,18 @@
       local headings = {}
       local slug_counts = {}
       local in_code = false
+      local fence_length = 0
 
       for _, line in ipairs(lines) do
-        if line:match("^```") then
-          in_code = not in_code
+        local fence = line:match("^```+")
+        if fence then
+          if in_code and #fence >= fence_length then
+            in_code = false
+            fence_length = 0
+          else
+            in_code = true
+            fence_length = #fence
+          end
         elseif not in_code then
           local hashes, text = line:match("^(#+)%s+(.+)")
           if hashes and #hashes <= 6 then
