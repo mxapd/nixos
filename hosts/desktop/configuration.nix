@@ -40,7 +40,7 @@
 
   networking = {
     hostName = "desktop";
-    nameservers = [ "8.8.8.8" "100.42.0.1"];
+    nameservers = [ "8.8.8.8" "1.1.1.1" "100.42.0.1" ];
   };
 
   programs.direnv.enable = true;
@@ -112,9 +112,9 @@
 
   security.rtkit.enable = true;
   
-  virtualisation.docker = {
-    enable = true;
-  };
+  # virtualisation.docker = {
+  #   enable = true;
+  # };
   
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;

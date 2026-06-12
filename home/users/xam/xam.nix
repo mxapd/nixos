@@ -26,7 +26,6 @@
 
 
     packages = with pkgs; [
-      #teamspeak3
       ollama
       oh-my-zsh
       git-credential-manager
