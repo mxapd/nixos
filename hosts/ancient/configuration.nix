@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./nas.nix
+      #./nas.nix
     ];
 
   # Bootloader.
@@ -87,7 +87,7 @@
 
       # - Shares -	
       "video" = {
-        "path" = "/mnt/video";
+        "path" = "/mnt/media/video";
         "browseable" = "yes";
         "read only" = "yes";
 	"write list" = "xam";
@@ -98,7 +98,18 @@
       };
 
       "books" = {
-        "path" = "/mnt/books";
+        "path" = "/mnt/media/books";
+        "browseable" = "yes";
+        "read only" = "yes";
+	"write list" = "xam";
+        "guest ok" = "yes"; 
+        "create mask" = "0644"; # rw-r--r--
+        "directory mask" = "0755"; # rwxr-xr-x
+        "force user" = "xam";
+      };
+
+      "games" = {
+        "path" = "/mnt/media/games";
         "browseable" = "yes";
         "read only" = "yes";
 	"write list" = "xam";
@@ -135,20 +146,13 @@
     options = [ "defaults" "nofail" ];
   };
 
-  # mount video lv
-  fileSystems."/mnt/video" = {
-    device = "/dev/raid_storage_vg/video";
+  # mount media lv
+  fileSystems."/mnt/media" = {
+    device = "/dev/raid_storage_vg/media";
     fsType = "ext4";
     options = [ "defaults" "nofail" ];
   };
   
-  # mount books lv
-   fileSystems."/mnt/books" = {
-    device = "/dev/raid_storage_vg/books";
-    fsType = "ext4";
-    options = [ "defaults" "nofail" ];
-  }; 
-
   # mount git
    fileSystems."/mnt/git" = {
     device = "/dev/raid_storage_vg/git";
@@ -156,13 +160,13 @@
     options = [ "defaults" "nofail" ];
   };
 
-services.radicale = {
-  enable = true;
-  settings = {
-    server.hosts = [ "0.0.0.0:5232" ];
-    auth.type = "none";
+  services.radicale = {
+    enable = true;
+    settings = {
+      server.hosts = [ "0.0.0.0:5232" ];
+      auth.type = "none";
+    };
   };
-};
 
   services.jellyfin = {
     enable = true;
