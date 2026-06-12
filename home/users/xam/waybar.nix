@@ -88,12 +88,12 @@ with lib;
 	  on-click = "wiremix";
 	};
 
-        "custom/nixos-warnings" = {
-	  exec = "echo '⚠ '$(nixos-warnings count)' warnings'";
-          interval = 5;
-          tooltip = true;
-          tooltip-format = "Click to view warnings (not yet inpmlemented)";
-        };
+	#"custom/nixos-warnings" = {
+	#  exec = "echo '⚠ '$(nixos-warnings count)' warnings'";
+        #  interval = 5;
+        #  tooltip = true;
+        #  tooltip-format = "Click to view warnings (not yet inpmlemented)";
+        #};
 
 
 	#	"custom/room_temp" = {
