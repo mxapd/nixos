@@ -2,7 +2,7 @@
 {
   stylix = {
     enable = true;
-    image = ../eclipse.png;
+    image = ../artemis_moon_dark.jpg;
     polarity = "dark";
     opacity.terminal = 0.95;
    
