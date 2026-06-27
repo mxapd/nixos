@@ -86,7 +86,10 @@
   programs = {
     zoxide.enable = true;
     zoxide.enableZshIntegration = true;                            	
-                                                                 
+    
+    hyprshot.enable = true;
+    hyprshot.saveLocation = "$HOME/Pictures/Screenshots";
+
     tmux = {                                                            
       enable = true;
     };
