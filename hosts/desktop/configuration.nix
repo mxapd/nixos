@@ -39,7 +39,7 @@
   };
 
   networking = {
-    hostName = "desktop";
+    hostName = "hearth"; # haven, sanctum
     nameservers = [ "8.8.8.8" "1.1.1.1" "100.42.0.1" ];
   };
 

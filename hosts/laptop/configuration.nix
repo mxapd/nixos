@@ -37,7 +37,7 @@
   };
 
   networking = {
-    hostName = "laptop";
+    hostName = "sojourner"; # other options: nomad, voyager, pilgrim
     networkmanager.enable = true;
     #  wireless.enable = true;
     #proxy.default = "http://user:password@proxy:port/";
