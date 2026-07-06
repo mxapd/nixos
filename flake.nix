@@ -22,7 +22,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
-
     #shared-hosts.url = "git+ssh://gitea@gitea.yggdrasil.com/vinx/Shared-Intranet-Host.git?ref=main";
   };
 
