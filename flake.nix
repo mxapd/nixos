@@ -5,6 +5,8 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     import-tree.url = "github:denful/import-tree";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; }
