@@ -37,7 +37,7 @@
 	inputs.self.nixosModules.hyprland
 	inputs.self.nixosModules.hyprmoon
 	inputs.self.nixosModules.hyprland-core
-
+	inputs.self.nixosModules.stylix
 	inputs.self.nixosModules.waybar
       ];
   };
