@@ -133,6 +133,7 @@
     
     (pkgs.callPackage ../../custom-pkgs/nixos-warnings.nix { })
 
+    goose-cli
     wayvnc
     docker
     pi-coding-agent
