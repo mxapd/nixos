@@ -30,6 +30,8 @@
         inputs.self.nixosModules.hearth-hardware
 	inputs.self.nixosModules.hyprland
 	inputs.self.nixosModules.nvidia
+
+
       ];
   };
 }
