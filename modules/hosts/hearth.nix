@@ -39,6 +39,9 @@
 	inputs.self.nixosModules.hyprland-core
 	inputs.self.nixosModules.stylix
 	inputs.self.nixosModules.waybar
+	
+	inputs.nixvim.nixosModules.nixvim
+	inputs.self.nixosModules.nixvim
       ];
   };
 }

@@ -2,6 +2,11 @@
 
 {
   flake.nixosModules.hm-xam = { pkgs, ... }: {
+    imports = [ 
+      inputs.self.nixosModules.hm-xam-zsh
+      inputs.self.nixosModules.nixvim
+    ]; 
+
     home-manager.users.xam = {
       home = {
         username = "xam";
