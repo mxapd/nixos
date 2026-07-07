@@ -2,7 +2,7 @@
 
 {
   flake.nixosModules.user-xam =
-  { config, lib, pkgs, ... }:
+  { config, lib, ... }:
   
   {
     users.users.xam = {

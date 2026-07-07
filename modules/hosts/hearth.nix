@@ -25,13 +25,20 @@
 	  ];
 
         })
-	
-        inputs.self.nixosModules.user-xam
+
         inputs.self.nixosModules.hearth-hardware
-	inputs.self.nixosModules.hyprland
+	inputs.self.nixosModules.user-xam
+	
 	inputs.self.nixosModules.nvidia
 
+	inputs.self.nixosModules.home-manager
+	inputs.self.nixosModules.hm-xam
+	
+	inputs.self.nixosModules.hyprland
+	inputs.self.nixosModules.hyprmoon
+	inputs.self.nixosModules.hyprland-core
 
+	inputs.self.nixosModules.waybar
       ];
   };
 }

@@ -1,6 +1,6 @@
 { inputs, lib, ... }:
 {
-  flake.modules.nixos.home-manager = { pkgs, config, ... }: {
+  flake.nixosModules.home-manager = { pkgs, config, ... }: {
     imports = [ inputs.home-manager.nixosModules.home-manager ];
 
     home-manager = {
