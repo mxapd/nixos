@@ -5,6 +5,10 @@
     imports = [ 
       inputs.self.nixosModules.hm-xam-zsh
       inputs.self.nixosModules.nixvim
+      inputs.self.nixosModules.tmux-notes
+      inputs.self.nixosModules.tmux-sessionizer
+      inputs.self.nixosModules.rebuild
+      inputs.self.nixosModules.goose
     ]; 
 
     home-manager.users.xam = {
@@ -24,7 +28,6 @@
           git-credential-manager
           zoxide
           
-
 	  wiremix
           
 
