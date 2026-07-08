@@ -19,7 +19,6 @@
 	enable = true;
 	xwayland.enable = true;  
 
-
 	settings = {
 	  input = {
 	    kb_variant = "altgr-intl";

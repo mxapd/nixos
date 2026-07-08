@@ -3,7 +3,7 @@
   flake.nixosModules.hyprland = { config, pkgs, ... }:
   {
     programs.hyprland.enable = true;
-
+    
     environment.systemPackages =  with pkgs; [
       kitty # required for the default Hyprland config
       wofi

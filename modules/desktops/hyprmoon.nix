@@ -1,6 +1,12 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
-  flake.nixosModules.hyprmoon = { config, pkgs, host, lib, inputs,... }: with lib;{ 
+  flake.nixosModules.hyprmoon = { config, pkgs, host, lib, inputs,... }: with lib;{
+
+    services.greetd = {
+      enable = true;
+      settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --xsessions ${config.services.displayManager.sessionData.desktops}/share/xsessions --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --remember --remember-user-session --user-menu --user-menu-min-uid 1000 --asterisks --power-shutdown 'shutdown -P now' --power-reboot 'shutdown -r now'";
+    };
+    
     home-manager.users.xam = {  
       wayland.windowManager.hyprland = {
 	settings = {
@@ -8,6 +14,7 @@
 	  general.gaps_out = 6;
 	  decoration.rounding = 3;
 	  animations.enabled = false; 
+	  debug.disable_logs = false;
 	};
       };
 
@@ -259,7 +266,7 @@ label:focus {
 
     stylix = {
       enable = true;
-      image = ../artemis_moon_dark.png;
+      image = ../../assets/artemis_moon_dark.png;
       polarity = "dark";
       opacity.terminal = 0.95;
      

@@ -40,8 +40,8 @@
 	inputs.self.nixosModules.stylix
 	inputs.self.nixosModules.waybar
 	
-	inputs.nixvim.nixosModules.nixvim
 	inputs.self.nixosModules.nixvim
+	inputs.nixvim.nixosModules.nixvim
 
 	inputs.self.nixosModules.tailscale-communal
       ];

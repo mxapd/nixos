@@ -30,7 +30,6 @@
           
 	  wiremix
           
-
 	  calcurse
 
           (python3.withPackages (ppkgs: [
