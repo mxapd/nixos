@@ -22,6 +22,10 @@
 
 	  environment.systemPackages = with pkgs; [
 	    discord-canary
+	    vim
+	    ripgrep
+	    tree
+	    git
 	  ];
 
         })
