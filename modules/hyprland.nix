@@ -6,6 +6,8 @@
 
     environment.systemPackages =  with pkgs; [
       kitty # required for the default Hyprland config
+      wofi
+      hyprshot
     ];
 
     # hint Electron apps to use Wayland:

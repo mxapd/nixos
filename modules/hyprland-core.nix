@@ -1,11 +1,25 @@
 { inputs, ... }:
 {
   flake.nixosModules.hyprland-core = { config, pkgs, ... }: { 
-    home-manager.users.xam = {  
+    home-manager.users.xam = { 
+      programs = {
+	kitty = {
+	  enable = true;
+	  extraConfig = ''
+	    confirm_os_window_close 0
+	  '';
+	};
+
+        hyprshot.enable = true;
+        hyprshot.saveLocation = "$HOME/Pictures/Screenshots";
+      
+      };
+
       wayland.windowManager.hyprland = {
 	enable = true;
 	xwayland.enable = true;  
-      
+
+
 	settings = {
 	  input = {
 	    kb_variant = "altgr-intl";
@@ -91,7 +105,8 @@
           '';
       };
 
-    home.sessionVariables.NIXOS_OZONE_WL= "1";
+    home.sessionVariables.NIXOS_OZONE_WL= "1"; 
+
     };
   };
 }

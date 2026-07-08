@@ -21,17 +21,21 @@
         };
 
         packages = with pkgs; [
-          ollama
-          oh-my-zsh
           git-credential-manager
           zoxide
-          wiremix
-          bun
-          calcurse
+          
+
+	  wiremix
+          
+
+	  calcurse
+
           (python3.withPackages (ppkgs: [
             ppkgs.matplotlib
             ppkgs.pytest
           ]))
+
+          bun # for pai
 
           bubblewrap
           (writeShellScriptBin "opencode" ''
@@ -80,9 +84,6 @@
       programs = {
         zoxide.enable = true;
         zoxide.enableZshIntegration = true;
-
-        hyprshot.enable = true;
-        hyprshot.saveLocation = "$HOME/Pictures/Screenshots";
 
         tmux = {
           enable = true;

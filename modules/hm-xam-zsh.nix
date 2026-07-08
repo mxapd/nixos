@@ -1,7 +1,12 @@
 { ... }:
 {
   flake.nixosModules.hm-xam-zsh = { pkgs, ... }: {
-     home-manager.users.xam.programs.zsh = {
+    home-manager.users.xam = {
+      home.packages = with pkgs; [
+	oh-my-zsh
+      ];
+
+    programs.zsh = {
       enable = true;
       syntaxHighlighting.enable = true;
 
@@ -41,4 +46,5 @@
         };
       };
     };
+  };
 }
