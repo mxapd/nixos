@@ -42,6 +42,8 @@
 	
 	inputs.nixvim.nixosModules.nixvim
 	inputs.self.nixosModules.nixvim
+
+	inputs.self.nixosModules.tailscale-communal
       ];
   };
 }
