@@ -3,7 +3,7 @@
   flake.nixosModules.hyprmoon = { config, pkgs, host, lib, inputs,... }: with lib;{
     services.greetd = {
       enable = true;
-      # settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --xsessions ${config.services.displayManager.sessionData.desktops}/share/xsessions --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --remember --remember-user-session --user-menu --user-menu-min-uid 1000 --asterisks --power-shutdown 'shutdown -P now' --power-reboot 'shutdown -r now'";
+      settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --xsessions ${config.services.displayManager.sessionData.desktops}/share/xsessions --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --remember --remember-user-session --user-menu --user-menu-min-uid 1000 --asterisks --power-shutdown 'shutdown -P now' --power-reboot 'shutdown -r now'";
     };
     
     home-manager.users.xam = {  
@@ -273,24 +273,29 @@ label:focus {
       cursor.name = "Bibata-Modern-Ice";
       cursor.size = 20;
     
-      base16Scheme = {
-        base00 = "#0a0d0c";
-        base01 = "#121614";
-        base02 = "#1c211f";
-        base03 = "#3a423f";
-        base04 = "#6b7573";
-        base05 = "#9aa39f";
-        base06 = "#c5cdc9";
-        base07 = "#e8ece9";
-        base08 = "#b85c50";
-        base09 = "#c98a4b";
-        base0A = "#d4b96a";
-        base0B = "#7a9b7e";
-        base0C = "#6f9a95";
-        base0D = "#8fa8c2";
-        base0E = "#8a7a9b";
-        base0F = "#5a4a3f";
-      };
+base16Scheme = {
+  # background → a bit lighter
+  base00 = "#121820";
+  base01 = "#1b222c";
+  base02 = "#242d38";
+  base03 = "#2f3a47";
+
+  # foreground stack → brighter for readability
+  base04 = "#9aa5b4";
+  base05 = "#c5d0de";
+  base06 = "#e0e6f0";
+  base07 = "#f2f5fa";
+
+  # accents → slightly more saturated & higher contrast
+  base08 = "#e26d6d"; # red-ish
+  base09 = "#f2a76b"; # orange
+  base0A = "#f6d37a"; # yellow
+  base0B = "#7fcf7d"; # green
+  base0C = "#6fc6c9"; # cyan
+  base0D = "#7aa7ff"; # blue
+  base0E = "#c792ea"; # purple
+  base0F = "#f28ba8"; # pink-ish
+};
     };
 
   };

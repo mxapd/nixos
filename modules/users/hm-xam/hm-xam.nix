@@ -4,6 +4,8 @@
   flake.nixosModules.hm-xam = { pkgs, ... }: {
     imports = [ 
       inputs.self.nixosModules.hm-xam-zsh
+      inputs.self.nixosModules.hm-ssh
+      inputs.self.nixosModules.hm-git
       inputs.self.nixosModules.nixvim
       inputs.self.nixosModules.tmux-notes
       inputs.self.nixosModules.tmux-sessionizer

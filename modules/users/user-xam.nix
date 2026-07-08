@@ -4,7 +4,7 @@
   flake.nixosModules.user-xam = { pkgs, config, lib, ... }: {
     users.users.xam = {
       isNormalUser = true;
-      description = "Max (xam)";
+      description = "Xam)";
       home = "/home/xam";
 
       shell = pkgs.zsh;

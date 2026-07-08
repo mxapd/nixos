@@ -40,7 +40,7 @@
         '';
 
         oh-my-zsh = {
-          enable = true;
+          enable = false;
           plugins = ["git"];
           theme = "wedisagree";
         };

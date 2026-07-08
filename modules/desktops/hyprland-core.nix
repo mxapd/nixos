@@ -63,13 +63,21 @@
     	    
     	    "$modSHIFT,1,movetoworkspacesilent,1"
     	    "$modSHIFT,2,movetoworkspacesilent,2"
-    	    "$modSHIFT,3,movetoworkspacesilent,3" "$modSHIFT,4,movetoworkspacesilent,4" "$modSHIFT,5,movetoworkspacesilent,5" "$modSHIFT,6,movetoworkspacesilent,6" "$modSHIFT,7,movetoworkspacesilent,7" "$modSHIFT,8,movetoworkspacesilent,8" "$modSHIFT,9,movetoworkspacesilent,9" "$modSHIFT,right,movewindow,r"
+    	    "$modSHIFT,3,movetoworkspacesilent,3"
+	    "$modSHIFT,4,movetoworkspacesilent,4"
+	    "$modSHIFT,5,movetoworkspacesilent,5"
+	    "$modSHIFT,6,movetoworkspacesilent,6"
+	    "$modSHIFT,7,movetoworkspacesilent,7"
+	    "$modSHIFT,8,movetoworkspacesilent,8"
+	    "$modSHIFT,9,movetoworkspacesilent,9"
+	    
+	    "$modSHIFT,right,movewindow,r"
     	    "$modSHIFT,left,movewindow,l"
     	    "$modSHIFT,up,movewindow,u"
     	    "$modSHIFT,down,movewindow,d" "$modSHIFT,F,togglefloating,active"
     	    
     	    
-    	    "$mod,O, exec, kitty --class tmux-notes -e tmux_toggle_notes"
+    	    "$mod,O, exec, kitty --class tmux-notes -e tmux-notes"
 	  ];
     
           bindm = [
