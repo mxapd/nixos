@@ -28,6 +28,8 @@
 	inputs.self.nixosModules.ssh-access
 	inputs.self.nixosModules.git-access
 
+	inputs.self.nixosModules.steam
+
         ({ pkgs, lib, config, ... }: {
           networking.hostName = "hearth";
 
