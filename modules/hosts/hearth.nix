@@ -30,6 +30,10 @@
 
 	inputs.self.nixosModules.steam
 
+	inputs.self.nixosModules.virtualbox
+
+	inputs.self.nixosModules.fonts
+
         ({ pkgs, lib, config, ... }: {
           networking.hostName = "hearth";
 
@@ -40,10 +44,13 @@
 	  boot.loader.systemd-boot.enable = true;
 	  boot.loader.efi.canTouchEfiVariables = true;
 
+
           security.sudo.enable = true;
 
 	  networking = {
       	      networkmanager.enable = true;
+	      firewall.enable = true;
+	      firewall.allowedTCPPorts = [ ];
       	    };
       	  
       	    # --TIME--
@@ -97,34 +104,7 @@
       	 nixpkgs.config.permittedInsecurePackages = [
       	   "qtwebengine-5.15.19"
       	 ];
-      	 
-      	 # --FONTS-- 
-      	 fonts = {
-      	   fontconfig.enable = true;
-      	 
-      	   # JetBrainsMono Nerd Font: primary monospace (terminal, editor, prompt)
-      	   # symbols-only: glyph fallback for waybar / prompt / nixvim
-      	   # font-awesome + DejaVu: referenced by the waybar CSS
-      	   # Noto + emoji: general text + emoji coverage
-      	   packages = with pkgs; [
-      	     nerd-fonts.jetbrains-mono
-      	     nerd-fonts.symbols-only
-      	     font-awesome
-      	     dejavu_fonts
-      	     noto-fonts
-      	     noto-fonts-color-emoji
-      	   ];
-      	 
-      	   fontconfig.defaultFonts = {
-      	     monospace = [ "JetBrainsMono Nerd Font" "DejaVu Sans Mono" ];
-      	     sansSerif = [ "Noto Sans" "DejaVu Sans" ];
-      	     serif     = [ "Noto Serif" "DejaVu Serif" ];
-      	     emoji     = [ "Noto Color Emoji" ];
-      	   };
-      	 };
-
       	})
-
       ];
   };
 }
