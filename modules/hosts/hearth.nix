@@ -69,7 +69,10 @@
       	 
       	 # --PROGRAMS--
       	 environment.systemPackages = with pkgs; [
+	   
+	   opencode
       	   discord-canary
+	   
 	   tree
 	   btop
       	   vim
@@ -82,7 +85,6 @@
       	   feh
       	   ripgrep
       	   file
-      	   age
       	   fzf
       	   zoxide
       	   fastfetch
