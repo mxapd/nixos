@@ -25,7 +25,7 @@
 	inputs.self.nixosModules.tailscale-communal
 
 	
-	inputs.self.nixosModules.secrets
+	inputs.self.nixosModules.sops
 
         ({ pkgs, lib, config, ... }: {
           networking.hostName = "hearth";
