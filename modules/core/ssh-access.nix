@@ -7,7 +7,7 @@
     ];
 
     sops.secrets."access" = {
-      sopsFile = "../../secrets/ssh-keys.yaml";
+      sopsFile = ../../secrets/ssh-keys.yaml;
       path = "/home/xam/.ssh/access";
       owner = "xam";
       mode = "0600";
