@@ -6,6 +6,26 @@
       system = "x86_64-linux";
 
       modules = [
+        inputs.self.nixosModules.hearth-hardware
+	inputs.self.nixosModules.user-xam
+	
+	inputs.self.nixosModules.nvidia
+
+	inputs.self.nixosModules.home-manager
+	inputs.self.nixosModules.hm-xam
+	
+	inputs.self.nixosModules.hyprland
+	inputs.self.nixosModules.hyprmoon
+	inputs.self.nixosModules.hyprland-core
+	inputs.self.nixosModules.stylix
+	
+	inputs.self.nixosModules.nixvim
+	inputs.nixvim.nixosModules.nixvim
+
+	inputs.self.nixosModules.tailscale-communal
+
+	
+	inputs.self.nixosModules.secrets
 
         ({ pkgs, lib, config, ... }: {
           networking.hostName = "hearth";
@@ -50,8 +70,8 @@
       	 # --PROGRAMS--
       	 environment.systemPackages = with pkgs; [
       	   discord-canary
-      	   tree
-      	   btop
+	   tree
+	   btop
       	   vim
       	   tree
       	   git
@@ -68,13 +88,10 @@
       	   fastfetch
       	 ];
       	  
-      	  
       	 ## unsafe, need to find out what package relies on this lib and update
       	 nixpkgs.config.permittedInsecurePackages = [
       	   "qtwebengine-5.15.19"
       	 ];
-      	 
-      	 programs.zsh.enable = true;
       	 
       	 # --FONTS-- 
       	 fonts = {
@@ -103,23 +120,6 @@
 
       	})
 
-        inputs.self.nixosModules.hearth-hardware
-	inputs.self.nixosModules.user-xam
-	
-	inputs.self.nixosModules.nvidia
-
-	inputs.self.nixosModules.home-manager
-	inputs.self.nixosModules.hm-xam
-	
-	inputs.self.nixosModules.hyprland
-	inputs.self.nixosModules.hyprmoon
-	inputs.self.nixosModules.hyprland-core
-	inputs.self.nixosModules.stylix
-	
-	inputs.self.nixosModules.nixvim
-	inputs.nixvim.nixosModules.nixvim
-
-	inputs.self.nixosModules.tailscale-communal
       ];
   };
 }

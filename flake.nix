@@ -17,6 +17,10 @@
     nixvim = {
       url = "github:nix-community/nixvim";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; }

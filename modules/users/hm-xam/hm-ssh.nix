@@ -1,29 +1,35 @@
-{ ... }: 
+{ ... }:
 {
 
-flake.nixosModules.hm-ssh = { pkgs, ... }: 
+flake.nixosModules.hm-ssh = { pkgs, ... }:
   {
     home-manager.users.xam.programs.ssh = {
       enable = true;
-      addKeysToAgent = "yes";   # auto-add to agent on first use
+      enableDefaultConfig = false;   # silence default-values deprecation warning
 
-      matchBlocks = {
+      settings = {
+        "*" = {
+          AddKeysToAgent = "yes";
+          AddressFamily = "inet";
+          ServerAliveCountMax = 3;
+          ServerAliveInterval = 600;
+        };
 
         "ancient hermes desktop laptop" = {
-          user = "xam";
-          identityFile = "/home/xam/.ssh/access";   # <-- use this key for these hosts
-          identitiesOnly = true;                     # <-- ONLY this key, don't try others
+          User = "xam";
+          IdentityFile = "/home/xam/.ssh/access";
+          IdentitiesOnly = "yes";
         };
 
         "github.com" = {
-          user = "git";
-          identityFile = "/home/xam/.ssh/github_mxapd";
-          identitiesOnly = true;
+          User = "git";
+          IdentityFile = "/home/xam/.ssh/github_mxapd";
+          IdentitiesOnly = "yes";
         };
 
         "gitlab.lnu.se" = {
-          identityFile = "/home/xam/.ssh/gitlab_lnu";
-          identitiesOnly = true;
+          IdentityFile = "/home/xam/.ssh/gitlab_lnu";
+          IdentitiesOnly = "yes";
         };
       };
     };
