@@ -3,7 +3,8 @@ keys:
     - &hearth_host age159xmzrxsawm6n9lwvfay5tjrawpt6nl4uhead87hzzeaye53ag3qdqn4jj
 
 creation_rules:
-  - path_regex: secrets/*.yaml$
+  - path_regex: secrets/.*\.yaml$
     key_groups:
       - age:
           - *sops_admin
+          - *hearth_host
