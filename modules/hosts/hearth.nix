@@ -26,7 +26,6 @@
 
 	inputs.self.nixosModules.sops
 	inputs.self.nixosModules.ssh-access
-	inputs.self.nixosModules.git-access
 
         ({ pkgs, lib, config, ... }: {
           networking.hostName = "hearth";
