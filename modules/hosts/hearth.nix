@@ -36,8 +36,9 @@
 	inputs.self.nixosModules.fonts
 	inputs.self.nixosModules.bluetooth
 
-	
 	inputs.self.nixosModules.torzu
+
+	inputs.self.nixosModules.flatpak
 
         ({ pkgs, lib, config, ... }: {
           networking.hostName = "hearth";
