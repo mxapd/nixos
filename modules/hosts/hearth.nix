@@ -4,6 +4,7 @@
   flake.nixosConfigurations.hearth =
     inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
 
       modules = [
         inputs.self.nixosModules.hearth-hardware
@@ -35,6 +36,8 @@
 	inputs.self.nixosModules.fonts
 	inputs.self.nixosModules.bluetooth
 
+	
+	inputs.self.nixosModules.torzu
 
         ({ pkgs, lib, config, ... }: {
           networking.hostName = "hearth";

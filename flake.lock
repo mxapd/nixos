@@ -611,6 +611,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-qt": {
+      "locked": {
+        "lastModified": 1751274312,
+        "narHash": "sha256-/bVBlRpECLVzjV19t5KMdMFWSwKLtb5RyXdjz3LJT+g=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "50ab793786d9de88ee30ec4e4c24fb4236fc2674",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-24.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1783224372,
@@ -639,6 +655,22 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1767634882,
+        "narHash": "sha256-2GffSfQxe3sedHzK+sTKlYo/NTIAGzbFCIsNMUPAAnk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3c9db02515ef1d9b6b709fc60ba9a540957f661c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-25.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -719,7 +751,8 @@
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",
         "sops-nix": "sops-nix",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "torzu": "torzu"
       }
     },
     "sops-nix": {
@@ -883,6 +916,25 @@
         "owner": "tinted-theming",
         "repo": "base16-zed",
         "type": "github"
+      }
+    },
+    "torzu": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4",
+        "nixpkgs-qt": "nixpkgs-qt"
+      },
+      "locked": {
+        "lastModified": 1769013453,
+        "narHash": "sha256-iQFXU0YdSWYD6KF1ISfq9LsGtRrD5j5ngvHaBJUNNxk=",
+        "ref": "refs/heads/master",
+        "rev": "a065103fe3033c857a82f06ddd5a01b8ed6c30cf",
+        "revCount": 4,
+        "type": "git",
+        "url": "http://gitea.yggdrasil.com/BMSwahn/Torzu"
+      },
+      "original": {
+        "type": "git",
+        "url": "http://gitea.yggdrasil.com/BMSwahn/Torzu"
       }
     },
     "xdph": {

@@ -21,8 +21,11 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    torzu = {
+      url = "git+http://gitea.yggdrasil.com/BMSwahn/Torzu";
+    };
   };
 
- outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; }
+ outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } 
    (inputs.import-tree ./modules);
 }
