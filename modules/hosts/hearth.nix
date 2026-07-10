@@ -30,9 +30,11 @@
 
 	inputs.self.nixosModules.steam
 
-	inputs.self.nixosModules.virtualbox
+	# inputs.self.nixosModules.virtualbox
 
 	inputs.self.nixosModules.fonts
+	inputs.self.nixosModules.bluetooth
+
 
         ({ pkgs, lib, config, ... }: {
           networking.hostName = "hearth";
@@ -79,7 +81,6 @@
       	 
       	 # --PROGRAMS--
       	 environment.systemPackages = with pkgs; [
-	   
 	   opencode
       	   discord-canary
 	   wl-clipboard

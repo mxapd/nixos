@@ -11,7 +11,7 @@
       wayland.windowManager.hyprland = {
 	settings = {
 	  general.border_size = 1;
-	  general.gaps_out = 6;
+	  general.gaps_out = 4;
 	  decoration.rounding = 3;
 	  animations.enabled = false; 
 	  debug.disable_logs = false;
@@ -268,36 +268,35 @@ label:focus {
       enable = true;
       image = ../../assets/artemis_moon_dark.png;
       polarity = "dark";
-      opacity.terminal = 0.95;
+      opacity.terminal = 0.90;
      
       cursor.package = pkgs.bibata-cursors;
       cursor.name = "Bibata-Modern-Ice";
       cursor.size = 20;
     
-base16Scheme = {
-  # background → a bit lighter
-  base00 = "#121820";
-  base01 = "#1b222c";
-  base02 = "#242d38";
-  base03 = "#2f3a47";
-
-  # foreground stack → brighter for readability
-  base04 = "#9aa5b4";
-  base05 = "#c5d0de";
-  base06 = "#e0e6f0";
-  base07 = "#f2f5fa";
-
-  # accents → slightly more saturated & higher contrast
-  base08 = "#e26d6d"; # red-ish
-  base09 = "#f2a76b"; # orange
-  base0A = "#f6d37a"; # yellow
-  base0B = "#7fcf7d"; # green
-  base0C = "#6fc6c9"; # cyan
-  base0D = "#7aa7ff"; # blue
-  base0E = "#c792ea"; # purple
-  base0F = "#f28ba8"; # pink-ish
-};
+      base16Scheme = {
+        # background → a bit lighter
+        base00 = "#121820";
+        base01 = "#1b222c";
+        base02 = "#242d38";
+        base03 = "#2f3a47";
+      
+        # foreground stack → brighter for readability
+        base04 = "#9aa5b4";
+        base05 = "#c5d0de";
+        base06 = "#e0e6f0";
+        base07 = "#f2f5fa";
+      
+        # accents → slightly more saturated & higher contrast
+        base08 = "#e26d6d"; # red-ish
+        base09 = "#f2a76b"; # orange
+        base0A = "#f6d37a"; # yellow
+        base0B = "#7fcf7d"; # green
+        base0C = "#6fc6c9"; # cyan
+        base0D = "#7aa7ff"; # blue
+        base0E = "#c792ea"; # purple
+        base0F = "#f28ba8"; # pink-ish
+      };
     };
-
   };
 }
