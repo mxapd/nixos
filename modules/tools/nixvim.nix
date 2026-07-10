@@ -1,20 +1,19 @@
-{ inputs, pkgs, ...}: 
-{
+{ inputs, pkgs, ... }: {
 flake.nixosModules.nixvim = { pkgs, inputs, ... }: {
   
   imports = [
-      #./plugins/treesitter.nix
-      #./plugins/nvim-cmp.nix
-      #./plugins/gitsigns.nix
-      #./plugins/telescope.nix
-      #./plugins/lsp.nix
-      #./plugins/obsidian.nix
-      #./plugins/alpha-nvim.nix
-      #./plugins/neo-tree.nix
-      #./plugins/wrapping.nix
-      #./plugins/conform.nix
-      #./plugins/toc.nix
-    #./plugins/dashboard.nix
+      ./_nixvim-plugins/treesitter.nix
+      ./_nixvim-plugins/nvim-cmp.nix
+      ./_nixvim-plugins/gitsigns.nix
+      ./_nixvim-plugins/telescope.nix
+      ./_nixvim-plugins/lsp.nix
+      ./_nixvim-plugins/obsidian.nix
+      ./_nixvim-plugins/alpha-nvim.nix
+      ./_nixvim-plugins/neo-tree.nix
+      ./_nixvim-plugins/wrapping.nix
+      ./_nixvim-plugins/conform.nix
+      ./_nixvim-plugins/toc.nix
+      ./_nixvim-plugins/dashboard.nix
   ];
 
   programs.nixvim = {
