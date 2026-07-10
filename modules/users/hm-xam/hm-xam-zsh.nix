@@ -40,9 +40,11 @@
         '';
 
         oh-my-zsh = {
-          enable = false;
+          enable = true;
           plugins = ["git"];
-          theme = "wedisagree";
+          #theme = "wedisagree";
+	  #theme = "eastwood";
+	  #theme = "lukerandall";
         };
       };
     };
