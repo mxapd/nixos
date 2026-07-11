@@ -27,7 +27,7 @@ for arg in "$@"; do
   esac
 done
 
-NIXOS_REBUILD_CMD="sudo -E nixos-rebuild switch --flake .#"
+NIXOS_REBUILD_CMD="sudo nixos-rebuild switch --flake .#"
 
 if [[ "$cool" == true ]]; then
   NIXOS_REBUILD_CMD="systemd-run --scope -p CPUQuota=30% -- $NIXOS_REBUILD_CMD"
