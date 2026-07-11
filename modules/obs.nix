@@ -1,6 +1,6 @@
 { ... } : {
 
-flake.nixosModule = { config, pkgs, ... }:
+flake.nixosModule.obs = { pkgs, ... }:
 
 {
     programs.obs-studio = {
