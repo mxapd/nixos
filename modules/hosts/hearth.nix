@@ -10,6 +10,8 @@
         inputs.self.nixosModules.hearth-hardware
 	inputs.self.nixosModules.user-xam
 	
+	inputs.self.nixosModules.ssh
+
 	inputs.self.nixosModules.nvidia
 
 	inputs.self.nixosModules.home-manager
@@ -48,8 +50,6 @@
           networking.hostName = "hearth";
 
 	  programs.firefox.enable = true;
-
-          services.openssh.enable = true;
 
 	  boot.loader.systemd-boot.enable = true;
 	  boot.loader.efi.canTouchEfiVariables = true;
@@ -106,11 +106,6 @@
       	   fzf
       	   zoxide
       	   fastfetch
-      	 ];
-      	  
-      	 ## unsafe, need to find out what package relies on this lib and update
-      	 nixpkgs.config.permittedInsecurePackages = [
-      	   "qtwebengine-5.15.19"
       	 ];
       	})
       ];
