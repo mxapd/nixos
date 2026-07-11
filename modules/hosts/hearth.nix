@@ -11,6 +11,7 @@
 	inputs.self.nixosModules.user-xam
 	
 	inputs.self.nixosModules.ssh
+	inputs.self.nixosModules.sudo
 
 	inputs.self.nixosModules.nvidia
 
@@ -22,6 +23,7 @@
 
 	inputs.self.nixosModules.hyprmoon
 	inputs.self.nixosModules.hyprland-core
+	inputs.self.nixosModules.waybar
 	inputs.self.nixosModules.stylix
 	
 	inputs.self.nixosModules.nixvim
@@ -33,6 +35,7 @@
 	inputs.self.nixosModules.ssh-access
 	inputs.self.nixosModules.git-access
 	inputs.self.nixosModules.syncthing
+	inputs.self.nixosModules.nix-maintenance
 
 	inputs.self.nixosModules.steam
 
@@ -53,9 +56,6 @@
 
 	  boot.loader.systemd-boot.enable = true;
 	  boot.loader.efi.canTouchEfiVariables = true;
-
-
-          security.sudo.enable = true;
 
 	  networking = {
       	      networkmanager.enable = true;
