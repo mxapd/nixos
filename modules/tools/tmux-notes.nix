@@ -7,7 +7,7 @@
     
       (pkgs.writeShellApplication {
 	name = "tmux-notes";
-	runtimeInputs = with pkgs; [ neovim tmux kitty];
+	runtimeInputs = with pkgs; [ neovim tmux ];
 	text = ''
 #!/usr/bin/env bash
 

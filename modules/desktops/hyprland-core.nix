@@ -77,7 +77,7 @@
     	    "$modSHIFT,down,movewindow,d" "$modSHIFT,F,togglefloating,active"
     	    
     	    
-    	    "$mod, O, exec, kitty --class tmux-notes -e tmux-notes"
+    	    "$mod, O, exec, kitty --class tmux-notes -e /etc/profiles/per-user/xam/bin/tmux-notes"
 	  ];
     
           bindm = [
