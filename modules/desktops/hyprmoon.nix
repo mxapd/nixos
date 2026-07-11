@@ -14,7 +14,7 @@
 	  general.gaps_out = 4;
 	  decoration.rounding = 3;
 	  animations.enabled = false; 
-	  debug.disable_logs = false;
+	  debug.disable_logs = true;
 	};
       };
 

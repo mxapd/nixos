@@ -95,7 +95,6 @@
 	   tree
 	   btop
       	   vim
-      	   tree
       	   git
       	   tmux
       	   htop

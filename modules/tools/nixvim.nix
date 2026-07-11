@@ -13,7 +13,7 @@ flake.nixosModules.nixvim = { pkgs, inputs, ... }: {
       ./_nixvim-plugins/wrapping.nix
       ./_nixvim-plugins/conform.nix
       ./_nixvim-plugins/toc.nix
-      ./_nixvim-plugins/dashboard.nix
+      #./_nixvim-plugins/dashboard.nix
   ];
 
   programs.nixvim = {
