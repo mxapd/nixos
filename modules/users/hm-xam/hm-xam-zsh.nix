@@ -59,7 +59,6 @@
           plugins = ["git"];
           #theme = "wedisagree";
 	  #theme = "eastwood";
-	
 	};
       };
     };

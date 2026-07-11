@@ -2,15 +2,25 @@
   programs.nixvim = {
     plugins.none-ls = {
       enable = true;
-      sources.diagnostics.checkstyle.enable = true;
-      sources.diagnostics.checkstyle.settings = {
-	filetypes = [
-	  "java"
-	];
-	extra_args = [
-	  "-c"
-	  "/google_checks.xml"
-	];
+
+      sources = {
+	diagnostics = {
+	  statix.enable = true;
+	  deadnix.enable = true;
+	  
+	  checkstyle = {
+	    enable = true;
+	    settings = {
+	      filetypes = [
+		"java"
+	      ];
+	      extra_args = [
+		"-c"
+		"/google_checks.xml"
+	      ];
+	    };
+	  };
+	};
       };
     };
 
