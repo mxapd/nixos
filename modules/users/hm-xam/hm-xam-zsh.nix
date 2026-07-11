@@ -18,6 +18,7 @@
       	ns="nix shell";
       	check="nix flake check";
       	pai="bun ~/.opencode/PAI/Tools/pai.ts";
+	v="nvim";
       };
 
       initContent = ''

@@ -41,7 +41,7 @@
 
 	inputs.self.nixosModules.flatpak
 
-        ({ pkgs, lib, config, ... }: {
+        ({ pkgs, ... }: {
           networking.hostName = "hearth";
 
 	  programs.firefox.enable = true;
