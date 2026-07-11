@@ -12,18 +12,6 @@
       syntaxHighlighting = {
         enable = true;
 	highlighters = [ "main" "brackets" ];
-	    styles = {
-	    command = "fg=66";
-    	    builtin = "fg=60";
-    	    function = "fg=60";
-    	    alias = "fg=66";
-    	    path = "fg=67,underline";
-    	    single-quoted-argument = "fg=238";
-    	    double-quoted-argument = "fg=238";
-    	    single-hyphen-option = "fg=253";
-    	    double-hyphen-option = "fg=253";
-    	    unknown-token = "fg=167,bold";
-	  };
       };
 
       shellAliases =  {
