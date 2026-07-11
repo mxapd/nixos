@@ -268,7 +268,7 @@ label:focus {
       enable = true;
       image = ../../assets/artemis_moon_dark.png;
       polarity = "dark";
-      opacity.terminal = 0.90;
+      opacity.terminal = 0.75;
      
       cursor.package = pkgs.bibata-cursors;
       cursor.name = "Bibata-Modern-Ice";
