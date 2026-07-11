@@ -28,6 +28,7 @@
 	inputs.self.nixosModules.sops
 	inputs.self.nixosModules.ssh-access
 	inputs.self.nixosModules.git-access
+	inputs.self.nixosModules.syncthing
 
 	inputs.self.nixosModules.steam
 
