@@ -63,7 +63,6 @@ flake.nixosModules.nixvim = { pkgs, inputs, ... }: {
       friendly-snippets.autoLoad= true;
       nvim-surround.enable = true;
       trouble.enable = true;
-      oil.enable = true;
     };
 
     autoGroups = {

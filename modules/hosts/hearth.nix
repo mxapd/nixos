@@ -16,6 +16,8 @@
 	inputs.self.nixosModules.hm-xam
 	
 	inputs.self.nixosModules.hyprland
+	inputs.self.nixosModules.mako
+
 	inputs.self.nixosModules.hyprmoon
 	inputs.self.nixosModules.hyprland-core
 	inputs.self.nixosModules.stylix
@@ -33,6 +35,7 @@
 	inputs.self.nixosModules.steam
 
 	# inputs.self.nixosModules.virtualbox
+	inputs.self.nixosModules.audio
 
 	inputs.self.nixosModules.fonts
 	inputs.self.nixosModules.bluetooth
