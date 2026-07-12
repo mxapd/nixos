@@ -17,8 +17,8 @@
       shellAliases =  {
 	cd="z";
 	mount-ancient="sudo mount -t cifs //ancient/video /mnt/ancient_share/video -o username=xam,uid=1000,gid=100,rw && \
-      	    	   sudo mount -t cifs //ancient/books /mnt/ancient_share/books -o username=xam,uid=1000,gid=100,rw";
-      	nd="nix develop";
+		  sudo mount -t cifs //ancient/books /mnt/ancient_share/books -o username=xam,uid=1000,gid=100,rw";
+	nd="nix develop";
       	ns="nix shell";
       	check="nix flake check";
       	pai="bun ~/.opencode/PAI/Tools/pai.ts";

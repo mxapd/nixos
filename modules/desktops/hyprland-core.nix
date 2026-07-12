@@ -1,6 +1,6 @@
-{ inputs, ... }:
+{ ... }:
 {
-  flake.nixosModules.hyprland-core = { config, pkgs, ... }: { 
+  flake.nixosModules.hyprland-core = { ... }: { 
     home-manager.users.xam = { 
       programs = {
 	kitty = {
@@ -12,7 +12,6 @@
 
         hyprshot.enable = true;
         hyprshot.saveLocation = "$HOME/Pictures/Screenshots";
-      
       };
 
       wayland.windowManager.hyprland = {
@@ -35,9 +34,11 @@
     
 	    # Screenshot a window
     	    "$mod, PRINT, exec, hyprshot -m window"
-    	    # Screenshot a monitor
+    	    
+	    # Screenshot a monitor
     	    ", PRINT, exec, hyprshot -m output"
-    	    # Screenshot a region
+    	    
+	    # Screenshot a region
     	    "$modSHIFT, PRINT, exec, hyprshot -m region"
     	    
     	    "$modSHIFT,Q,killactive"
@@ -81,10 +82,10 @@
 	  ];
     
           bindm = [
-	  # mouse movements
-    	  "$mod, mouse:272, movewindow"
-    	  "$mod, mouse:273, resizewindow"
-    	  "$mod ALT, mouse:272, resizewindow"
+	    # mouse movements
+    	    "$mod, mouse:272, movewindow"
+    	    "$mod, mouse:273, resizewindow"
+    	    "$mod ALT, mouse:272, resizewindow"
           ];
     
 	  bindel = [
@@ -113,7 +114,6 @@
       };
 
     home.sessionVariables.NIXOS_OZONE_WL= "1"; 
-
     };
   };
 }
