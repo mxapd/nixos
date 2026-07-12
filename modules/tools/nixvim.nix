@@ -129,7 +129,7 @@
 
       extraConfigLua = ''
 	vim.api.nvim_create_autocmd("BufNewFile", {
-	  pattern = "home/xam/nixos/modules/**/*.nix",
+	  pattern = "*/nixos/modules/**/*.nix",
       	  callback = function(args)
       	    local name = vim.fn.fnamemodify(args.file, ":t:r")
 

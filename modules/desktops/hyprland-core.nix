@@ -106,6 +106,9 @@
     	    "HDMI-A-1,1920x1080@144.00Hz,-1920x0,1"
 	  ];
         };
+	extraConfig = ''
+	  exec-once = waybar
+	'';
       };
 
     home.sessionVariables.NIXOS_OZONE_WL= "1"; 
