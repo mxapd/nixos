@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.nixosModules.hyprland-core = { ... }: { 
+  flake.nixosModules.hyprland = { ... }: { 
     
     programs.hyprland.enable = true;
 

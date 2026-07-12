@@ -22,7 +22,6 @@
 	inputs.self.nixosModules.mako
 
 	inputs.self.nixosModules.hyprmoon
-	inputs.self.nixosModules.hyprland-core
 	inputs.self.nixosModules.waybar
 	inputs.self.nixosModules.stylix
 	

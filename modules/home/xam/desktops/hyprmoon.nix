@@ -23,7 +23,7 @@
     stylix = {
       enable = true;
       autoEnable = true;
-      image = ../../assets/artemis_moon_dark.png;
+      image = ../../../../assets/artemis_moon_dark.png;
       polarity = "dark";
       opacity.terminal = 0.65;
 
