@@ -13,6 +13,7 @@
 	  general.border_size = 1;
 	  general.gaps_out = 4;
 	  decoration.rounding = 3;
+	  decoration.blur.enabled = false;
 	  animations.enabled = false; 
 	  debug.disable_logs = true;
 	};
@@ -21,10 +22,11 @@
 
     stylix = {
       enable = true;
+      autoEnable = true;
       image = ../../assets/artemis_moon_dark.png;
       polarity = "dark";
-      opacity.terminal = 0.75;
-     
+      opacity.terminal = 0.65;
+
       cursor = {
 	package = pkgs.bibata-cursors;
         name = "Bibata-Modern-Ice";
