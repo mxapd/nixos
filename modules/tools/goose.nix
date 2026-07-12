@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: 
+{ ... }: 
 
 {
   flake.nixosModules.goose = { pkgs, ... }: {
