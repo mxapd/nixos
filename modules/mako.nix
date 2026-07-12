@@ -10,8 +10,9 @@
 	enable = true;
 	package = pkgs.mako;
 	settings = {
-	  defaultTimeout = 7000;
-	  borderRadius   = 3;
+	  border-radius   = 8;
+	  default-timeout = 7000;
+	  border-size=1;
 	};
       };
     };
