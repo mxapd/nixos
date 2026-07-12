@@ -11,6 +11,7 @@
       inputs.self.nixosModules.tmux-sessionizer
       inputs.self.nixosModules.rebuild
       inputs.self.nixosModules.goose
+      inputs.self.nixosModules.hm-yazi
     ]; 
 
     home-manager.users.xam = {
@@ -28,7 +29,7 @@
 
         packages = with pkgs; [
           zoxide
-          
+
 	  wiremix
           
 	  calcurse
