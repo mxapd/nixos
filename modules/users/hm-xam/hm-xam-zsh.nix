@@ -41,8 +41,6 @@
           exec tmux
         fi
 
-        eval "$(goose term init zsh)"
-
 	# Eastwood-like git status config
 	ZSH_THEME_GIT_PROMPT_PREFIX="%{$reset_color%}%{$fg[magenta]%}["
 	ZSH_THEME_GIT_PROMPT_SUFFIX="]%{$reset_color%}"
