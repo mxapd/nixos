@@ -32,8 +32,12 @@
 	inputs.self.nixosModules.tailscale-communal
 
 	inputs.self.nixosModules.sops
-	inputs.self.nixosModules.ssh-access
+
+	inputs.self.nixosModules.ssh-authorized-keys
+	inputs.self.nixosModules.ssh-access-hearth
+
 	inputs.self.nixosModules.git-access
+	
 	inputs.self.nixosModules.syncthing
 	inputs.self.nixosModules.nix-maintenance
 
