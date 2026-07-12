@@ -26,7 +26,7 @@
           "$mod" = "SUPER";
     
           bind = [
-	    "$mod,Return,exec, kitty"
+	    "$mod,Return,exec, kitty -e tmux"
 	    "$mod,d,exec, wofi --show drun"
 	    "$mod,w,exec,firefox"
 	    "$modSHIFT,M,exec, hyprctl dispatch exit"
