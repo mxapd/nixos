@@ -27,6 +27,10 @@
 	  input = {
 	    kb_variant = "altgr-intl";
 	  };
+	  
+	  env = [
+	    "HYPRSHOT_DIR,/home/xam/Pictures/Screenshots"
+	  ];
   
           "$mod" = "SUPER";
     

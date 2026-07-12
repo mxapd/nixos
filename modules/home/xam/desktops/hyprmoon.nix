@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ ... }:
 {
   flake.nixosModules.hyprmoon = { config, pkgs, lib, ... }: with lib;{
     services.greetd = {
