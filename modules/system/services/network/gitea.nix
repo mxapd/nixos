@@ -7,13 +7,19 @@
       user = "gitea";
 
       httpPort = 3000;
-      domain = "localhost";
+
+      settings.server = {
+	HTTP_PORT = 3000;
+	DOMAIN = "localhost";
+	ROOT_URL = "http://localhost:3000/";
+      };
+
       rootUrl = "http://localhost:3000/";
 
       # database for metadata (users, keys and stuff)
       database = {
-        type = "sqlite3";
-        path = "/var/lib/gitea/data/gitea.db";
+	type = "sqlite3";
+	path = "/var/lib/gitea/data/gitea.db";
       };
     };
 
@@ -21,12 +27,12 @@
       description = "Mirror Gitea data to HDD backup directory";
       after = [ "gitea.service" ];
       serviceConfig = {
-        User = "root";
-        Type = "oneshot";
-        ExecStart = [
-          "/run/current-system/sw/bin/mkdir -p /mnt/git/"
-          "/run/current-system/sw/bin/rsync -a --delete /var/lib/gitea/ /mnt/git/"
-        ];
+	User = "root";
+	Type = "oneshot";
+	ExecStart = [
+	  "/run/current-system/sw/bin/mkdir -p /mnt/git/"
+	  "/run/current-system/sw/bin/rsync -a --delete /var/lib/gitea/ /mnt/git/"
+	];
       };
     };
 
@@ -34,9 +40,9 @@
       description = "Daily Gitea rsync backup";
       wantedBy = [ "timers.target" ];
       timerConfig = {
-        OnCalendar = "daily";
-        Persistent = true;
-        RandomizedDelaySec = "10m";
+	OnCalendar = "daily";
+	Persistent = true;
+	RandomizedDelaySec = "10m";
       };
     };
   };
