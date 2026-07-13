@@ -30,19 +30,21 @@
         packages = with pkgs; [
           zoxide
 
-	  wiremix
-          
 	  calcurse
 
-          (python3.withPackages (ppkgs: [
-            ppkgs.matplotlib
-            ppkgs.pytest
-          ]))
+	  opencode
 
-          opencode
-	  bun # for pai
+	  kdePackages.dolphin
+	  kdePackages.dolphin-plugins
+	  
+	  prismlauncher
+	  
+	  vlc
+	  qbittorrent
+	  btop
+	  gotop
 
-          #bubblewrap
+	  #bubblewrap
           #(writeShellScriptBin "opencode" ''
           #exec ${pkgs.bubblewrap}/bin/bwrap \
           #  --ro-bind /nix/store /nix/store \
@@ -63,24 +65,6 @@
           #  --die-with-parent \
           #  ${pkgs.opencode}/bin/opencode "$@"
           #'')
-
-          # (writeShellApplication {
-          #   name = "tmux-sessionizer";
-          #   runtimeInputs = with pkgs; [ tmux fzf findutils procps ];
-          #   text = builtins.readFile ../../../scripts/tmux-sessionizer.sh;
-          # })
-
-          # (writeShellApplication {
-          #   name = "tmux_toggle_notes";
-          #   runtimeInputs = with pkgs; [ tmux ];
-          #   text = builtins.readFile ../../../scripts/tmux_notes_toggle.sh;
-          # })
-
-          # (writeShellApplication {
-          #   name = "rebuild";
-          #   runtimeInputs = with pkgs; [ git util-linux ];
-          #   text = builtins.imread ../../../scripts/rebuild.sh;
-          # })
 
           # (writeShellScriptBin "nixos-warnings" (builtins.readFile ../../../scripts/nixos-warnings.sh))
         ];

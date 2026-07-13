@@ -85,6 +85,15 @@
       	    };
       	  };
       	  
+	 services.printing.enable = true;
+	 security.polkit.enable = true;
+	 
+	 services.ratbagd.enable = true;
+	 
+	 boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+	 nix.settings.extra-platforms = [ "aarch64-linux" ];
+
       	    # --NIX--
       	 system.stateVersion = "26.05"; 
       	 nix.settings.experimental-features = [ "nix-command" "flakes"];

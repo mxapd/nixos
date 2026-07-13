@@ -1,8 +1,26 @@
 { ... }:
 {
-  flake.nixosModules.hyprland = { ... }: { 
+  flake.nixosModules.hyprland = { pkgs, ... }: { 
     
     programs.hyprland.enable = true;
+
+    xdg.portal = {
+        enable = true;
+        xdgOpenUsePortal = true;
+        wlr.enable = false;
+        config = {
+          common.default = ["gtk"];
+          hyprland.default = ["gtk" "hyprland"];
+        };
+        configPackages = [
+          pkgs.xdg-desktop-portal-gtk
+    	pkgs.xdg-desktop-portal
+        ];
+        extraPortals = [
+          pkgs.xdg-desktop-portal-gtk
+          #pkgs.xdg-desktop-portal-hyprland
+        ];
+      };
 
     home-manager.users.xam = { 
       programs = {
