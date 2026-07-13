@@ -25,6 +25,12 @@
       };
     };
 
+    home-manager.users.xam.wayland.windowManager.hyprland.settings.monitor = [
+      "DP-1,1920x1080@144.00Hz,-1920x0,1"
+      "DP-2,2560x1440@180.00Hz, 0x0,1"
+      "HDMI-A-1,1920x1080@144.00Hz,-1920x0,1"
+    ];
+
     stylix = {
       enable = true;
       autoEnable = true;
@@ -33,33 +39,33 @@
       opacity.terminal = 0.65;
 
       cursor = {
-        package = pkgs.bibata-cursors;
-        name = "Bibata-Modern-Ice";
-        size = 20;
+	package = pkgs.bibata-cursors;
+	name = "Bibata-Modern-Ice";
+	size = 20;
       };
 
       base16Scheme = {
-        # background → a bit lighter
-        base00 = "#121820";
-        base01 = "#1b222c";
-        base02 = "#242d38";
-        base03 = "#2f3a47";
+	# background → a bit lighter
+	base00 = "#121820";
+	base01 = "#1b222c";
+	base02 = "#242d38";
+	base03 = "#2f3a47";
 
-        # foreground stack → brighter for readability
-        base04 = "#9aa5b4";
-        base05 = "#c5d0de";
-        base06 = "#e0e6f0";
-        base07 = "#f2f5fa";
+	# foreground stack → brighter for readability
+	base04 = "#9aa5b4";
+	base05 = "#c5d0de";
+	base06 = "#e0e6f0";
+	base07 = "#f2f5fa";
 
-        # accents → slightly more saturated & higher contrast
-        base08 = "#e26d6d"; # red-ish
-        base09 = "#f2a76b"; # orange
-        base0A = "#f6d37a"; # yellow
-        base0B = "#7fcf7d"; # green
-        base0C = "#6fc6c9"; # cyan
-        base0D = "#7aa7ff"; # blue
-        base0E = "#c792ea"; # purple
-        base0F = "#f28ba8"; # pink-ish
+	# accents → slightly more saturated & higher contrast
+	base08 = "#e26d6d"; # red-ish
+	base09 = "#f2a76b"; # orange
+	base0A = "#f6d37a"; # yellow
+	base0B = "#7fcf7d"; # green
+	base0C = "#6fc6c9"; # cyan
+	base0D = "#7aa7ff"; # blue
+	base0E = "#c792ea"; # purple
+	base0F = "#f28ba8"; # pink-ish
       };
     };
   };

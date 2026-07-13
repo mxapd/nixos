@@ -92,6 +92,10 @@
         disable_while_typing = true;
       };
 
+      monitor = [
+        "eDP-1,1920x1080@60Hz,0x0,1"
+      ];
+
       bindel = [
         ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
         ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"

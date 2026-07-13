@@ -134,11 +134,7 @@
             ", XF86AudioNext, exec, playerctl next"
           ];
 
-          monitor = [
-            "DP-1,1920x1080@144.00Hz,-1920x0,1"
-            "DP-2,2560x1440@180.00Hz, 0x0,1"
-            "HDMI-A-1,1920x1080@144.00Hz,-1920x0,1"
-          ];
+
         };
         extraConfig = ''
           		  exec-once = waybar
