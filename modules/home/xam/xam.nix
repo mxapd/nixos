@@ -17,6 +17,7 @@
       inputs.self.nixosModules.kitty
       inputs.self.nixosModules.opencode
       inputs.self.nixosModules.mako
+      inputs.self.nixosModules.thunderbird
     ];
 
     home-manager.users.xam = {
