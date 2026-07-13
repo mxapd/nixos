@@ -20,7 +20,6 @@
         inputs.self.nixosModules.nix-maintenance
         inputs.self.nixosModules.ssh
         inputs.self.nixosModules.sudo
-        inputs.self.nixosModules.nvidia
         inputs.self.nixosModules.stylix
         inputs.self.nixosModules.unfree
 
@@ -36,8 +35,8 @@
         inputs.self.nixosModules.tailscale
 
         # inputs.self.nixosModules.virtualbox
-	inputs.self.nixosModules.torzu
-	# inputs.self.nixosModules.flatpak
+	# inputs.self.nixosModules.torzu
+	inputs.self.nixosModules.flatpak
 	# inputs.self.nixosModules.steam
         inputs.self.nixosModules.firefox
 
