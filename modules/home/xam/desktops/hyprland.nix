@@ -44,9 +44,9 @@
         configType = "hyprlang";
 
         settings = {
-          windowrulev2 = [
-            "opacity 0.85 0.85,floating:1"
-          ];
+          windowrule = [
+	    "opacity 0.85 0.85, match:float true"
+	  ];
 
           input = {
             kb_variant = "altgr-intl";
