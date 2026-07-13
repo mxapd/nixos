@@ -44,9 +44,9 @@
 	inputs.self.nixosModules.firefox
         
 	({ pkgs, ... }: {
-
+	  networking.hostName = "hearth";
       	  
-      	    # --TIME--
+	    # --TIME--
       	  time.timeZone = "Europe/Stockholm";
       	    
       	    # internationalisation
@@ -79,7 +79,6 @@
       	 
       	 # --PROGRAMS--
       	 environment.systemPackages = with pkgs; [
-	   opencode
       	   discord-canary
 	   wl-clipboard
 	   tree
