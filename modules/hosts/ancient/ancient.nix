@@ -18,6 +18,8 @@
         inputs.self.nixosModules.tailscale
         inputs.self.nixosModules.nix-maintenance
         inputs.self.nixosModules.unfree
+        inputs.self.nixosModules.ssh-authorized-keys
+
 
         inputs.self.nixosModules.ssh
         inputs.self.nixosModules.jellyfin
