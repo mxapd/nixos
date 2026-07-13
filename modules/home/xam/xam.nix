@@ -30,7 +30,8 @@
           EDITOR = "nvim";
           BROWSER = "firefox";
           PATH = "$HOME/.local/bin:$PATH";
-        };
+	  SOPS_AGE_KEY_FILE = "/home/xam/.age/sops_admin"; 
+	};
 
         packages = with pkgs; [
           kdePackages.dolphin
