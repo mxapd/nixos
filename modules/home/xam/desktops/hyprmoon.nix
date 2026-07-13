@@ -1,6 +1,11 @@
 { ... }:
 {
-  flake.nixosModules.hyprmoon = { config, pkgs, lib, ... }: with lib;{
+  flake.nixosModules.hyprmoon = { inputs, config, pkgs, lib, ... }: with lib;{
+    imports= [
+      inputs.self.nixosModules.hyprland
+      inputs.self.nixosModules.waybar
+    ];
+
     services.greetd = {
       enable = true;
       settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --xsessions ${config.services.displayManager.sessionData.desktops}/share/xsessions --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --remember --remember-user-session --user-menu --user-menu-min-uid 1000 --asterisks --power-shutdown 'shutdown -P now' --power-reboot 'shutdown -r now'";

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  flake.nixosModules.user-xam = { pkgs, config, lib, ... }: {
+  flake.nixosModules.user-xam = { ... }: {
     users.users.xam = {
       isNormalUser = true;
       description = "Xam)";

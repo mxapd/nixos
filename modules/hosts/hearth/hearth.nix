@@ -26,9 +26,7 @@
 
         inputs.self.nixosModules.home-manager
         inputs.self.nixosModules.hm-xam
-        inputs.self.nixosModules.hyprland
         inputs.self.nixosModules.hyprmoon
-        inputs.self.nixosModules.waybar
 
         inputs.self.nixosModules.ssh-authorized-keys
         inputs.self.nixosModules.ssh-access-hearth

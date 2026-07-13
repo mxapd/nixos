@@ -1,6 +1,7 @@
 keys:
     - &sops_admin age1f6rjhsz7qj0hhmje6ht0388zexwjnrm3vvl4pmt82hzqdxgau3fsvjmdmu
     - &hearth_host age159xmzrxsawm6n9lwvfay5tjrawpt6nl4uhead87hzzeaye53ag3qdqn4jj
+    - &sojourn_host age1c9gdrlnxmtgthp8swcf35u6cd8wljlv3d5mhdswjtr99c9kdcq9q8cc8v8
 
 creation_rules:
   - path_regex: secrets/.*\.yaml$
@@ -8,3 +9,4 @@ creation_rules:
       - age:
           - *sops_admin
           - *hearth_host
+          - *sojourn_host

@@ -15,11 +15,7 @@
             ServerAliveInterval = 600;
           };
 
-          "ancient hermes desktop laptop" = {
-            User = "xam";
-            IdentityFile = "/home/xam/.ssh/access-hearth";
-            IdentitiesOnly = "yes";
-          };
+
 
           "github.com" = {
             User = "git";
