@@ -22,6 +22,7 @@
         inputs.self.nixosModules.sudo
         inputs.self.nixosModules.nvidia
         inputs.self.nixosModules.stylix
+        inputs.self.nixosModules.unfree
 
         inputs.self.nixosModules.home-manager
         inputs.self.nixosModules.hm-xam
@@ -56,9 +57,8 @@
           # --NIX--
 
           nix.settings.experimental-features = [ "nix-command" "flakes" ];
-          nixpkgs.config.allowUnfree = true;
 
-          # --PROGRAMS--
+	  # --PROGRAMS--
           environment.systemPackages = with pkgs; [
             discord-canary
             wl-clipboard

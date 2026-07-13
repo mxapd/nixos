@@ -7,31 +7,28 @@
       specialArgs = { inherit inputs; };
 
       modules = [
+
+        inputs.self.nixosModules.ancient-boot
         inputs.self.nixosModules.ancient-hardware
+        inputs.self.nixosModules.ancient-raid
         inputs.self.nixosModules.ancient-nvidia
         inputs.self.nixosModules.user-xam
         inputs.self.nixosModules.locale
         inputs.self.nixosModules.sudo
         inputs.self.nixosModules.tailscale
         inputs.self.nixosModules.nix-maintenance
+        inputs.self.nixosModules.unfree
 
         inputs.self.nixosModules.ssh
         inputs.self.nixosModules.jellyfin
         inputs.self.nixosModules.samba
         inputs.self.nixosModules.ancient-syncthing
         inputs.self.nixosModules.gitea
+        inputs.self.nixosModules.radicale
 
-        ({ pkgs, ... }: {
+        ({ ... }: {
           networking.hostName = "ancient"; 
           system.stateVersion = "26.05";
-
-          nixpkgs.config.allowUnfree = true;
-
-          boot.loader.grub = {
-            enable = true;
-            device = "/dev/sda";
-            useOSProber = true;
-          };
 
           networking.firewall = {
             enable = true;
@@ -51,41 +48,6 @@
           services.xserver.xkb = {
             layout = "us";
             variant = "";
-          };
-
-          boot.swraid.enable = true;
-          boot.swraid.mdadmConf = ''
-            		MAILADDR root
-            		ARRAY /dev/md0 metadata=1.2 UUID=c2372504:3357ee60:294af604:572ab5f2
-            	  '';
-
-          # mount syncthing lv
-          fileSystems."/mnt/syncthing" = {
-            device = "/dev/disk/by-uuid/f37bb345-eeff-4ff4-863a-027b25e3587a";
-            fsType = "ext4";
-            options = [ "defaults" "nofail" ];
-          };
-
-          # mount media lv
-          fileSystems."/mnt/media" = {
-            device = "/dev/raid_storage_vg/media";
-            fsType = "ext4";
-            options = [ "defaults" "nofail" ];
-          };
-
-          # mount git
-          fileSystems."/mnt/git" = {
-            device = "/dev/raid_storage_vg/git";
-            fsType = "ext4";
-            options = [ "defaults" "nofail" ];
-          };
-
-          services.radicale = {
-            enable = true;
-            settings = {
-              server.hosts = [ "0.0.0.0:5232" ];
-              auth.type = "none";
-            };
           };
         })
       ];
