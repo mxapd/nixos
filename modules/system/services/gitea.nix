@@ -6,15 +6,11 @@
       appName = "not your average git";
       user = "gitea";
 
-      httpPort = 3000;
-
       settings.server = {
 	HTTP_PORT = 3000;
 	DOMAIN = "localhost";
-	ROOT_URL = "http://localhost:3000/";
+        ROOT_URL = "http://localhost:3000/";
       };
-
-      rootUrl = "http://localhost:3000/";
 
       # database for metadata (users, keys and stuff)
       database = {

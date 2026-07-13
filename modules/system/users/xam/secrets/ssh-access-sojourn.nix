@@ -7,10 +7,10 @@
       mode = "0600";
     };
 
-    home-manager.users.xam.programs.ssh.matchBlocks."ancient hermes desktop laptop" = {
-      user = "xam";
-      identityFile = "/home/xam/.ssh/access-sojourn";
-      identitiesOnly = true;
+    home-manager.users.xam.programs.ssh.settings."ancient hermes hearth sojourn" = {
+      User = "xam";
+      IdentityFile = "/home/xam/.ssh/access-sojourn";
+      IdentitiesOnly = "yes";
     };
   };
 }
