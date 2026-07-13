@@ -43,12 +43,6 @@
               # 22000 # Syncthing sync port (TCP, usually opened by #yncthing.openFirewall = true)
             ];
           };
-
-          # Configure keymap in X11
-          services.xserver.xkb = {
-            layout = "us";
-            variant = "";
-          };
         })
       ];
     };
