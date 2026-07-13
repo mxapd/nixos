@@ -10,6 +10,7 @@
         oh-my-zsh
       ];
       programs.zsh = {
+	enable = true;
         syntaxHighlighting = {
           enable = true;
           highlighters = [ "main" "brackets" ];
@@ -61,8 +62,6 @@
         oh-my-zsh = {
           enable = true;
           plugins = [ "git" ];
-          #theme = "wedisagree";
-          #theme = "eastwood";
         };
       };
     };
