@@ -37,8 +37,8 @@
 
         # inputs.self.nixosModules.virtualbox
 	inputs.self.nixosModules.torzu
-        inputs.self.nixosModules.flatpak
-        inputs.self.nixosModules.steam
+	# inputs.self.nixosModules.flatpak
+	# inputs.self.nixosModules.steam
         inputs.self.nixosModules.firefox
 
 	({ pkgs, ... }:	{
