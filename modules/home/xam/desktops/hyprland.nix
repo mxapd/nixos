@@ -41,6 +41,8 @@
 	enable = true;
 	xwayland.enable = true;  
 
+	configType = "hyprlang";
+
 	settings = {
 	  input = {
 	    kb_variant = "altgr-intl";

@@ -12,13 +12,18 @@
       inputs.self.nixosModules.rebuild
       inputs.self.nixosModules.goose
       inputs.self.nixosModules.hm-yazi
+      inputs.self.nixosModules.tmux
+      inputs.self.nixosModules.zoxide
+      inputs.self.nixosModules.kitty
+      inputs.self.nixosModules.opencode
+      inputs.self.nixosModules.mako
     ]; 
 
     home-manager.users.xam = {
       home = {
         username = "xam";
         homeDirectory = "/home/xam";
-        stateVersion = "25.11";
+        stateVersion = "26.05";
 
         sessionVariables = {
           OBSIDIAN_VAULT = "/home/xam/Documents/obsidian/";
@@ -28,12 +33,6 @@
         };
 
         packages = with pkgs; [
-          zoxide
-
-	  calcurse
-
-	  opencode
-
 	  kdePackages.dolphin
 	  kdePackages.dolphin-plugins
 	  
@@ -41,49 +40,12 @@
 	  
 	  vlc
 	  qbittorrent
+	  
 	  btop
 	  gotop
 
-	  #bubblewrap
-          #(writeShellScriptBin "opencode" ''
-          #exec ${pkgs.bubblewrap}/bin/bwrap \
-          #  --ro-bind /nix/store /nix/store \
-          #  --ro-bind /run/current-system /run/current-system \
-          #  --ro-bind /etc /etc \
-          #  --proc /proc \
-          #  --dev-bind /dev /dev \
-          #  --tmpfs /tmp \
-          #  --tmpfs /home/xam \
-          #  --bind ''${HOME}/Projects ''${HOME}/Projects \
-          #  --ro-bind ''${HOME}/nixos ''${HOME}/nixos \
-          #  --bind ''${HOME}/.config/opencode ''${HOME}/.config/opencode \
-          #  --bind ''${HOME}/.local/state/opencode ''${HOME}/.local/state/opencode \
-          #  --bind ''${HOME}/.local/share/opencode ''${HOME}/.local/share/opencode \
-          #  --setenv HOME /home/xam \
-          #  --unshare-ipc \
-          #  --unshare-uts \
-          #  --die-with-parent \
-          #  ${pkgs.opencode}/bin/opencode "$@"
-          #'')
-
           # (writeShellScriptBin "nixos-warnings" (builtins.readFile ../../../scripts/nixos-warnings.sh))
         ];
-      };
-
-      programs = {
-        zoxide.enable = true;
-        zoxide.enableZshIntegration = true;
-
-        tmux = {
-          enable = true;
-        };
-
-        kitty = {
-          enable = true;
-          extraConfig = ''
-           confirm_os_window_close 0
-          '';
-        };
       };
     };
   };

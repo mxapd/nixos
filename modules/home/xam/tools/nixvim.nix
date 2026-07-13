@@ -1,7 +1,7 @@
 { inputs, pkgs, ... }: {
   flake.nixosModules.nixvim = { pkgs, inputs, ... }: {
-
     imports = [
+      inputs.nixvim.nixosModules.nixvim
       ./_nixvim-plugins/treesitter.nix
       ./_nixvim-plugins/nvim-cmp.nix
       ./_nixvim-plugins/gitsigns.nix
