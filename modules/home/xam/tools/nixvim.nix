@@ -63,6 +63,7 @@
         friendly-snippets.autoLoad = true;
         nvim-surround.enable = true;
         trouble.enable = true;
+        yazi.enable = true;
       };
 
       autoGroups = {
