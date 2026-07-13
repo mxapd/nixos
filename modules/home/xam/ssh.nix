@@ -17,7 +17,7 @@
 
           "ancient hermes desktop laptop" = {
             User = "xam";
-            IdentityFile = "/home/xam/.ssh/access";
+            IdentityFile = "/home/xam/.ssh/access-hearth";
             IdentitiesOnly = "yes";
           };
 

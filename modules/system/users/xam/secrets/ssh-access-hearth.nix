@@ -2,7 +2,7 @@
   flake.nixosModules.ssh-access-hearth = { ... }: {
     sops.secrets."access-hearth" = {
       sopsFile = ../../../../../secrets/ssh-keys.yaml;
-      path = "/home/xam/.ssh/access";
+      path = "/home/xam/.ssh/access-hearth";
       owner = "xam";
       mode = "0600";
     };
