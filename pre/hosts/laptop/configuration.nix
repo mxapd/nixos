@@ -6,7 +6,7 @@
 
 {
   imports =
-    [ 
+    [
       ./hardware-configuration.nix
     ];
 
@@ -24,8 +24,8 @@
     xdgOpenUsePortal = true;
     wlr.enable = false;
     config = {
-      common.default = ["gtk"];
-      hyprland.default = ["gtk" "hyprland"];
+      common.default = [ "gtk" ];
+      hyprland.default = [ "gtk" "hyprland" ];
     };
     configPackages = [
       pkgs.xdg-desktop-portal-gtk
@@ -78,7 +78,7 @@
 
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
-  
+
   users.extraGroups.vboxusers.members = [ "xam" ];
 
 
@@ -100,43 +100,43 @@
   security.rtkit.enable = true;
 
   environment.systemPackages = with pkgs; [
-      wireshark
-      blueman
-      gcc
-      rustup
-      piper
-      zip
-      gotop
-      rar
-      qbittorrent
-      egl-wayland
-      git
-      python3
-      obsidian
-      kitty
-      slack
-      fastfetch
-      spotify
-      vscodium
-      libreoffice
-      syncthing
-      ripgrep-all
-      ripgrep
-      zoxide
-      tmux
-      libgcc
-      zig
-      thinkfan
-      nodejs_22
-      gnumake
-      mariadb
-      unzip
-      wl-clipboard
-      discord-canary
-      htop
-      mariadb
-      jdk21
-      gradle
+    wireshark
+    blueman
+    gcc
+    rustup
+    piper
+    zip
+    gotop
+    rar
+    qbittorrent
+    egl-wayland
+    git
+    python3
+    obsidian
+    kitty
+    slack
+    fastfetch
+    spotify
+    vscodium
+    libreoffice
+    syncthing
+    ripgrep-all
+    ripgrep
+    zoxide
+    tmux
+    libgcc
+    zig
+    thinkfan
+    nodejs_22
+    gnumake
+    mariadb
+    unzip
+    wl-clipboard
+    discord-canary
+    htop
+    mariadb
+    jdk21
+    gradle
 
     auto-cpufreq
     grim
@@ -171,7 +171,7 @@
   };
 
   services.syncthing = {
-    enable  = true;
+    enable = true;
     user = "xam";
     group = "users";
     openDefaultPorts = true;

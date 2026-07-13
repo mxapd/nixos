@@ -16,7 +16,7 @@
           "query"
           "vim"
           "vimdoc"
-	  "python"
+          "python"
         ];
 
         highlight = {

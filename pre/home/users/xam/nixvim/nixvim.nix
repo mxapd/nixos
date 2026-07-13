@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: 
+{ pkgs, inputs, ... }:
 
 {
   imports = [
@@ -48,7 +48,7 @@
     #    tmp_dir = "/home/xam/.99/tmp",
     #  })
     #'';
-    
+
     #------------------------------
 
     plugins = {
@@ -60,14 +60,14 @@
       neoscroll.enable = true;
       render-markdown.enable = true;
       friendly-snippets.enable = true;
-      friendly-snippets.autoLoad= true;
+      friendly-snippets.autoLoad = true;
       nvim-surround.enable = true;
       trouble.enable = true;
     };
 
     autoGroups = {
       kickstart-highlight-yank = {
-	clear = true;
+        clear = true;
       };
     };
 
@@ -77,21 +77,21 @@
       #  Try it with `yap` in normal mode
       #  See `:help vim.highlight.on_yank()`
       {
-	event = ["TextYankPost"];
-	desc = "Highlight when yanking (copying) text";
-	group = "kickstart-highlight-yank";
-	callback.__raw = ''
-	  function()
-	    vim.highlight.on_yank()
-	  end
-	  '';
+        event = [ "TextYankPost" ];
+        desc = "Highlight when yanking (copying) text";
+        group = "kickstart-highlight-yank";
+        callback.__raw = ''
+          	  function()
+          	    vim.highlight.on_yank()
+          	  end
+          	  '';
       }
       {
-	event = ["VimEnter"];
-	desc = "Set custom Visual highlight";
-	command = "highlight Visual guibg=#555555 guifg=NONE";
+        event = [ "VimEnter" ];
+        desc = "Set custom Visual highlight";
+        command = "highlight Visual guibg=#555555 guifg=NONE";
       }
-    ];    
+    ];
 
 
     keymaps = [

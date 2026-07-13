@@ -2,7 +2,7 @@
 
 {
   flake.nixosModules.hm-xam = { pkgs, ... }: {
-    imports = [ 
+    imports = [
       inputs.self.nixosModules.hm-xam-zsh
       inputs.self.nixosModules.hm-ssh
       inputs.self.nixosModules.hm-git
@@ -17,7 +17,7 @@
       inputs.self.nixosModules.kitty
       inputs.self.nixosModules.opencode
       inputs.self.nixosModules.mako
-    ]; 
+    ];
 
     home-manager.users.xam = {
       home = {
@@ -33,16 +33,16 @@
         };
 
         packages = with pkgs; [
-	  kdePackages.dolphin
-	  kdePackages.dolphin-plugins
-	  
-	  prismlauncher
-	  
-	  vlc
-	  qbittorrent
-	  
-	  btop
-	  gotop
+          kdePackages.dolphin
+          kdePackages.dolphin-plugins
+
+          prismlauncher
+
+          vlc
+          qbittorrent
+
+          btop
+          gotop
 
           # (writeShellScriptBin "nixos-warnings" (builtins.readFile ../../../scripts/nixos-warnings.sh))
         ];

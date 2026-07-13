@@ -1,5 +1,5 @@
 { ... }: {
-  flake.nixosModules.ssh = { ... }: { 
+  flake.nixosModules.ssh = { ... }: {
     services.openssh = {
       enable = true;
       settings = {
@@ -9,5 +9,5 @@
         MaxAuthTries = 3;
       };
     };
-  }; 
+  };
 }

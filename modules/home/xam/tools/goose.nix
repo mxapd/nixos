@@ -1,13 +1,13 @@
-{ ... }: 
+{ ... }:
 
 {
   flake.nixosModules.goose = { pkgs, ... }: {
-    home-manager.users.xam= {	
+    home-manager.users.xam = {
       home.packages = with pkgs;[
-	goose-cli
+        goose-cli
       ];
       programs.zsh.initContent = ''
-	eval "$(goose term init zsh)"
+        	eval "$(goose term init zsh)"
       '';
     };
   };

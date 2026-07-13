@@ -8,14 +8,14 @@
       home = "/home/xam";
 
       shell = pkgs.zsh;
-  
+
       extraGroups = [
         "wheel"
         "networkmanager"
         "wireshark"
       ];
     };
-    
+
     programs.zsh.enable = true;
   };
 }

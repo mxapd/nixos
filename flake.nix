@@ -21,16 +21,18 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    torzu = {
-      url = "git+http://gitea.yggdrasil.com/BMSwahn/Torzu";
-    };
+    torzu.url = "git+http://gitea.yggdrasil.com/BMSwahn/Torzu";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.7.0";
   };
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-    imports = [ (inputs.import-tree ./modules) ];
-    perSystem = { config, self', inputs', pkgs, system, ... }: {
-      formatter = pkgs.nixpkgs-fmt;
+
+  outputs = inputs:
+    let
+      flakePartsOutputs = inputs.flake-parts.lib.mkFlake { inherit inputs; }
+        (inputs.import-tree ./modules);
+    in
+    flakePartsOutputs // {
+      formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
     };
-  };
+
 }

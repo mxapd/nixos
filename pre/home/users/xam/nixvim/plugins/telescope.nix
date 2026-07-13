@@ -1,16 +1,16 @@
 {
   programs.nixvim = {
     plugins.telescope = {
-     enable = true;
+      enable = true;
       extensions = {
         fzf-native.enable = true;
         ui-select.enable = true;
       };
 
       settings = {
-	defaults = {
-        layout_strategy = "vertical";
-	};
+        defaults = {
+          layout_strategy = "vertical";
+        };
       };
 
       keymaps = {

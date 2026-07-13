@@ -8,7 +8,7 @@
       age
       sops
     ];
-    
+
     sops.age.keyFile = "/home/xam/.age/sops_admin";
     sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 

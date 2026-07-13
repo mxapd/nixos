@@ -1,5 +1,5 @@
 { ... }: {
-  flake.nixosModules.virtualbox = { ... }: { 
+  flake.nixosModules.virtualbox = { ... }: {
     boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
 
     virtualisation.virtualbox.host.enable = true;
@@ -8,5 +8,5 @@
     #virtualisation.virtualbox.guest.dragAndDrop = true;
 
     users.extraGroups.vboxusers.members = [ "xam" ];
-  }; 
+  };
 }

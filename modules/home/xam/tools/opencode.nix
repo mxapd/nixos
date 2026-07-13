@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.nixosModules.opencode = { pkgs,... }: {
+  flake.nixosModules.opencode = { pkgs, ... }: {
     home-manager.users.xam.home.packages = with pkgs; [
       opencode
       #bubblewrap

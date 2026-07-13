@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./hermes-agent.nix
     ];
@@ -19,7 +20,7 @@
   networking.hostName = "hermes"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   networking.extraHosts = ''
     100.64.0.17 gitea.yggdrasil.com
   '';
@@ -29,17 +30,17 @@
   time.timeZone = "Europe/Stockholm";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
- 
+
   users.users.nixos = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     initialPassword = "nixos";
-    
+
     packages = with pkgs; [
       git
       vim
     ];
-  };  
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

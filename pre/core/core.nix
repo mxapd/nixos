@@ -1,4 +1,4 @@
-{  pkgs, ...}:
+{ pkgs, ... }:
 
 {
   networking = {
@@ -7,7 +7,7 @@
 
   # --TIME--
   time.timeZone = "Europe/Stockholm";
-  
+
   # internationalisation
   i18n = {
     defaultLocale = "en_US.UTF-8";
@@ -25,8 +25,8 @@
   };
 
   # --NIX--
-  system.stateVersion = "25.11"; 
-  nix.settings.experimental-features = [ "nix-command" "flakes"];
+  system.stateVersion = "25.11";
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
 
   # --PROGRAMS--
@@ -76,8 +76,8 @@
     fontconfig.defaultFonts = {
       monospace = [ "JetBrainsMono Nerd Font" "DejaVu Sans Mono" ];
       sansSerif = [ "Noto Sans" "DejaVu Sans" ];
-      serif     = [ "Noto Serif" "DejaVu Serif" ];
-      emoji     = [ "Noto Color Emoji" ];
+      serif = [ "Noto Serif" "DejaVu Serif" ];
+      emoji = [ "Noto Color Emoji" ];
     };
   };
 

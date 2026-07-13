@@ -9,9 +9,9 @@
 
       settings = {
         extensions.__raw = "{ ['ui-select'] = { require('telescope.themes').get_dropdown() } }";
-	defaults = {
-	  layout_strategy = "vertical";
-	};
+        defaults = {
+          layout_strategy = "vertical";
+        };
       };
 
       keymaps = {
@@ -43,7 +43,7 @@
             desc = "[S]earch by [G]rep";
           };
         };
-       "<leader>s" = {
+        "<leader>s" = {
           mode = "n";
           action = "oldfiles";
           options = {

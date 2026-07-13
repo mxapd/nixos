@@ -1,4 +1,4 @@
-{  pkgs, ...}:
+{ pkgs, ... }:
 
 {
 
@@ -9,14 +9,14 @@
     "100.64.0.7" = [ "laptop" ];
 
 
-    "100.64.0.17" = ["nextcloud.yggdrasil.com" "firefly.yggdrasil.com" "importer.yggdrasil.com" "gitea.yggdrasil.com"];
+    "100.64.0.17" = [ "nextcloud.yggdrasil.com" "firefly.yggdrasil.com" "importer.yggdrasil.com" "gitea.yggdrasil.com" ];
   };
 
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "client";
   };
-  
+
   environment.systemPackages = with pkgs; [
     tailscale
   ];

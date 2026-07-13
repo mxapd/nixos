@@ -6,22 +6,22 @@
       enable = true;
 
       #filesystem = {
-	#window = {
-	  #mappings = {
-	  #  "\\" = "close_window";
-	 # };
-	#};
+      #window = {
+      #mappings = {
+      #  "\\" = "close_window";
+      # };
+      #};
       #};
     };
 
     # https://nix-community.github.io/nixvim/keymaps/index.html
     keymaps = [
       {
-	key = "\\";
-	action = "<cmd>Neotree reveal<cr>";
-	options = {
-	  desc = "NeoTree reveal";
-	};
+        key = "\\";
+        action = "<cmd>Neotree reveal<cr>";
+        options = {
+          desc = "NeoTree reveal";
+        };
       }
     ];
   };

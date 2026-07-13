@@ -1,9 +1,9 @@
 { ... }: {
-  flake.nixosModules.sudo = { pkgs, ... }: { 
+  flake.nixosModules.sudo = { pkgs, ... }: {
     security.sudo-rs = {
       enable = true;
       execWheelOnly = true;
     };
-  }; 
+  };
 }
 

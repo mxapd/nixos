@@ -3,20 +3,20 @@
 {
 
   imports =
-    [ 
+    [
       ./hardware-configuration.nix
       ./../../modules/postgresql.nix
       ./../../modules/torzu.nix
       ./../../modules/obs.nix
     ];
-  
+
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [ 5900 ]; # wayvrc
-  
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  
+
   # disable automatic enabling of virtualization. i think i added this because virtualbox uses their own kernel modules
   boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
 
@@ -25,12 +25,12 @@
     xdgOpenUsePortal = true;
     wlr.enable = false;
     config = {
-      common.default = ["gtk"];
-      hyprland.default = ["gtk" "hyprland"];
+      common.default = [ "gtk" ];
+      hyprland.default = [ "gtk" "hyprland" ];
     };
     configPackages = [
       pkgs.xdg-desktop-portal-gtk
-	pkgs.xdg-desktop-portal
+      pkgs.xdg-desktop-portal
     ];
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
@@ -44,44 +44,44 @@
   };
 
   programs.direnv.enable = true;
-  
+
   console.keyMap = "sv-latin1";
-  
+
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   nix.settings.extra-platforms = [ "aarch64-linux" ];
 
   services = {
-    flatpak.enable = true; 
-    
+    flatpak.enable = true;
+
     xserver.enable = true;
     xserver.xkb = {
       layout = "se";
       variant = "";
     };
-    xserver.videoDrivers = ["nvidia"];
+    xserver.videoDrivers = [ "nvidia" ];
 
     mysql.enable = true;
     mysql.package = pkgs.mariadb;
-    
+
     printing.enable = true;
-    
+
     pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
     };
-    
+
     displayManager.sddm.enable = true;
-    
+
     ratbagd.enable = true; # for gaming mice, logitech superlight
-    
+
     openssh = {
       enable = true;
     };
 
     syncthing = {
-      enable  = true;
+      enable = true;
       user = "xam";
       group = "users";
       dataDir = "/home/xam/Documents/";
@@ -99,14 +99,14 @@
 
     zsh.enable = true;
     firefox.enable = true;
-    
-    steam = { 
+
+    steam = {
       enable = true;
       remotePlay.openFirewall = true;
     };
 
     gamemode.enable = true;
-    
+
     hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
@@ -115,22 +115,22 @@
   };
 
   security.rtkit.enable = true;
-  
+
   # virtualisation.docker = {
   #   enable = true;
   # };
-  
+
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
   #virtualisation.virtualbox.guest.enable = true;
   #virtualisation.virtualbox.guest.dragAndDrop = true;
-  
+
   users.extraGroups.vboxusers.members = [ "xam" ];
 
   environment.systemPackages = with pkgs; [
     wireshark
     inputs.agenix.packages."${pkgs.system}".default
-    
+
     (pkgs.callPackage ../../custom-pkgs/nixos-warnings.nix { })
 
     wayvnc
@@ -225,5 +225,5 @@
   };
 
   security.polkit.enable = true;
-  system.stateVersion = "25.11"; 
+  system.stateVersion = "25.11";
 }

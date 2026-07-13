@@ -5,7 +5,7 @@
     home-manager.users.xam = {
       programs.yazi = {
         enable = true;
+      };
     };
   };
-};
 }

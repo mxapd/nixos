@@ -23,10 +23,10 @@ in
   # The .age file must contain ONLY the plaintext password (single line).
   ##########################################################################
   age.secrets.smb-xam-password = {
-    file  = ../../secrets/smb-xam-password.age;
+    file = ../../secrets/smb-xam-password.age;
     owner = "root";
     group = "root";
-    mode  = "400";
+    mode = "400";
   };
 
   ##########################################################################
@@ -38,76 +38,76 @@ in
 
     settings = {
       global = {
-        "workgroup"     = "WORKGROUP";
+        "workgroup" = "WORKGROUP";
         "server string" = "ancient_nas";
-        "netbios name"  = "ancient";
+        "netbios name" = "ancient";
 
         # - Security -
-        "security"      = "user";
+        "security" = "user";
         # Allow LAN + tailscale CGNAT range + loopback; deny everything else.
-        "hosts allow"   = "100.64.0.0/10 192.168.1.0/24 127.0.0.1 localhost";
-        "hosts deny"    = "0.0.0.0/0";
+        "hosts allow" = "100.64.0.0/10 192.168.1.0/24 127.0.0.1 localhost";
+        "hosts deny" = "0.0.0.0/0";
         "guest account" = "nobody";
-        "map to guest"  = "bad user";
-        "use sendfile"  = "yes";
+        "map to guest" = "bad user";
+        "use sendfile" = "yes";
       };
 
       # ---- PUBLIC: everyone reads, only xam writes ------------------------
       "public" = {
-        "path"           = "/mnt/public";
-        "browseable"     = "yes";
-        "guest ok"       = "yes";       # unauthenticated users may read
-        "read only"      = "yes";       # default read-only ...
-        "write list"     = smbUser;     # ... except xam, who can write
-        "force user"     = smbUser;     # files land owned by xam
-        "create mask"    = "0644";
+        "path" = "/mnt/public";
+        "browseable" = "yes";
+        "guest ok" = "yes"; # unauthenticated users may read
+        "read only" = "yes"; # default read-only ...
+        "write list" = smbUser; # ... except xam, who can write
+        "force user" = smbUser; # files land owned by xam
+        "create mask" = "0644";
         "directory mask" = "0755";
       };
 
       # ---- PRIVATE: xam only, full read/write, no guests ------------------
       "private" = {
-        "path"           = "/mnt/private";
-        "browseable"     = "yes";
-        "guest ok"       = "no";        # must authenticate
-        "read only"      = "no";        # read/write
-        "valid users"    = smbUser;     # only xam may even connect
-        "force user"     = smbUser;
-        "create mask"    = "0600";      # private by default
+        "path" = "/mnt/private";
+        "browseable" = "yes";
+        "guest ok" = "no"; # must authenticate
+        "read only" = "no"; # read/write
+        "valid users" = smbUser; # only xam may even connect
+        "force user" = smbUser;
+        "create mask" = "0600"; # private by default
         "directory mask" = "0700";
       };
 
       # ---- GAMES: everyone reads/launches, only xam writes ----------------
       "games" = {
-        "path"           = "/mnt/games";
-        "browseable"     = "yes";
-        "guest ok"       = "yes";       # unauthenticated users may read
-        "read only"      = "yes";       # default read-only ...
-        "write list"     = smbUser;     # ... except xam, who can write
-        "force user"     = smbUser;
-        "create mask"    = "0644";
+        "path" = "/mnt/games";
+        "browseable" = "yes";
+        "guest ok" = "yes"; # unauthenticated users may read
+        "read only" = "yes"; # default read-only ...
+        "write list" = smbUser; # ... except xam, who can write
+        "force user" = smbUser;
+        "create mask" = "0644";
         "directory mask" = "0755";
       };
 
       # ---- Existing media shares (kept read-only) -------------------------
       "video" = {
-        "path"           = "/mnt/video";
-        "browseable"     = "yes";
-        "guest ok"       = "yes";
-        "read only"      = "yes";
-        "write list"     = smbUser;
-        "force user"     = smbUser;
-        "create mask"    = "0644";
+        "path" = "/mnt/video";
+        "browseable" = "yes";
+        "guest ok" = "yes";
+        "read only" = "yes";
+        "write list" = smbUser;
+        "force user" = smbUser;
+        "create mask" = "0644";
         "directory mask" = "0755";
       };
 
       "books" = {
-        "path"           = "/mnt/books";
-        "browseable"     = "yes";
-        "guest ok"       = "yes";
-        "read only"      = "yes";
-        "write list"     = smbUser;
-        "force user"     = smbUser;
-        "create mask"    = "0644";
+        "path" = "/mnt/books";
+        "browseable" = "yes";
+        "guest ok" = "yes";
+        "read only" = "yes";
+        "write list" = smbUser;
+        "force user" = smbUser;
+        "create mask" = "0644";
         "directory mask" = "0755";
       };
     };

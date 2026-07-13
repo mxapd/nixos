@@ -1,9 +1,8 @@
-{
-  pkgs,
-  lib,
-  host,
-  config,
-  ...
+{ pkgs
+, lib
+, host
+, config
+, ...
 }:
 
 with lib;
@@ -17,27 +16,27 @@ with lib;
         layer = "top";
         position = "bottom";
         modules-left = [
-	  "hyprland/workspaces" 
-	];
-        modules-center = [ 
-	  "hyprland/window"
-	];
+          "hyprland/workspaces"
+        ];
+        modules-center = [
+          "hyprland/window"
+        ];
         modules-right = [
-	  "custom/nixos-warnings"
-	  "disk"
-	  #"custom/room_temp"
-	  "network"
-	  "pulseaudio"
-	  "tray"
-	  "clock"
-	];
+          "custom/nixos-warnings"
+          "disk"
+          #"custom/room_temp"
+          "network"
+          "pulseaudio"
+          "tray"
+          "clock"
+        ];
 
-	"disk" = {
-  	  path = "/";
-	  interval = "30";
-	  format = " | {free} free |";
-	  unit = "GB";
-  	};
+        "disk" = {
+          path = "/";
+          interval = "30";
+          format = " | {free} free |";
+          unit = "GB";
+        };
 
         "hyprland/workspaces" = {
           format = "{name}";
@@ -49,30 +48,30 @@ with lib;
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
         };
-        
-	"hyprland/window" = {
+
+        "hyprland/window" = {
           max-length = 22;
           separate-outputs = false;
           rewrite = {
             "" = " No Window? ";
           };
-	};
+        };
 
-	"clock" = {
-	  format = "{:%H:%M %A%e %b}";
-	  tooltip-format = "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>";
-	  today-format = "<b>{}</b>";
-	  on-click = "calcure";
-	};
+        "clock" = {
+          format = "{:%H:%M %A%e %b}";
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>";
+          today-format = "<b>{}</b>";
+          on-click = "calcure";
+        };
 
-	"tray" = {
-	  spacing = 12;
-	};
+        "tray" = {
+          spacing = 12;
+        };
 
-	"network" = {
-	  interval = "5";
+        "network" = {
+          interval = "5";
           format-icons = [
-	    "󰤯"
+            "󰤯"
             "󰤟"
             "󰤢"
             "󰤥"
@@ -83,31 +82,31 @@ with lib;
           format-disconnected = "󰤮";
         };
 
-	"pulseaudio" = {
-	  format = "{volume}% |";
-	  on-click = "wiremix";
-	};
+        "pulseaudio" = {
+          format = "{volume}% |";
+          on-click = "wiremix";
+        };
 
-	#"custom/nixos-warnings" = {
-	#  exec = "echo '⚠ '$(nixos-warnings count)' warnings'";
+        #"custom/nixos-warnings" = {
+        #  exec = "echo '⚠ '$(nixos-warnings count)' warnings'";
         #  interval = 5;
         #  tooltip = true;
         #  tooltip-format = "Click to view warnings (not yet inpmlemented)";
         #};
 
 
-	#	"custom/room_temp" = {
-	#	    exec = "~/nixos/scripts/room_temp.sh";
-	#	    interval = 55;
-	#	    format = "{}";
-	#	    return-type = "json";
-	#	};
+        #	"custom/room_temp" = {
+        #	    exec = "~/nixos/scripts/room_temp.sh";
+        #	    interval = 55;
+        #	    format = "{}";
+        #	    return-type = "json";
+        #	};
 
       }
     ];
 
     style = concatStrings [
-     ''
+      ''
 
 @define-color bg-color rgb(68, 71, 90);               /* #3C413C */
 @define-color bg-color-tray rgb (40, 42, 54);         /* #3C4144 */

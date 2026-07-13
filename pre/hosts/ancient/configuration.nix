@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       #./nas.nix
     ];
@@ -23,7 +24,7 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-   networking.firewall.allowedTCPPorts = [
+  networking.firewall.allowedTCPPorts = [
     445
     3000 # for gitea
     2222 # also for gitea but not sure if needed
@@ -39,7 +40,7 @@
     # 21027 # Syncthing discovery port (UDP, usually opened by syncthing.openFirewall = true)
     8096 # jellyfin    
   ];
-  
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -50,7 +51,7 @@
     isNormalUser = true;
     description = "Xam";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    packages = with pkgs; [ ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -65,24 +66,24 @@
   ];
 
   services.samba = {
-    enable = true; 
+    enable = true;
     settings = {
       global = {
         # - General -
         "workgroup" = "WORKGROUP";
-	"server string" = "ancient_samba";
+        "server string" = "ancient_samba";
         "netbios name" = "ancient";
- 	
-	# - Security -	
-	"security" = "user";
-	"hosts allow" = "100.64.0.0/10 192.168.1.0/24 127.0.0.1 localhost"; # add tailscale ip
+
+        # - Security -	
+        "security" = "user";
+        "hosts allow" = "100.64.0.0/10 192.168.1.0/24 127.0.0.1 localhost"; # add tailscale ip
         "hosts deny" = "0.0.0.0/0";
         "guest account" = "nobody";
         "map to guest" = "bad user";
-	"use sendfile" = "yes";
+        "use sendfile" = "yes";
 
-	# note: localhost is the ipv6 localhost ::1
-	# note: "use sendfile" - uses the kernels sendfile() to transfer files directly from disk to network
+        # note: localhost is the ipv6 localhost ::1
+        # note: "use sendfile" - uses the kernels sendfile() to transfer files directly from disk to network
       };
 
       # - Shares -	
@@ -90,8 +91,8 @@
         "path" = "/mnt/media/video";
         "browseable" = "yes";
         "read only" = "yes";
-	"write list" = "xam";
-        "guest ok" = "yes"; 
+        "write list" = "xam";
+        "guest ok" = "yes";
         "create mask" = "0644"; # rw-r--r--
         "directory mask" = "0755"; # rwxr-xr-x
         "force user" = "xam";
@@ -101,8 +102,8 @@
         "path" = "/mnt/media/books";
         "browseable" = "yes";
         "read only" = "yes";
-	"write list" = "xam";
-        "guest ok" = "yes"; 
+        "write list" = "xam";
+        "guest ok" = "yes";
         "create mask" = "0644"; # rw-r--r--
         "directory mask" = "0755"; # rwxr-xr-x
         "force user" = "xam";
@@ -112,15 +113,15 @@
         "path" = "/mnt/media/games";
         "browseable" = "yes";
         "read only" = "yes";
-	"write list" = "xam";
-        "guest ok" = "yes"; 
+        "write list" = "xam";
+        "guest ok" = "yes";
         "create mask" = "0644"; # rw-r--r--
         "directory mask" = "0755"; # rwxr-xr-x
         "force user" = "xam";
       };
     };
   };
-  
+
   services.samba-wsdd = {
     enable = true;
     openFirewall = true;
@@ -133,7 +134,7 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  boot.swraid.enable = true; 
+  boot.swraid.enable = true;
   boot.swraid.mdadmConf = ''
     MAILADDR root
     ARRAY /dev/md0 metadata=1.2 UUID=c2372504:3357ee60:294af604:572ab5f2
@@ -152,9 +153,9 @@
     fsType = "ext4";
     options = [ "defaults" "nofail" ];
   };
-  
+
   # mount git
-   fileSystems."/mnt/git" = {
+  fileSystems."/mnt/git" = {
     device = "/dev/raid_storage_vg/git";
     fsType = "ext4";
     options = [ "defaults" "nofail" ];
@@ -173,9 +174,9 @@
     openFirewall = true;
     user = "jellyfin";
   };
-  
+
   services.syncthing = {
-    enable  = true;
+    enable = true;
     user = "xam";
     group = "users";
     openDefaultPorts = true;
@@ -192,7 +193,7 @@
     httpPort = 3000;
     domain = "localhost";
     rootUrl = "http://localhost:3000/";
- 
+
     # database for metadata (users, keys and stuff)
     database = {
       type = "sqlite3";
@@ -200,17 +201,17 @@
     };
   };
 
- 
+
   systemd.services.gitea-backup = {
     description = "Mirror Gitea data to HDD backup directory";
     after = [ "gitea.service" ];
     serviceConfig = {
       User = "root";
       Type = "oneshot";
-      ExecStart = [ 
-	"/run/current-system/sw/bin/mkdir -p /mnt/git/"
-	"/run/current-system/sw/bin/rsync -a --delete /var/lib/gitea/ /mnt/git/"
-      ];    
+      ExecStart = [
+        "/run/current-system/sw/bin/mkdir -p /mnt/git/"
+        "/run/current-system/sw/bin/rsync -a --delete /var/lib/gitea/ /mnt/git/"
+      ];
     };
   };
 

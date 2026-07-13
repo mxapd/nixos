@@ -2,14 +2,14 @@
 {
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";   # auto-add to agent on first use
+    addKeysToAgent = "yes"; # auto-add to agent on first use
 
     matchBlocks = {
 
       "ancient hermes desktop laptop" = {
         user = "xam";
-        identityFile = "/home/xam/.ssh/access";   # <-- use this key for these hosts
-        identitiesOnly = true;                     # <-- ONLY this key, don't try others
+        identityFile = "/home/xam/.ssh/access"; # <-- use this key for these hosts
+        identitiesOnly = true; # <-- ONLY this key, don't try others
       };
 
       "github.com" = {

@@ -1,11 +1,11 @@
-{ pkgs, ...}:
+{ pkgs, ... }:
 {
   stylix = {
     enable = true;
     image = ../artemis_moon_dark.png;
     polarity = "dark";
     opacity.terminal = 0.95;
-   
+
     cursor.package = pkgs.bibata-cursors;
     cursor.name = "Bibata-Modern-Ice";
     cursor.size = 20;
