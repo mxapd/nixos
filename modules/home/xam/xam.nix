@@ -8,6 +8,7 @@
       inputs.self.nixosModules.hm-git
       inputs.self.nixosModules.nixvim
       inputs.self.nixosModules.tmux-notes
+      inputs.self.nixosModules.tmux-goose
       inputs.self.nixosModules.tmux-sessionizer
       inputs.self.nixosModules.rebuild
       inputs.self.nixosModules.goose

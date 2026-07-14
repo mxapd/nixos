@@ -45,7 +45,7 @@
 
         settings = {
           windowrule = [
-	    "opacity 0.85 0.85, match:float true"
+	    "opacity 1 1, match:float true"
 	  ];
 
           input = {
@@ -113,6 +113,7 @@
 
 
             "$mod, O, exec, kitty --class tmux-notes -e /etc/profiles/per-user/xam/bin/tmux-notes"
+            "$mod, G, exec, kitty --class tmux-goose -e /etc/profiles/per-user/xam/bin/tmux-goose"
           ];
 
           bindm = [
