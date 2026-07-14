@@ -27,6 +27,7 @@
         inputs.self.nixosModules.ancient-syncthing
         inputs.self.nixosModules.gitea
         inputs.self.nixosModules.radicale
+        inputs.self.nixosModules.lidarr
         
 	({ ... }: {
           networking.hostName = "ancient"; 
