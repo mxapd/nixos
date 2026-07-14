@@ -35,10 +35,11 @@
 	};
 
         packages = with pkgs; [
-          kdePackages.dolphin
+          kdePackages.dolphin # TODO add keybind to open in hyprland
           kdePackages.dolphin-plugins
 
           prismlauncher
+	  spotify
 
           vlc
           qbittorrent
@@ -46,7 +47,7 @@
           btop
           gotop
 
-          # (writeShellScriptBin "nixos-warnings" (builtins.readFile ../../../scripts/nixos-warnings.sh))
+          # TODO: make module for nixos-warnings (writeShellScriptBin "nixos-warnings" (builtins.readFile ../../../scripts/nixos-warnings.sh))
         ];
       };
     };
