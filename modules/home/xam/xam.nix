@@ -46,8 +46,6 @@
 
           btop
           gotop
-
-          # TODO: make module for nixos-warnings (writeShellScriptBin "nixos-warnings" (builtins.readFile ../../../scripts/nixos-warnings.sh))
         ];
       };
     };
