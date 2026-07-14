@@ -27,8 +27,9 @@
         inputs.self.nixosModules.ancient-syncthing
         inputs.self.nixosModules.gitea
         inputs.self.nixosModules.radicale
-
-        ({ ... }: {
+        inputs.self.nixosModules.prowlarr
+        
+	({ ... }: {
           networking.hostName = "ancient"; 
           system.stateVersion = "26.05";
 

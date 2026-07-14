@@ -34,7 +34,6 @@
 
         inputs.self.nixosModules.syncthing
         inputs.self.nixosModules.tailscale
-        inputs.self.nixosModules.prowlarr
 
         # inputs.self.nixosModules.virtualbox
         inputs.self.nixosModules.torzu
