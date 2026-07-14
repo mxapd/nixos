@@ -7,9 +7,10 @@
       user = "gitea";
 
       settings.server = {
-	HTTP_PORT = 3000;
+	HTTP_PORT = 3001;
+	SSH_PORT = 3002;
 	DOMAIN = "localhost";
-        ROOT_URL = "http://localhost:3000/";
+        ROOT_URL = "http://localhost:3001/";
       };
 
       # database for metadata (users, keys and stuff)
