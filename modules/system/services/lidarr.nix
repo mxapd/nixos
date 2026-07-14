@@ -18,6 +18,7 @@
       enable = true;
       user = "lidarr";
       group = "media";    
+      dataDir = "/var/lib/lidarr";
       openFirewall = true;  # Opens default port 8686
     };
   };
