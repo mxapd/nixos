@@ -29,7 +29,7 @@
         inputs.self.nixosModules.radicale
         inputs.self.nixosModules.lidarr
         
-	({ ... }: {
+	({ pkgs, ... }: {
           networking.hostName = "ancient"; 
           system.stateVersion = "26.05";
           environment.systemPackages = with pkgs; [
