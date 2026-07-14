@@ -7,10 +7,13 @@
       user = "gitea";
 
       settings.server = {
-	HTTP_PORT = 3001;
-	SSH_PORT = 3002;
-	DOMAIN = "gitea.ancient.com";
-        ROOT_URL = "http://localhost:3001/";
+        HTTP_PORT = 3000;
+        SSH_PORT = 2222;
+        SSH_LISTEN_PORT = 2222;
+        DOMAIN = "gitea.ancient.com";
+        ROOT_URL = "http://gitea.ancient.com/";
+        BUILTIN_SSH_SERVER = true;
+        START_SSH_SERVER = true;
       };
 
       # database for metadata (users, keys and stuff)
@@ -24,7 +27,7 @@
       description = "Mirror Gitea data to HDD backup directory";
       after = [ "gitea.service" ];
       serviceConfig = {
-	User = "root";
+	User = "gitea";
 	Type = "oneshot";
 	ExecStart = [
 	  "/run/current-system/sw/bin/mkdir -p /mnt/git/"

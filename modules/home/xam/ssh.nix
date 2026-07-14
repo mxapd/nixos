@@ -15,9 +15,11 @@
             ServerAliveInterval = 600;
           };
 
-          "100.64.0.14" = {
+          "gitea.ancient.com" = {
+            HostName = "100.64.0.14";
             User = "git";
-            IdentityFile = "/home/xam/.ssh/github_mxapd";
+            Port = 2222;
+            IdentityFile = "/home/xam/.ssh/gitea";
             IdentitiesOnly = "yes";
           };
 
