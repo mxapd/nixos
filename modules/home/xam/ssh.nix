@@ -17,7 +17,7 @@
 
           "gitea.ancient.com" = {
             HostName = "100.64.0.14";
-            User = "git";
+            User = "gitea";
             Port = 2222;
             IdentityFile = "/home/xam/.ssh/gitea";
             IdentitiesOnly = "yes";
