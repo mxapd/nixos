@@ -32,8 +32,11 @@
 	({ ... }: {
           networking.hostName = "ancient"; 
           system.stateVersion = "26.05";
-
-          networking.firewall = {
+          environment.systemPackages = with pkgs; [
+            git
+	  ];
+	  
+	  networking.firewall = {
             enable = true;
             allowPing = true;
             allowedTCPPorts = [
