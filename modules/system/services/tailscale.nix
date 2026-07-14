@@ -4,7 +4,7 @@
   flake.nixosModules.tailscale = { pkgs, ... }: {
 
     networking.hosts = {
-      "100.64.0.14" = [ "ancient" ];
+      "100.64.0.14" = [ "ancient" "gitea.ancient.com"];
       #"100.64.0.Y" = [ "hermes" ];
       "100.64.0.6" = [ "hearth" ];
       "100.64.0.7" = [ "sojourn" ];

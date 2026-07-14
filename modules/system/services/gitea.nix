@@ -9,7 +9,7 @@
       settings.server = {
 	HTTP_PORT = 3001;
 	SSH_PORT = 3002;
-	DOMAIN = "localhost";
+	DOMAIN = "gitea.ancient.com";
         ROOT_URL = "http://localhost:3001/";
       };
 
