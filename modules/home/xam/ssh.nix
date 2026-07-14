@@ -15,7 +15,11 @@
             ServerAliveInterval = 600;
           };
 
-
+          "100.64.0.14" = {
+            User = "git";
+            IdentityFile = "/home/xam/.ssh/github_mxapd";
+            IdentitiesOnly = "yes";
+          };
 
           "github.com" = {
             User = "git";
