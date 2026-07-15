@@ -1,10 +1,11 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   flake.nixosModules.rust-dev = { pkgs, ... }: {
     home-manager.users.xam = {
       home.packages = with pkgs; [
-        rustup
+	rustc
+	rustup
         gcc
         gnumake
         openssl
