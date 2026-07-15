@@ -15,6 +15,7 @@
       inputs.self.nixosModules.hm-yazi
       inputs.self.nixosModules.tmux
       inputs.self.nixosModules.zoxide
+      inputs.self.nixosModules.rust-dev
       inputs.self.nixosModules.kitty
       inputs.self.nixosModules.opencode
       inputs.self.nixosModules.mako
@@ -38,8 +39,6 @@
         packages = with pkgs; [
           kdePackages.dolphin # TODO add keybind to open in hyprland
           kdePackages.dolphin-plugins
-
-	  cargo
 
           prismlauncher
 	  spotify
