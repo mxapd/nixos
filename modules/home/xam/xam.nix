@@ -39,6 +39,8 @@
           kdePackages.dolphin # TODO add keybind to open in hyprland
           kdePackages.dolphin-plugins
 
+	  cargo
+
           prismlauncher
 	  spotify
 

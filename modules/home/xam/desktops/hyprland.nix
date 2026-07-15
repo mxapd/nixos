@@ -23,6 +23,8 @@
     };
 
     home-manager.users.xam = {
+      stylix.targets.kde.enable = false;
+      
       programs = {
         wofi.enable = true;
 
