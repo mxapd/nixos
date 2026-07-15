@@ -677,6 +677,22 @@
     },
     "nixpkgs_4": {
       "locked": {
+        "lastModified": 1773821835,
+        "narHash": "sha256-TJ3lSQtW0E2JrznGVm8hOQGVpXjJyXY2guAxku2O9A4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b40629efe5d6ec48dd1efba650c797ddbd39ace0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_5": {
+      "locked": {
         "lastModified": 1767634882,
         "narHash": "sha256-2GffSfQxe3sedHzK+sTKlYo/NTIAGzbFCIsNMUPAAnk=",
         "owner": "NixOS",
@@ -768,6 +784,7 @@
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",
         "sops-nix": "sops-nix",
+        "spellbook": "spellbook",
         "stylix": "stylix",
         "torzu": "torzu"
       }
@@ -789,6 +806,24 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "spellbook": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "dirtyRev": "84720d58b8542a9acdb9ec12f3b5bd6ebed030e2-dirty",
+        "dirtyShortRev": "84720d5-dirty",
+        "lastModified": 1784093025,
+        "narHash": "sha256-WW23O5/uraZ0xMRpMaMBL/mmj7dcI+4457KvpmD7R3g=",
+        "type": "git",
+        "url": "file:///home/xam/Projects/spellbook"
+      },
+      "original": {
+        "owner": "mxapd",
+        "repo": "spellbook",
         "type": "github"
       }
     },
@@ -937,7 +972,7 @@
     },
     "torzu": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_5",
         "nixpkgs-qt": "nixpkgs-qt"
       },
       "locked": {

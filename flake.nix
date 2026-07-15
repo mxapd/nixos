@@ -23,6 +23,7 @@
     };
     torzu.url = "git+http://gitea.yggdrasil.com/BMSwahn/Torzu";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.7.0";
+    spellbook.url = "github:mxapd/spellbook";
   };
 
 

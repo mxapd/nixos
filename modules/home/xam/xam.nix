@@ -20,6 +20,7 @@
       inputs.self.nixosModules.opencode
       inputs.self.nixosModules.mako
       inputs.self.nixosModules.thunderbird
+      inputs.self.nixosModules.spellbook
     ];
 
     home-manager.users.xam = {
