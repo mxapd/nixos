@@ -13,6 +13,7 @@
       inputs.self.nixosModules.rebuild
       inputs.self.nixosModules.goose
       inputs.self.nixosModules.hm-yazi
+      inputs.self.nixosModules.open-clipboard-link
       inputs.self.nixosModules.tmux
       inputs.self.nixosModules.zoxide
       inputs.self.nixosModules.rust-dev

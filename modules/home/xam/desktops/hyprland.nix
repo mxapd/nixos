@@ -64,6 +64,7 @@
             "$mod,Return,exec, kitty -e tmux"
             "$mod,d,exec, wofi --show drun"
             "$mod,w,exec,firefox"
+            "$mod, U, exec, open-clipboard-link"
             "$modSHIFT,M,exec, hyprctl dispatch exit"
             "$mod,E,exec, dolphin"
 
