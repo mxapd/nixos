@@ -1,14 +1,14 @@
 { inputs, ... }:
 
 {
-  flake.nixosConfigurations.sojourn =
+  flake.nixosConfigurations.sputnik =
     inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
 
       modules = [
         inputs.self.nixosModules.boot
-        inputs.self.nixosModules.sojourn-hardware
+        inputs.self.nixosModules.sputnik-hardware
         inputs.self.nixosModules.user-xam
 
         inputs.self.nixosModules.audio
@@ -28,7 +28,7 @@
         inputs.self.nixosModules.hyprmoon-laptop
 
         inputs.self.nixosModules.ssh-authorized-keys
-        inputs.self.nixosModules.ssh-access-sojourn 
+        inputs.self.nixosModules.ssh-access-sputnik
         inputs.self.nixosModules.git-access
 
         inputs.self.nixosModules.syncthing
@@ -41,7 +41,7 @@
         inputs.self.nixosModules.firefox
 
 	({ pkgs, ... }:	{
-	  networking.hostName = "sojourn"; # other options: nomad, voyager, pilgrim
+        networking.hostName = "sputnik"; # other options: nomad, voyager, pilgrim
 	  system.stateVersion = "26.05";
 	  
 	  console.keyMap = "sv-latin1";

@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.nixosModules.sojourn-hardware =
+  flake.nixosModules.sputnik-hardware =
     { config, lib, pkgs, modulesPath, ... }:
 
     {

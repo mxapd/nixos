@@ -1,0 +1,39 @@
+[1784098043.028976791] [INFO] Spellbook started (mode: Browse)
+[1784098043.029056820] [INFO] Job manager initialized
+[1784098044.856943865] [DEBUG] KeyEvent: code=Right, modifiers=KeyModifiers(0x0)
+[1784098044.856968445] [DEBUG] Mode: BrowseSpellbooks
+[1784098045.241982931] [DEBUG] KeyEvent: code=Left, modifiers=KeyModifiers(0x0)
+[1784098045.242007331] [DEBUG] Mode: BrowseSpellbooks
+[1784098045.665947393] [DEBUG] KeyEvent: code=Enter, modifiers=KeyModifiers(0x0)
+[1784098045.665971562] [DEBUG] Mode: BrowseSpellbooks
+[1784098046.105963977] [DEBUG] KeyEvent: code=Down, modifiers=KeyModifiers(0x0)
+[1784098046.105984817] [DEBUG] Mode: BrowseSpells
+[1784098046.647946795] [DEBUG] KeyEvent: code=Up, modifiers=KeyModifiers(0x0)
+[1784098046.647963265] [DEBUG] Mode: BrowseSpells
+[1784098046.837947892] [DEBUG] KeyEvent: code=Char('q'), modifiers=KeyModifiers(0x0)
+[1784098046.837969482] [DEBUG] Mode: BrowseSpells
+[1784098047.214970899] [DEBUG] KeyEvent: code=Esc, modifiers=KeyModifiers(0x0)
+[1784098047.214990899] [DEBUG] Mode: BrowseSpells
+[1784098047.822980222] [DEBUG] KeyEvent: code=Right, modifiers=KeyModifiers(0x0)
+[1784098047.823002032] [DEBUG] Mode: BrowseSpellbooks
+[1784098048.192979869] [DEBUG] KeyEvent: code=Left, modifiers=KeyModifiers(0x0)
+[1784098048.193002179] [DEBUG] Mode: BrowseSpellbooks
+[1784098048.813913949] [DEBUG] KeyEvent: code=Enter, modifiers=KeyModifiers(0x0)
+[1784098048.813936819] [DEBUG] Mode: BrowseSpellbooks
+[1784098049.748966218] [DEBUG] KeyEvent: code=Esc, modifiers=KeyModifiers(0x0)
+[1784098049.748987438] [DEBUG] Mode: BrowseSpells
+[1784098049.967931795] [DEBUG] KeyEvent: code=Right, modifiers=KeyModifiers(0x0)
+[1784098049.967953435] [DEBUG] Mode: BrowseSpellbooks
+[1784098050.180920457] [DEBUG] KeyEvent: code=Enter, modifiers=KeyModifiers(0x0)
+[1784098050.180939577] [DEBUG] Mode: BrowseSpellbooks
+[1784098050.853018355] [DEBUG] KeyEvent: code=Esc, modifiers=KeyModifiers(0x0)
+[1784098050.853040975] [DEBUG] Mode: BrowseSpells
+[1784098052.912970572] [DEBUG] KeyEvent: code=Esc, modifiers=KeyModifiers(0x0)
+[1784098052.912996432] [DEBUG] Mode: BrowseSpellbooks
+[1784098053.395056451] [DEBUG] KeyEvent: code=Esc, modifiers=KeyModifiers(0x0)
+[1784098053.395078001] [DEBUG] Mode: BrowseSpellbooks
+[1784098053.866905733] [DEBUG] KeyEvent: code=Char('q'), modifiers=KeyModifiers(0x0)
+[1784098053.866927523] [DEBUG] Mode: BrowseSpellbooks
+[1784098054.365892661] [DEBUG] KeyEvent: code=Char('c'), modifiers=KeyModifiers(CONTROL)
+[1784098054.365910141] [INFO] Quit via Ctrl+C
+[1784098054.365918441] [INFO] Spellbook exiting
