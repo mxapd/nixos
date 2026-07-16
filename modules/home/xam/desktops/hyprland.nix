@@ -65,6 +65,7 @@
             "$mod,d,exec, wofi --show drun"
             "$mod,w,exec,firefox"
             "$mod, U, exec, open-clipboard-link"
+            "$modSHIFT, U, exec, search-clipboard"
             "$modSHIFT,M,exec, hyprctl dispatch exit"
             "$mod,E,exec, dolphin"
 
