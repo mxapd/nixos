@@ -23,6 +23,7 @@
       inputs.self.nixosModules.mako
       inputs.self.nixosModules.thunderbird
       inputs.self.nixosModules.spellbook
+      inputs.self.nixosModules.compression-utils
     ];
 
     home-manager.users.xam = {
