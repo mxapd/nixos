@@ -9,6 +9,7 @@
       packages = [
         "com.adamcake.Bolt"
         "info.beyondallreason.bar"
+	"com.heroicgameslauncher.hgl"
       ];
 
       uninstallUnmanaged = true;

@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, self, ... }:
 
 {
   flake.nixosConfigurations.hearth =
@@ -6,40 +6,40 @@
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
 
-      modules = [
-        inputs.self.nixosModules.boot
-        inputs.self.nixosModules.hearth-hardware
-        inputs.self.nixosModules.user-xam
+      modules = with self.nixosModules; [
+        boot
+        hearth-hardware
+        user-xam
 
-        inputs.self.nixosModules.audio
-        inputs.self.nixosModules.bluetooth
-        inputs.self.nixosModules.networking
-        inputs.self.nixosModules.fonts
-        inputs.self.nixosModules.locale
-        inputs.self.nixosModules.sops
-        inputs.self.nixosModules.nix-maintenance
-        inputs.self.nixosModules.ssh
-        inputs.self.nixosModules.sudo
-        inputs.self.nixosModules.nvidia
-        inputs.self.nixosModules.stylix
-        inputs.self.nixosModules.unfree
+        audio
+        bluetooth
+        networking
+        fonts
+        locale
+        sops
+        nix-maintenance
+        ssh
+        sudo
+        nvidia
+        stylix
+        unfree
 
-        inputs.self.nixosModules.home-manager
-        inputs.self.nixosModules.hm-xam
-        inputs.self.nixosModules.hyprmoon
+        home-manager
+        hm-xam
+        hyprmoon
 
-        inputs.self.nixosModules.ssh-authorized-keys
-        inputs.self.nixosModules.ssh-access-hearth
-        inputs.self.nixosModules.git-access
+        ssh-authorized-keys
+        ssh-access-hearth
+        git-access
 
-        inputs.self.nixosModules.syncthing
-        inputs.self.nixosModules.tailscale
+        syncthing
+        tailscale
 
-        # inputs.self.nixosModules.virtualbox
-        inputs.self.nixosModules.torzu
-        inputs.self.nixosModules.flatpak
-        inputs.self.nixosModules.steam
-        inputs.self.nixosModules.firefox
+        virtualbox
+        torzu
+        flatpak
+        steam
+        firefox
 
         ({ pkgs, ... }: {
 

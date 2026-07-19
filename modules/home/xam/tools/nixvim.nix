@@ -1,5 +1,5 @@
-{ inputs, pkgs, ... }: {
-  flake.nixosModules.nixvim = { pkgs, inputs, ... }: {
+{ ... }: {
+  flake.nixosModules.nixvim = { inputs, ... }: {
     imports = [
       inputs.nixvim.nixosModules.nixvim
       ./_nixvim-plugins/treesitter.nix

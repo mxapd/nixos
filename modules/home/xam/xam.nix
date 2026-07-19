@@ -41,7 +41,7 @@
 	};
 
         packages = with pkgs; [
-          kdePackages.dolphin # TODO add keybind to open in hyprland
+          kdePackages.dolphin 
           kdePackages.dolphin-plugins
 
           prismlauncher
