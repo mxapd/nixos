@@ -25,6 +25,12 @@
           check = "nix flake check";
           pai = "bun ~/.opencode/PAI/Tools/pai.ts";
           v = "nvim";
+	  
+	  # git 
+	  commit = "git commit";
+	  add = "git add";
+	  push = "git push";
+	  checkout = "git checkout";
         };
 
         initContent = ''
