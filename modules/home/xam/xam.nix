@@ -52,6 +52,8 @@
 
           btop
           gotop
+
+	  inputs.bookokrat.packages.${pkgs.system}.default
         ];
       };
     };

@@ -23,8 +23,15 @@
     };
     torzu.url = "git+http://gitea.yggdrasil.com/BMSwahn/Torzu";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.7.0";
+    
+    bookokrat.url = "github:bugzmanov/bookokrat";
+    bookokrat.inputs.nixpkgs.follows = "nixpkgs";
+
+
     # TODO: pin to a specific revision when spellbook v1 is released
     spellbook.url = "github:mxapd/spellbook";
+  
+
   };
 
 
