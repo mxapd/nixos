@@ -52,7 +52,8 @@
 
           btop
           gotop
-
+	  
+	  calcure
 	  inputs.bookokrat.packages.${pkgs.system}.default
         ];
       };
