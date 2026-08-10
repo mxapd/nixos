@@ -37,3 +37,20 @@
 [1784098054.365892661] [DEBUG] KeyEvent: code=Char('c'), modifiers=KeyModifiers(CONTROL)
 [1784098054.365910141] [INFO] Quit via Ctrl+C
 [1784098054.365918441] [INFO] Spellbook exiting
+[1786350884.827764313] [INFO] Spellbook started (mode: Browse)
+[1786350884.828310039] [INFO] Job manager initialized
+[1786350889.892243104] [DEBUG] KeyEvent: code=Char(':'), modifiers=KeyModifiers(0x0)
+[1786350889.892291174] [DEBUG] Mode: BrowseSpellbooks
+[1786350890.851140866] [DEBUG] KeyEvent: code=Down, modifiers=KeyModifiers(0x0)
+[1786350890.851163008] [DEBUG] Mode: BrowseSpellbooks
+[1786350891.174141534] [DEBUG] KeyEvent: code=Up, modifiers=KeyModifiers(0x0)
+[1786350891.174165609] [DEBUG] Mode: BrowseSpellbooks
+[1786350891.706122037] [DEBUG] KeyEvent: code=Enter, modifiers=KeyModifiers(0x0)
+[1786350891.706142325] [DEBUG] Mode: BrowseSpellbooks
+[1786350891.712923219] [INFO] Opening editor: nvim
+[1786350991.877348704] [INFO] Editor content unchanged; aborting add
+[1786350991.877374553] [INFO] Quick add spell cancelled in editor
+[1786350991.877389010] [INFO] Command: new spell
+[1786350995.407634099] [DEBUG] KeyEvent: code=Char('c'), modifiers=KeyModifiers(CONTROL)
+[1786350995.407663495] [INFO] Quit via Ctrl+C
+[1786350995.407678633] [INFO] Spellbook exiting
