@@ -28,7 +28,9 @@
         inputs.self.nixosModules.gitea
         inputs.self.nixosModules.radicale
         
-	#inputs.self.nixosModules.lidarr
+
+	inputs.self.nixosModules.prowlarr
+	inputs.self.nixosModules.lidarr
         
 	({ pkgs, ... }: {
           networking.hostName = "ancient"; 

@@ -1,7 +1,7 @@
 { ... }:
 {
   flake.nixosModules.prowlarr = { ... }: {
-    services.prowlarr = {
+    services.prowlar = {
       enable = true;
       openFirewall = true;
     };
