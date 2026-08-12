@@ -5,6 +5,7 @@
     imports = [ inputs.sops-nix.nixosModules.sops ];
 
     environment.systemPackages = with pkgs; [
+      ssh-to-age
       age
       sops
     ];
