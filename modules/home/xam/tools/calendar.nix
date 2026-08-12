@@ -1,6 +1,13 @@
 { ... }:
 {
   flake.nixosModules.calendar = { pkgs, ... }: {
+    sops.secrets."radicale-vdirsyncer-password" = {
+      sopsFile = ../../../../secrets/radicale.yaml;
+      path = "/run/secrets/radicale-vdirsyncer-password";
+      owner = "xam";
+      mode = "0600";
+    };
+
     home-manager.users.xam = {
       home.packages = with pkgs; [ vdirsyncer khal ];
 
@@ -32,7 +39,7 @@
 
         [storage personal_remote]
         type = "caldav"
-        url = "http://ancient:5232/xam/personal-calendar/"
+        url = "http://ancient:5232/xam/personal/"
         username = "xam"
         password.fetch = ["command", "cat", "/run/secrets/radicale-vdirsyncer-password"]
 
