@@ -27,7 +27,7 @@
         inputs.self.nixosModules.samba
         inputs.self.nixosModules.ancient-syncthing
         inputs.self.nixosModules.gitea
-	#inputs.self.nixosModules.radicale
+	inputs.self.nixosModules.radicale
         
 
 	inputs.self.nixosModules.prowlarr
