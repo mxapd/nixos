@@ -53,7 +53,7 @@
           btop
           gotop
 	  
-	  calcure
+	  khal
 	  inputs.bookokrat.packages.${pkgs.system}.default
         ];
       };
