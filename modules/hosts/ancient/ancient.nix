@@ -12,7 +12,8 @@
         inputs.self.nixosModules.ancient-hardware
         inputs.self.nixosModules.ancient-raid
         inputs.self.nixosModules.ancient-nvidia
-        inputs.self.nixosModules.user-xam
+	inputs.self.nixosModules.user-xam
+	inputs.self.nixosModules.sops
         inputs.self.nixosModules.locale
         inputs.self.nixosModules.sudo
         inputs.self.nixosModules.tailscale
@@ -26,7 +27,7 @@
         inputs.self.nixosModules.samba
         inputs.self.nixosModules.ancient-syncthing
         inputs.self.nixosModules.gitea
-        inputs.self.nixosModules.radicale
+	#inputs.self.nixosModules.radicale
         
 
 	inputs.self.nixosModules.prowlarr
