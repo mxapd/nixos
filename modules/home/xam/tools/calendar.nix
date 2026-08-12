@@ -53,7 +53,7 @@
         [calendars]
         [[lnu_timeedit]]
         path = ~/.calendars/lnu-timeedit/
-        color = dark yellow
+        color = yellow
 
         [[personal]]
         path = ~/.calendars/personal/
