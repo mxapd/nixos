@@ -11,3 +11,4 @@ creation_rules:
           - *sops_admin
           - *hearth_host
           - *sputnik_host
+          - *ancient_host
