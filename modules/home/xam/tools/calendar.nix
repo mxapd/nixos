@@ -39,7 +39,7 @@
 
         [storage personal_remote]
         type = "caldav"
-        url = "http://ancient:5232/xam/personal/"
+        url = "http://ancient:5232/xam/personal-calendar/"
         username = "xam"
         password.fetch = ["command", "cat", "/run/secrets/radicale-vdirsyncer-password"]
 
