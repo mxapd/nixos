@@ -24,6 +24,7 @@
       inputs.self.nixosModules.thunderbird
       inputs.self.nixosModules.spellbook
       inputs.self.nixosModules.compression-utils
+      inputs.self.nixosModules.calendar
     ];
 
     home-manager.users.xam = {
@@ -53,7 +54,6 @@
           btop
           gotop
 	  
-	  khal
 	  inputs.bookokrat.packages.${pkgs.system}.default
         ];
       };
