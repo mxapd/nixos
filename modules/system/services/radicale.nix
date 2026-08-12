@@ -8,7 +8,6 @@
       group = "radicale";
       mode = "0600";
       };
-    };
 
     services.radicale = {
       enable = true;
@@ -19,6 +18,7 @@
 	  htpasswd_filename = "/run/secrets/radicale-users";
 	  htpasswd_encryption = "bcrypt";
       };
+    };
     };
   };
 }
