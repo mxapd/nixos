@@ -58,7 +58,6 @@
         [[personal]]
         path = ~/.calendars/personal/
         color = dark blue
-        default = true
 
 	[default]
 	default_calendar = personal
