@@ -53,12 +53,15 @@
         [calendars]
         [[lnu_timeedit]]
         path = ~/.calendars/lnu-timeedit/
-        color = dark blue
+        color = dark yellow
 
         [[personal]]
         path = ~/.calendars/personal/
-        color = dark green
+        color = dark blue
         default = true
+
+	[default]
+	default_calendar = personal
 
         [locale]
         timeformat = %H:%M
