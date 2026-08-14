@@ -8,10 +8,11 @@
 
       settings.server = {
         HTTP_PORT = 3000;
+        HTTP_ADDR = "127.0.0.1";
         SSH_PORT = 2222;
         SSH_LISTEN_PORT = 2222;
-        DOMAIN = "gitea.ancient.com";
-        ROOT_URL = "http://gitea.ancient.com/";
+        DOMAIN = "ancient";
+        ROOT_URL = "https://ancient/git/";
         BUILTIN_SSH_SERVER = true;
         START_SSH_SERVER = true;
       };

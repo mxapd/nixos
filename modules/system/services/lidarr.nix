@@ -18,7 +18,7 @@
       user = "lidarr";
       group = "media";
       dataDir = "/var/lib/lidarr";
-      openFirewall = true;
+      openFirewall = false;
     };
 
     services.qbittorrent = {
@@ -31,9 +31,15 @@
       webuiPort = 8081;
       torrentingPort = 6881;
 
-      # This opens 8081 and 6881.
-      openFirewall = true;
+      # Served behind Caddy at https://ancient/lidarr and https://ancient/torrent.
+      # qBittorrent Web UI firewall is closed; torrenting port remains open.
+      openFirewall = false;
     };
+
+    # TODO: Set URL bases in the apps after first run:
+    # - Lidarr: Settings -> General -> URL Base -> /lidarr
+    # - qBittorrent: Options -> Web UI -> Use HTTPS instead of HTTP -> off,
+    #                then set "Web UI" path to /torrent under "Web UI" settings
 
     systemd.tmpfiles.rules = [
       "d /mnt/media/downloads       		2775 qbittorrent media -"

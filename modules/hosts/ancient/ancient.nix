@@ -23,6 +23,7 @@
 
 
         inputs.self.nixosModules.ssh
+        inputs.self.nixosModules.caddy
         inputs.self.nixosModules.jellyfin
         inputs.self.nixosModules.samba
         inputs.self.nixosModules.ancient-syncthing
@@ -45,13 +46,15 @@
             enable = true;
             allowPing = true;
             allowedTCPPorts = [
-              445
-              3000 # for gitea
-              2222 # also for gitea but not sure if needed
-              8384 # Syncthing Web UI
-              5232 # redicale calendar
-              # 80
-              # 22000 # Syncthing sync port (TCP, usually opened by #yncthing.openFirewall = true)
+              80    # Caddy HTTP
+              443   # Caddy HTTPS
+              445   # Samba
+              2222  # Gitea SSH
+              6881  # qBittorrent torrenting
+              22000 # Syncthing sync port
+            ];
+            allowedUDPPorts = [
+              6881  # qBittorrent torrenting
             ];
           };
         })

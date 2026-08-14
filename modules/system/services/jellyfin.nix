@@ -9,8 +9,11 @@
 
     services.jellyfin = {
       enable = true;
-      openFirewall = true;
+      openFirewall = false;
       user = "jellyfin";
+
+      # Served behind Caddy at https://ancient/jellyfin
+      config.BaseURL = "/jellyfin";
     };
   };
 }
