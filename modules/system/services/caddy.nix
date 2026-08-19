@@ -25,34 +25,29 @@
 
           # Radicale CalDAV/CardDAV — https://ancient/radicale
           handle_path /radicale/* {
-            reverse_proxy localhost:5232
+            reverse_proxy localhost:5232 {
+              header_up X-Script-Name /radicale
+            }
           }
           redir /radicale /radicale/
 
           # Prowlarr — https://ancient/prowlarr
-          # CHANGE THIS PASSWORD: run `caddy hash-password` and replace the hash below.
+          # TODO: enable app-level auth in Prowlarr settings
           handle_path /prowlarr/* {
-            basicauth {
-              xam $2a$14$ng4oteLs0gbk1aMgWEYdC.zzSI9trQcldbn0/9GCNFWV0axr7hWae
-            }
             reverse_proxy localhost:9696
           }
           redir /prowlarr /prowlarr/
 
           # Lidarr — https://ancient/lidarr
+          # TODO: enable app-level auth in Lidarr settings
           handle_path /lidarr/* {
-            basicauth {
-              xam $2a$14$ng4oteLs0gbk1aMgWEYdC.zzSI9trQcldbn0/9GCNFWV0axr7hWae
-            }
             reverse_proxy localhost:8686
           }
           redir /lidarr /lidarr/
 
           # qBittorrent — https://ancient/torrent
+          # TODO: enable app-level auth in qBittorrent Web UI settings
           handle_path /torrent/* {
-            basicauth {
-              xam $2a$14$ng4oteLs0gbk1aMgWEYdC.zzSI9trQcldbn0/9GCNFWV0axr7hWae
-            }
             reverse_proxy localhost:8081
           }
           redir /torrent /torrent/

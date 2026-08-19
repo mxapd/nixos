@@ -12,6 +12,8 @@
 
       # GUI served behind Caddy at https://ancient/sync
       guiAddress = "127.0.0.1:8384";
+
+      settings.gui.insecureSkipHostcheck = true;
     };
 
     # TODO: Set GUI URL base to /sync in Syncthing settings after first run
