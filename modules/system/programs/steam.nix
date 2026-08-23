@@ -4,6 +4,8 @@
       enable = true;
       remotePlay.openFirewall = true;
       protontricks.enable = true;
+
+      extraCompatPackages = [ pkgs.steamtinkerlaunch ]; 
     };
 
     environment.systemPackages = with pkgs; [
