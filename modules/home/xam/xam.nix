@@ -22,7 +22,7 @@
       inputs.self.nixosModules.opencode
       inputs.self.nixosModules.mako
       inputs.self.nixosModules.thunderbird
-      inputs.self.nixosModules.spellbook
+      # inputs.self.nixosModules.spellbook
       inputs.self.nixosModules.compression-utils
       inputs.self.nixosModules.calendar
     ];

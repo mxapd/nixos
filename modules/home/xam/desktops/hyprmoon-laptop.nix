@@ -59,7 +59,7 @@
         };
 
         "clock" = {
-          format = "󰅐 {:%H:%M %A%e %b}";
+          format = "{:%H:%M %A%e %b}";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>";
           today-format = "<b>{}</b>";
           on-click = "calcure";
