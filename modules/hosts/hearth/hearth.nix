@@ -20,8 +20,9 @@
         nix-maintenance
         ssh
         sudo
-        nvidia
-        stylix
+	#nvidia
+        amd
+	stylix
         unfree
 
         home-manager
