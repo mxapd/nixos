@@ -4,7 +4,7 @@
   flake.nixosModules.tmux-notes = { pkgs, ... }: {
     environment.sessionVariables.OBSIDIAN_VAULT = "/home/xam/Documents/obsidian/";
     home-manager.users.xam.home.packages = [
-
+      pkgs.ripgrep
       (pkgs.writeShellApplication {
         name = "tmux-notes";
         runtimeInputs = with pkgs; [ tmux ];
