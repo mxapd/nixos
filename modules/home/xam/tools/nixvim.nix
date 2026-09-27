@@ -16,7 +16,6 @@
       #./_nixvim-plugins/dashboard.nix
       ./_nixvim-plugins/highlight-yank.nix
       ./_nixvim-plugins/nixos-module-template.nix
-      ./_nixvim-plugins/which-key.nix
     ];
 
     programs.nixvim = {
@@ -57,6 +56,7 @@
         web-devicons.enable = true;
         bufferline.enable = true;
         lualine.enable = true;
+        which-key.enable = true;
         luasnip.enable = true;
         neoscroll.enable = true;
         render-markdown.enable = true;
@@ -66,6 +66,8 @@
         trouble.enable = true;
         yazi.enable = true;
 	sleuth.enable = true;
+        treesitter-context.enable = true;
+        nvim-autopairs.enable = true;
       };
 
       autoGroups = {
