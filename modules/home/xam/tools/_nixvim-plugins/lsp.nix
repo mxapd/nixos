@@ -38,6 +38,7 @@
     plugins.lsp = {
       enable = true;
       servers = {
+        nixd.enable = true;
         ccls.enable = true;
         rust_analyzer = {
           enable = true;
