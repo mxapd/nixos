@@ -16,6 +16,7 @@
       #./_nixvim-plugins/dashboard.nix
       ./_nixvim-plugins/highlight-yank.nix
       ./_nixvim-plugins/nixos-module-template.nix
+      ./_nixvim-plugins/which-key.nix
     ];
 
     programs.nixvim = {
@@ -57,7 +58,6 @@
         bufferline.enable = true;
         lualine.enable = true;
         luasnip.enable = true;
-        which-key.enable = true;
         neoscroll.enable = true;
         render-markdown.enable = true;
         friendly-snippets.enable = true;
