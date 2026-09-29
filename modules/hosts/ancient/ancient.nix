@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, self ... }:
 
 {
   flake.nixosConfigurations.ancient =
@@ -6,34 +6,33 @@
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
 
-      modules = [
+      modules = with self.nixosModules; [
+        ancient-boot
+        ancient-hardware
+        ancient-raid
+        ancient-nvidia
+	user-xam
+	sops
+        locale
+        sudo
+        tailscale
+        nix-maintenance
+        unfree
+        ssh-authorized-keys
 
-        inputs.self.nixosModules.ancient-boot
-        inputs.self.nixosModules.ancient-hardware
-        inputs.self.nixosModules.ancient-raid
-        inputs.self.nixosModules.ancient-nvidia
-	inputs.self.nixosModules.user-xam
-	inputs.self.nixosModules.sops
-        inputs.self.nixosModules.locale
-        inputs.self.nixosModules.sudo
-        inputs.self.nixosModules.tailscale
-        inputs.self.nixosModules.nix-maintenance
-        inputs.self.nixosModules.unfree
-        inputs.self.nixosModules.ssh-authorized-keys
 
+        ssh
+        caddy
+        jellyfin
+        samba
+        ancient-syncthing
+        gitea
 
-        inputs.self.nixosModules.ssh
-        inputs.self.nixosModules.caddy
-        inputs.self.nixosModules.jellyfin
-        inputs.self.nixosModules.samba
-        inputs.self.nixosModules.ancient-syncthing
-        inputs.self.nixosModules.gitea
+	radicale
+        vdirsyncer-school
 
-	inputs.self.nixosModules.radicale
-        inputs.self.nixosModules.vdirsyncer-school
-
-	inputs.self.nixosModules.prowlarr
-	inputs.self.nixosModules.lidarr
+	prowlarr
+	lidarr
         
 	({ pkgs, ... }: {
           networking.hostName = "ancient"; 
