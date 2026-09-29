@@ -68,7 +68,7 @@
 	    slack
 	    spotify
 	    libreoffice
-	   
+	    wireshark
 	    thinkfan
 	    auto-cpufreq
 	    brightnessctl
