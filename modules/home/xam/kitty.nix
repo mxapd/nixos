@@ -5,10 +5,9 @@
       kitty = {
         enable = true;
         
-        remember_window_size = false;
-        
         extraConfig = ''
           confirm_os_window_close 0
+          remember_window_size 0
         '';
       };
     };
