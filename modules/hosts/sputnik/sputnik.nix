@@ -40,6 +40,8 @@
 	inputs.self.nixosModules.steam
         inputs.self.nixosModules.firefox
 
+	inputs.self.nixosModules.wireshark
+
 	({ pkgs, ... }:	{
         networking.hostName = "sputnik"; # other options: nomad, voyager, pilgrim
 	  system.stateVersion = "26.05";
@@ -53,6 +55,8 @@
 	      variant = "";
 	    };
 	  };
+
+	  virtualisation.docker.enable = true;
 
 	  programs.wireshark.enable = true;
 
