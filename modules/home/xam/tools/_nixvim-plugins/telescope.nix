@@ -10,7 +10,7 @@
       settings = {
         extensions.__raw = "{ ['ui-select'] = { require('telescope.themes').get_dropdown() } }";
         defaults = {
-          layout_strategy = "vertical";
+          layout_strategy = "flex";
         };
       };
 
