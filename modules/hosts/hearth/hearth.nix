@@ -52,6 +52,8 @@
 
           services.ratbagd.enable = true;
 
+          powerManagement.cpuFreqGovernor = "performance";
+
           nix.settings.extra-platforms = [ "aarch64-linux" ];
           # --NIX--
 
