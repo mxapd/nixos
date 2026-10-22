@@ -36,7 +36,7 @@
         syncthing
         tailscale
 
-        virtualbox
+        #virtualbox
         torzu
         flatpak
         steam

@@ -2,32 +2,35 @@
 
 {
   flake.nixosModules.hm-xam = { pkgs, ... }: {
-    imports = [
-      inputs.self.nixosModules.hm-xam-zsh
-      inputs.self.nixosModules.hm-ssh
-      inputs.self.nixosModules.hm-git
-      inputs.self.nixosModules.nixvim
-      inputs.self.nixosModules.tmux-notes
-      inputs.self.nixosModules.tmux-goose
-      inputs.self.nixosModules.tmux-sessionizer
-      inputs.self.nixosModules.rebuild
-      inputs.self.nixosModules.goose
-      inputs.self.nixosModules.hm-yazi
-      inputs.self.nixosModules.open-clipboard-link
-      inputs.self.nixosModules.search-clipboard
-      inputs.self.nixosModules.tmux
-      inputs.self.nixosModules.zoxide
-      inputs.self.nixosModules.rust-dev
-      inputs.self.nixosModules.kitty
-      inputs.self.nixosModules.opencode
-      inputs.self.nixosModules.mako
-      inputs.self.nixosModules.thunderbird
-      # inputs.self.nixosModules.spellbook
-      inputs.self.nixosModules.compression-utils
-      inputs.self.nixosModules.calendar
+    imports = with inputs.self.nixosModules;[ # TODO: change home manager modules to something else than nixosModules 
+      hm-xam-zsh
+      hm-ssh
+      hm-git
+      nixvim
+      tmux-notes
+      tmux-goose
+      tmux-sessionizer
+      rebuild
+      goose
+      hm-yazi
+      open-clipboard-link
+      search-clipboard
+      tmux
+      zoxide
+      rust-dev
+      kitty
+      opencode
+      mako
+      thunderbird
+      #spellbook
+      compression-utils
+      #calendar
     ];
 
     home-manager.users.xam = {
+      stylix.targets.gtk.flatpakSupport.enable = false; # TODO: find a home for this line, it does not belong here
+      programs.nh.enable = true;
+
       home = {
         username = "xam";
         homeDirectory = "/home/xam";
@@ -47,14 +50,17 @@
 
           prismlauncher
 	  spotify
-
+          
           vlc
           qbittorrent
 
           btop
           gotop
-	  
-	  inputs.bookokrat.packages.${pkgs.system}.default
+
+          (inputs.bookokrat.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (_old: {
+            # Temporary workaround for failing SVG snapshot tests.
+            doCheck = false;
+          }))
         ];
       };
     };
