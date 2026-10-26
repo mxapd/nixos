@@ -42,6 +42,8 @@
         steam
         firefox
 
+        smartcard
+
         ({ pkgs, ... }: {
 
           networking.hostName = "hearth";
