@@ -10,7 +10,7 @@
       settings = {
         extensions.__raw = "{ ['ui-select'] = { require('telescope.themes').get_dropdown() } }";
         defaults = {
-          layout_strategy = "vertical";
+          layout_strategy = "flex";
         };
       };
 
@@ -91,6 +91,38 @@
         '';
         options = {
           desc = "[S]earch [/] in Open Files";
+        };
+      }
+      {
+        mode = "n";
+        key = "<leader>sm";
+        action.__raw = ''
+      function()
+        require('telescope.builtin').find_files {
+          prompt_title = 'NixOS Modules',
+          cwd = vim.fn.expand('~/nixos/modules'),
+          hidden = true,
+          follow = true,
+        }
+      end
+      '';
+        options = {
+          desc = "[S]earch [M]odules";
+        };
+      }
+      {
+        mode = "n";
+        key = "<leader>sM";
+        action.__raw = ''
+      function()
+        require('telescope.builtin').live_grep {
+          prompt_title = 'Grep NixOS Modules',
+          cwd = vim.fn.expand('~/nixos/modules'),
+        }
+      end
+      '';
+        options = {
+          desc = "[S]earch [M]odules by grep";
         };
       }
     ];

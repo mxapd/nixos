@@ -4,7 +4,8 @@
       enable = true;
       remotePlay.openFirewall = true;
       protontricks.enable = true;
-
+      
+      extraPackages = [ pkgs.mangohud ];
       extraCompatPackages = [ pkgs.steamtinkerlaunch ]; 
     };
 

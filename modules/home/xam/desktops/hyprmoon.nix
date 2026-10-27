@@ -26,9 +26,11 @@
     };
 
     home-manager.users.xam.wayland.windowManager.hyprland.settings.monitor = [
-      "DP-2,2560x1440@180.00Hz, 0x0,1"
-      "DP-1,1920x1080@144.00Hz,-1920x0,1"
-      "HDMI-A-1,1920x1080@144.00Hz,-1920x0,1"
+      # MAG 27CQ6F — 1440p@180, primary (first entry gets workspace 1)
+      "desc:Microstep MAG 27CQ6F CD9M024401936,2560x1440@180,0x0,1,vrr,1"
+
+      # VG248 — 1080p@144, to the left
+      "desc:Ancor Communications Inc VG248 G4LMQS087053,1920x1080@144,-1920x0,1,vrr,1"
     ];
 
     stylix = {

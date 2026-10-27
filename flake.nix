@@ -27,7 +27,6 @@
     bookokrat.url = "github:bugzmanov/bookokrat";
     bookokrat.inputs.nixpkgs.follows = "nixpkgs";
 
-
     # TODO: pin to a specific revision when spellbook v1 is released
     spellbook.url = "github:mxapd/spellbook";
   

@@ -20,8 +20,9 @@
         nix-maintenance
         ssh
         sudo
-        nvidia
-        stylix
+	#nvidia
+        amd
+	stylix
         unfree
 
         home-manager
@@ -35,11 +36,13 @@
         syncthing
         tailscale
 
-        virtualbox
+        #virtualbox
         torzu
         flatpak
         steam
         firefox
+
+        smartcard
 
         ({ pkgs, ... }: {
 
@@ -50,6 +53,8 @@
           security.polkit.enable = true;
 
           services.ratbagd.enable = true;
+
+          powerManagement.cpuFreqGovernor = "performance";
 
           nix.settings.extra-platforms = [ "aarch64-linux" ];
           # --NIX--

@@ -1,5 +1,22 @@
 {
   programs.nixvim = {
+
+    opts = {
+      updatetime = 300;  # ms of no cursor movement before CursorHold fires (default is 4000, way too slow for this)
+    };
+
+    autoCmd = [
+      {
+        event = "CursorHold";
+        pattern = "*";
+        callback.__raw = ''
+        function()
+          vim.diagnostic.open_float(nil, { focusable = false })
+        end
+        '';
+      }
+    ];
+
     plugins.none-ls = {
       enable = true;
 
@@ -38,6 +55,7 @@
     plugins.lsp = {
       enable = true;
       servers = {
+        nixd.enable = true;
         ccls.enable = true;
         rust_analyzer = {
           enable = true;
