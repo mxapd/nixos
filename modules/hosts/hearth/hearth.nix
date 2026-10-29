@@ -36,6 +36,7 @@
         syncthing
         tailscale
 
+        packettracer
         #virtualbox
         torzu
         flatpak
