@@ -12,24 +12,14 @@
     };
 
     # `config` here is the Home Manager config (shadows the NixOS one inside this scope)
-    home-manager.users.xam = { config, ... }:
-    let
-      c = config.lib.stylix.colors;
-    in {
+    home-manager.users.xam = { ... }: {
       home.pointerCursor.enable = true;
-
-      # Stylix's hyprlang-style output may not be Lua-compatible; theme borders manually.
-      stylix.targets.hyprland.enable = false;
 
       wayland.windowManager.hyprland.settings = {
         config = {
           general = {
             border_size = 1;
             gaps_out = 4;
-            col = {
-              active_border = "rgb(${c.base0D})";
-              inactive_border = "rgb(${c.base02})";
-            };
           };
           decoration = {
             rounding = 3;
