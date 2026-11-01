@@ -1,6 +1,34 @@
 { ... }:
 {
-  flake.nixosModules.hyprland = { pkgs, ... }: {
+  flake.nixosModules.hyprland = { pkgs, lib, ... }:
+  let
+    mod = "SUPER";
+    lua = lib.generators.mkLuaInline;
+
+    # hl.bind(keys, dispatcher[, opts])
+    bind = keys: dsp: { _args = [ keys (lua dsp) ]; };
+    bindWith = opts: keys: dsp: { _args = [ keys (lua dsp) opts ]; };
+    exec = keys: cmd: bind keys ''hl.dsp.exec_cmd("${cmd}")'';
+
+    dirs = [
+      { key = "left";  vim = "H"; d = "l"; }
+      { key = "right"; vim = "L"; d = "r"; }
+      { key = "up";    vim = "K"; d = "u"; }
+      { key = "down";  vim = "J"; d = "d"; }
+    ];
+
+    directionBinds = lib.concatMap (x: [
+      (bind "${mod} + ${x.key}" ''hl.dsp.focus({ direction = "${x.d}" })'')
+      (bind "${mod} + ${x.vim}" ''hl.dsp.focus({ direction = "${x.d}" })'')
+      (bind "${mod} + SHIFT + ${x.key}" ''hl.dsp.window.move({ direction = "${x.d}" })'')
+    ]) dirs;
+
+    workspaceBinds = lib.concatMap (i:
+      let n = toString i; in [
+        (bind "${mod} + ${n}" "hl.dsp.focus({ workspace = ${n} })")
+        (bind "${mod} + SHIFT + ${n}" "hl.dsp.window.move({ workspace = ${n}, follow = false })")
+      ]) (lib.range 1 9);
+  in {
 
     programs.hyprland.enable = true;
 
@@ -24,15 +52,15 @@
 
     home-manager.users.xam = {
       stylix.targets.kde.enable = false;
-      
+
       programs = {
         wofi.enable = true;
 
         kitty = {
           enable = true;
           extraConfig = ''
-            	    confirm_os_window_close 0
-            	  '';
+            confirm_os_window_close 0
+          '';
         };
 
         hyprshot.enable = true;
@@ -43,110 +71,74 @@
         enable = true;
         xwayland.enable = true;
 
-        configType = "hyprlang";
+        configType = "lua";
 
         settings = {
-          windowrule = [
-	    "opacity 1 1, match:float true"
-	  ];
+          config.input.kb_variant = "altgr-intl";
 
-          input = {
-            kb_variant = "altgr-intl";
+          env = { _args = [ "HYPRSHOT_DIR" "/home/xam/Pictures/Screenshots" ]; };
+
+          window_rule = {
+            name = "opaque-floating";
+            match.float = true;
+            opacity = "1 1";
           };
 
-          env = [
-            "HYPRSHOT_DIR,/home/xam/Pictures/Screenshots"
-          ];
-
-          "$mod" = "SUPER";
+          # exec-once = waybar
+          on = {
+            _args = [
+              "hyprland.start"
+              (lua ''
+                function()
+                  hl.dispatch(hl.dsp.exec_cmd("waybar"))
+                end
+              '')
+            ];
+          };
 
           bind = [
-            "$mod,Return,exec, kitty -e tmux"
-            "$mod,d,exec, wofi --show drun"
-            "$mod,w,exec,firefox"
-            "$mod, U, exec, open-clipboard-link"
-            "$mod, s, exec, search-clipboard"
-            "$modSHIFT,M,exec, hyprctl dispatch exit"
-            "$mod,E,exec, dolphin"
+            (exec "${mod} + Return" "kitty -e tmux")
+            (exec "${mod} + D" "wofi --show drun")
+            (exec "${mod} + W" "firefox")
+            (exec "${mod} + U" "open-clipboard-link")
+            (exec "${mod} + S" "search-clipboard")
+            (exec "${mod} + E" "dolphin")
+            (exec "${mod} + O" "kitty --class tmux-notes -e /etc/profiles/per-user/xam/bin/tmux-notes")
+            (exec "${mod} + G" "kitty --class tmux-goose -e /etc/profiles/per-user/xam/bin/tmux-goose")
 
-            # Screenshot a window
-            "$mod, PRINT, exec, hyprshot -m window"
+            # Screenshots
+            (exec "${mod} + PRINT" "hyprshot -m window")
+            (exec "PRINT" "hyprshot -m output")
+            (exec "${mod} + SHIFT + PRINT" "hyprshot -m region")
 
-            # Screenshot a monitor
-            ", PRINT, exec, hyprshot -m output"
+            (bind "${mod} + SHIFT + M" "hl.dsp.exit()")
+            (bind "${mod} + SHIFT + Q" "hl.dsp.window.close()")
+            (bind "${mod} + F" ''hl.dsp.window.fullscreen({ mode = "fullscreen" })'')
+            (bind "${mod} + SHIFT + F" ''hl.dsp.window.float({ action = "toggle" })'')
 
-            # Screenshot a region
-            "$modSHIFT, PRINT, exec, hyprshot -m region"
+            # Mouse
+            (bindWith { mouse = true; } "${mod} + mouse:272" "hl.dsp.window.drag()")
+            (bindWith { mouse = true; } "${mod} + mouse:273" "hl.dsp.window.resize()")
+            (bindWith { mouse = true; } "${mod} + ALT + mouse:272" "hl.dsp.window.resize()")
 
-            "$modSHIFT,Q,killactive"
-            "$mod,F,fullscreen"
-            "$mod,left,movefocus,l"
-            "$mod,right,movefocus,r"
-            "$mod,up,movefocus,u"
-            "$mod,down,movefocus,d"
-            "$mod,K,movefocus,u"
-            "$mod,J,movefocus,d"
-            "$mod,H,movefocus,l"
-            "$mod,L,movefocus,r"
+            # Volume (was bindel: locked + repeating)
+            (bindWith { locked = true; repeating = true; } "XF86AudioRaiseVolume"
+              ''hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")'')
+            (bindWith { locked = true; repeating = true; } "XF86AudioLowerVolume"
+              ''hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")'')
 
-            "$mod,1,workspace,1"
-            "$mod,2,workspace,2"
-            "$mod,3,workspace,3"
-            "$mod,4,workspace,4"
-            "$mod,5,workspace,5"
-            "$mod,6,workspace,6"
-            "$mod,7,workspace,7"
-            "$mod,8,workspace,8"
-            "$mod,9,workspace,9"
-
-            "$modSHIFT,1,movetoworkspacesilent,1"
-            "$modSHIFT,2,movetoworkspacesilent,2"
-            "$modSHIFT,3,movetoworkspacesilent,3"
-            "$modSHIFT,4,movetoworkspacesilent,4"
-            "$modSHIFT,5,movetoworkspacesilent,5"
-            "$modSHIFT,6,movetoworkspacesilent,6"
-            "$modSHIFT,7,movetoworkspacesilent,7"
-            "$modSHIFT,8,movetoworkspacesilent,8"
-            "$modSHIFT,9,movetoworkspacesilent,9"
-
-            "$modSHIFT,right,movewindow,r"
-            "$modSHIFT,left,movewindow,l"
-            "$modSHIFT,up,movewindow,u"
-            "$modSHIFT,down,movewindow,d"
-            "$modSHIFT,F,togglefloating,active"
-
-
-            "$mod, O, exec, kitty --class tmux-notes -e /etc/profiles/per-user/xam/bin/tmux-notes"
-            "$mod, G, exec, kitty --class tmux-goose -e /etc/profiles/per-user/xam/bin/tmux-goose"
-          ];
-
-          bindm = [
-            # mouse movements
-            "$mod, mouse:272, movewindow"
-            "$mod, mouse:273, resizewindow"
-            "$mod ALT, mouse:272, resizewindow"
-          ];
-
-          bindel = [
-            ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-            ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-          ];
-
-          bindl = [
-            ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-            ", XF86AudioPlay, exec, playerctl play-pause"
-            ", XF86AudioPrev, exec, playerctl previous"
-            ", XF86AudioNext, exec, playerctl next"
-          ];
-
-
+            # Media (was bindl: locked)
+            (bindWith { locked = true; } "XF86AudioMute"
+              ''hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")'')
+            (bindWith { locked = true; } "XF86AudioPlay" ''hl.dsp.exec_cmd("playerctl play-pause")'')
+            (bindWith { locked = true; } "XF86AudioPrev" ''hl.dsp.exec_cmd("playerctl previous")'')
+            (bindWith { locked = true; } "XF86AudioNext" ''hl.dsp.exec_cmd("playerctl next")'')
+          ] ++ directionBinds ++ workspaceBinds;
         };
-        extraConfig = ''
-          		  exec-once = waybar
-          	'';
       };
 
       home.sessionVariables.NIXOS_OZONE_WL = "1";
     };
   };
 }
+
