@@ -69,6 +69,8 @@
 	    htop
 	    fastfetch
 	    
+	    tree
+	    wl-clipboard
 	    obsidian
 	    discord-canary
 	    slack
