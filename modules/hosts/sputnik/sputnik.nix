@@ -41,6 +41,7 @@
         inputs.self.nixosModules.firefox
 
 	inputs.self.nixosModules.wireshark
+        inputs.self.nixosModules.lab-exam
 
 	({ pkgs, ... }:	{
         networking.hostName = "sputnik"; # other options: nomad, voyager, pilgrim
@@ -55,6 +56,9 @@
 	      variant = "";
 	    };
 	  };
+
+	  # 2DV703 lab exam tooling - set enable = false after the exam
+	  lab = { enable = true; unifi.enable = true; wireless.enable = true; a456.enable = true; };
 
 	  services.pcscd.enable = true;
 
