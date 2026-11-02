@@ -85,20 +85,46 @@
     ];
 
     # Laptop-specific Hyprland settings
-    home-manager.users.xam.wayland.windowManager.hyprland.settings = {
-      input.touchpad = {
+    home-manager.users.xam.wayland.windowManager.hyprland.settings =
+    let
+      lua = lib.generators.mkLuaInline;
+      # locked + repeating (was bindel)
+      brightness = keys: arg: {
+        _args = [
+          keys
+          (lua ''hl.dsp.exec_cmd("brightnessctl set ${arg}")'')
+          { locked = true; repeating = true; }
+        ];
+      };
+    in {
+      # Merges with hyprmoon's config.* and hyprland.nix's config.input.kb_variant
+      config.input.touchpad = {
         natural_scroll = true;
-        tap-to-click = true;
+        tap_to_click = true;
         disable_while_typing = true;
       };
 
-      monitor = [
-        "eDP-1,1920x1080@60Hz,0x0,1"
+      # Replace (not append to) the desktop monitors from hyprmoon.nix
+      monitor = lib.mkForce [
+        {
+          output = "eDP-1";
+          mode = "1920x1080@60";
+          position = "0x0";
+          scale = "1";
+        }
+        # Fallback for any plugged-in external screen
+        {
+          output = "";
+          mode = "preferred";
+          position = "auto";
+          scale = "1";
+        }
       ];
 
-      bindel = [
-        ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
-        ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+      # Appends to hyprland.nix's bind list
+      bind = [
+        (brightness "XF86MonBrightnessUp" "+5%")
+        (brightness "XF86MonBrightnessDown" "5%-")
       ];
     };
   };

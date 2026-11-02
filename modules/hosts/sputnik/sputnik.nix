@@ -37,8 +37,11 @@
         # inputs.self.nixosModules.virtualbox
 	# inputs.self.nixosModules.torzu
 	inputs.self.nixosModules.flatpak
-	# inputs.self.nixosModules.steam
+	inputs.self.nixosModules.steam
         inputs.self.nixosModules.firefox
+
+	inputs.self.nixosModules.wireshark
+        inputs.self.nixosModules.lab-exam
 
 	({ pkgs, ... }:	{
         networking.hostName = "sputnik"; # other options: nomad, voyager, pilgrim
@@ -54,6 +57,15 @@
 	    };
 	  };
 
+	  # 2DV703 lab exam tooling - set enable = false after the exam
+	  lab = { enable = true; unifi.enable = true; wireless.enable = true; a456.enable = true; };
+
+	  services.pcscd.enable = true;
+
+	  virtualisation.docker.enable = true;
+
+	  programs.wireshark.enable = true;
+
 	  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 	  environment.systemPackages = with pkgs; [
@@ -61,12 +73,14 @@
 	    htop
 	    fastfetch
 	    
+	    tree
+	    wl-clipboard
 	    obsidian
 	    discord-canary
 	    slack
 	    spotify
 	    libreoffice
-	   
+	    wireshark
 	    thinkfan
 	    auto-cpufreq
 	    brightnessctl
