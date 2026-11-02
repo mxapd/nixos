@@ -42,7 +42,6 @@
 
 	inputs.self.nixosModules.wireshark
         inputs.self.nixosModules.lab-exam
-        inputs.self.nixosModules.claude
 
 	({ pkgs, ... }:	{
         networking.hostName = "sputnik"; # other options: nomad, voyager, pilgrim

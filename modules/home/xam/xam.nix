@@ -11,6 +11,7 @@
       tmux-goose
       tmux-sessionizer
       rebuild
+      claude
       goose
       hm-yazi
       open-clipboard-link

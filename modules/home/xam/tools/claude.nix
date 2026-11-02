@@ -1,7 +1,7 @@
 { ... }:
 {
   flake.nixosModules.claude = { pkgs, ... }: {
-    programs.claude-code = {
+    home-manager.users.xam.programs.claude-code = {
       enable = true;
       package = pkgs.claude-code; 
       settings = {
