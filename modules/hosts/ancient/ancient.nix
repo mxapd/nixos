@@ -45,6 +45,7 @@
             enable = true;
             allowPing = true;
             allowedTCPPorts = [
+              8080
               80    # Caddy HTTP
               443   # Caddy HTTPS
               445   # Samba

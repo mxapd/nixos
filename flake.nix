@@ -29,8 +29,6 @@
 
     # TODO: pin to a specific revision when spellbook v1 is released
     spellbook.url = "github:mxapd/spellbook";
-  
-
   };
 
 
@@ -42,5 +40,4 @@
     flakePartsOutputs // {
       formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
     };
-
 }
