@@ -38,6 +38,7 @@
 
         # packettracer  # disabled: not needed right now
         #virtualbox
+        docker
         torzu
         flatpak
         steam
