@@ -36,7 +36,7 @@
         syncthing
         tailscale
 
-        packettracer
+        # packettracer  # disabled: not needed right now
         #virtualbox
         torzu
         flatpak

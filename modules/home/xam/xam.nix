@@ -8,11 +8,11 @@
       hm-git
       nixvim
       tmux-notes
-      tmux-goose
+      # tmux-goose  # disabled: goose-cli 1.55.0 fails to build in nixpkgs
       tmux-sessionizer
       rebuild
       claude
-      goose
+      # goose  # disabled: goose-cli 1.55.0 fails to build in nixpkgs
       hm-yazi
       open-clipboard-link
       search-clipboard

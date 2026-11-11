@@ -30,7 +30,7 @@
           };
 
           "gitlab.lnu.se" = {
-            IdentityFile = "/home/xam/.ssh/gitlab_lnu";
+            IdentityFile = "/home/xam/.ssh/gitlab.lnu";
             IdentitiesOnly = "yes";
           };
         };

@@ -11,7 +11,7 @@
 
     hardware.nvidia = {
       modesetting.enable = true;
-      nvidiaSettings = true;
+      nvidiaSettings = false; # legacy_470 nvidia-settings depends on gtk2 (marked broken)
       package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
     };
   };
