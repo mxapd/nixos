@@ -29,8 +29,26 @@
     ];
 
     home-manager.users.xam = {
+      imports = [ inputs.cal-tui.homeManagerModules.default ];
+
       stylix.targets.gtk.flatpakSupport.enable = false; # TODO: find a home for this line, it does not belong here
       programs.nh.enable = true;
+
+      # Terminal calendar (~/Projects/cal-tui). Writes ~/.config/cal-tui/config.toml,
+      # checked at build time.
+      programs.cal-tui = {
+        enable = true;
+        settings = {
+          calendars_dir = "~/.calendars"; # where vdirsyncer (calendar.nix) syncs to
+          timezone = "Europe/Stockholm";
+          default_calendar = "personal";
+          calendars.lnu-timeedit = {
+            name = "LNU";
+            read_only = true;
+          };
+          weather.location = "Växjö";
+        };
+      };
 
       home = {
         username = "xam";

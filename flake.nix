@@ -29,6 +29,14 @@
 
     # TODO: pin to a specific revision when spellbook v1 is released
     spellbook.url = "github:mxapd/spellbook";
+
+    # Terminal calendar. git+file: only committed changes are used;
+    # pick up new commits with `nix flake update cal-tui`.
+    cal-tui = {
+      url = "git+file:///home/xam/Projects/cal-tui";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
 

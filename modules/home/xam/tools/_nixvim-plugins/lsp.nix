@@ -74,6 +74,16 @@
             pycodestyle.enabled = false;
           };
         };
+
+        # JavaScript / TypeScript
+        ts_ls.enable = true;
+
+        # Optional extras for web dev
+        eslint.enable = true;   # linting from your project's ESLint config
+        html.enable = true;
+        cssls.enable = true;
+        jsonls.enable = true;
+
       };
       # Diagnostic keymaps
       keymaps = {
