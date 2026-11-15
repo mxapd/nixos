@@ -44,6 +44,7 @@
           default_calendar = "personal";
           calendars.lnu-timeedit = {
             name = "LNU";
+            color = "orange"; # soft colours: orange teal lavender sage sky rose sand
             read_only = true;
           };
           weather.location = "Växjö";
