@@ -25,7 +25,7 @@
       thunderbird
       #spellbook
       compression-utils
-      #calendar
+      calendar
     ];
 
     home-manager.users.xam = {
@@ -42,6 +42,7 @@
           calendars_dir = "~/.calendars"; # where vdirsyncer (calendar.nix) syncs to
           timezone = "Europe/Stockholm";
           default_calendar = "personal";
+          sync_command = "vdirsyncer sync"; # `S` in the TUI
           calendars.lnu-timeedit = {
             name = "LNU";
             color = "orange"; # soft colours: orange teal lavender sage sky rose sand

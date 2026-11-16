@@ -87,8 +87,8 @@
           Description = "Periodic Radicale calendar sync";
         };
         Timer = {
-          OnBootSec = "5m";
-          OnUnitActiveSec = "1h";
+          OnBootSec = "1m";
+          OnCalendar = "*:0/15";
           Persistent = true;
         };
         Install = {

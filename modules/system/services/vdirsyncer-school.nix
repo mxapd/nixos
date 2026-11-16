@@ -42,7 +42,7 @@
 
       [storage radicale_school]
       type = "caldav"
-      url = "http://ancient:5232/xam/lnu-timeedit/"
+      url = "http://127.0.0.1:5232/xam/lnu-timeedit/"
       username = "xam"
       password.fetch = ["command", "cat", "/run/secrets/radicale-vdirsyncer-password"]
     '';
@@ -67,8 +67,8 @@
       description = "Periodic school calendar sync";
       wantedBy = [ "timers.target" ];
       timerConfig = {
-        OnBootSec = "5m";
-        OnUnitActiveSec = "1h";
+        # Wall-clock schedule: keeps firing even after a failed run.
+        OnCalendar = "*:0/30";
         Persistent = true;
       };
     };
