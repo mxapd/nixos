@@ -37,6 +37,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    # Jarvis report log + TUI. git+file: only committed changes are used;
+    # pick up new commits with `nix flake update jarvis`.
+    # TODO: switch ref to master once terminal-tab is merged.
+    jarvis = {
+      url = "git+file:///home/xam/Projects/jarvis?ref=terminal-tab";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
 

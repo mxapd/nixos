@@ -35,6 +35,7 @@
 
         syncthing
         tailscale
+        jarvis
 
         # packettracer  # disabled: not needed right now
         #virtualbox
