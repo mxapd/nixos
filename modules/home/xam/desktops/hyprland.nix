@@ -105,6 +105,9 @@
             (exec "${mod} + E" "dolphin")
             (exec "${mod} + O" "kitty --class tmux-notes -e /etc/profiles/per-user/xam/bin/tmux-notes")
             (exec "${mod} + G" "kitty --class tmux-goose -e /etc/profiles/per-user/xam/bin/tmux-goose")
+            (exec "${mod} + C" "kitty --class cal-tui -e /etc/profiles/per-user/xam/bin/cal-tui")
+
+
 
             # Screenshots
             (exec "${mod} + PRINT" "hyprshot -m window")
