@@ -35,7 +35,7 @@
 
         syncthing
         tailscale
-        jarvis
+        # jarvis  # disabled: Jarvis is early in development, waiting for it to settle
 
         # packettracer  # disabled: not needed right now
         #virtualbox
