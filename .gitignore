@@ -4,4 +4,4 @@ result-*
 .pre-commit-config.yaml.lock
 *.qcow2
 *~
-flake.lock
+.null-ls_*
