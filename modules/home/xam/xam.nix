@@ -32,7 +32,6 @@
       imports = [ inputs.cal-tui.homeManagerModules.default ];
 
       stylix.targets.gtk.flatpakSupport.enable = false; # TODO: find a home for this line, it does not belong here
-      stylix.targets.wayprompt.enable = false; # home-manager removed programs.wayprompt; drop once stylix removes its target
       programs.nh.enable = true;
 
       # Terminal calendar (~/Projects/cal-tui). Writes ~/.config/cal-tui/config.toml,
