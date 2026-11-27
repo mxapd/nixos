@@ -18,6 +18,9 @@
       ./_nixvim-plugins/nixos-module-template.nix
     ];
 
+    # direnv + nix-direnv (NixOS module enables nix-direnv by default)
+    programs.direnv.enable = true;
+
     programs.nixvim = {
       enable = true;
 

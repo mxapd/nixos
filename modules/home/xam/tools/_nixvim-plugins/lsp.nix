@@ -52,8 +52,8 @@
     #    };
 
 
-    # Haskell: haskell-tools.nvim (HLS client + hoogle, REPL, code lenses)
-    plugins.haskell-tools.enable = true;
+    # Load per-project devshells (.envrc: `use flake`) so HLS finds the project ghc
+    plugins.direnv.enable = true;
 
     plugins.lsp = {
       enable = true;
@@ -87,8 +87,11 @@
         cssls.enable = true;
         jsonls.enable = true;
 
-        # Haskell: do NOT enable `hls` here — haskell-tools.nvim starts
-        # and manages haskell-language-server itself.
+        # Haskell
+        hls = {
+          enable = true;
+          installGhc = true;  # global GHC so HLS works outside devshells too
+        };
       };
 
       # Diagnostic keymaps
