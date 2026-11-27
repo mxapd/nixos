@@ -52,6 +52,9 @@
     #    };
 
 
+    # Haskell: haskell-tools.nvim (HLS client + hoogle, REPL, code lenses)
+    plugins.haskell-tools.enable = true;
+
     plugins.lsp = {
       enable = true;
       servers = {
@@ -84,7 +87,10 @@
         cssls.enable = true;
         jsonls.enable = true;
 
+        # Haskell: do NOT enable `hls` here — haskell-tools.nvim starts
+        # and manages haskell-language-server itself.
       };
+
       # Diagnostic keymaps
       keymaps = {
         diagnostic = {

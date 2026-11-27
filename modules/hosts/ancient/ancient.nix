@@ -31,6 +31,8 @@
         vdirsyncer-school
 
 	prowlarr
+	docker
+	fluxer
 	lidarr
         
 	({ pkgs, ... }: {
